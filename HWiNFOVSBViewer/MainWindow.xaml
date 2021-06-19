@@ -8,9 +8,9 @@
     Title="HWiNFO VSB Viewer"
     Width="800"
     Height="460"
+    Loaded="Window_Loaded"
     Closing="Window_Closing"
     KeyDown="Window_KeyDown"
-    SizeToContent="Width"
     mc:Ignorable="d">
 
     <!--#region Styles-->
@@ -57,10 +57,15 @@
                         Name="mnuCopy"
                         Click="MnuCopy_Click"
                         Header="_Copy Grid to Clipboard" />
+                    <Separator />
                     <MenuItem
                         Name="mnuSaveToCsv"
                         Click="MnuSaveToCsv_Click"
                         Header="Save Grid to CSV File" />
+                    <MenuItem
+                        Name="mnuSaveToHtml"
+                        Click="MnuSaveToHtml_Click"
+                        Header="Save Grid to HTML File" />
                     <Separator />
                     <MenuItem
                         Name="mnuExit"
@@ -89,6 +94,7 @@
                         Header="Show _Grid Lines"
                         IsCheckable="True"
                         IsChecked="{Binding ShowGridLines, Source={x:Static local:UserSettings.Setting}}" />
+                    <Separator />
                     <MenuItem Header="_Zoom">
                         <MenuItem
                             Click="GridSmaller_Click"

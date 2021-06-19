@@ -38,8 +38,6 @@ namespace HWiNFOVSBViewer
             InitializeComponent();
 
             ReadSettings();
-
-            IsHWiNFORunning();
         }
 
         #region Settings
@@ -61,6 +59,8 @@ namespace HWiNFOVSBViewer
             // Window position
             Top = UserSettings.Setting.WindowTop;
             Left = UserSettings.Setting.WindowLeft;
+            Width = UserSettings.Setting.WindowWidth;
+            Height = UserSettings.Setting.WindowHeight;
 
             // Max screen height slightly smaller than screen
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight - 20;
@@ -92,13 +92,11 @@ namespace HWiNFOVSBViewer
             Process[] pname32 = Process.GetProcessesByName("HWiNFO32");
             if (pname64.Length == 0 && pname32.Length == 0)
             {
-                HWiNFO info = new HWiNFO
-                {
-                    Index = 0,
-                    Sensor = "HWiNFO is not running"
-                };
                 log.Error("HWiNFO is not running");
-                HWiNFO.HWList.Add(info);
+                _ = MessageBox.Show("HWiNFO is not running",
+                                    "ERROR",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
             }
             else
             {
@@ -149,8 +147,8 @@ namespace HWiNFOVSBViewer
                 else
                 {
                     info.Index = 0;
-                    info.Sensor = "No values found";
-                    log.Error("No registry values found. Is HWiNFO configured correctly?");
+                    info.Sensor = "No registry values found. Is HWiNFO running and configured correctly?";
+                    log.Error("No registry values found. Is HWiNFO running and configured correctly?");
                     HWiNFO.HWList.Add(info);
                 }
             }
@@ -246,6 +244,11 @@ namespace HWiNFOVSBViewer
             SaveToCSV();
         }
 
+        private void MnuSaveToHtml_Click(object sender, RoutedEventArgs e)
+        {
+            SaveToHtml();
+        }
+
         private void GridSmaller_Click(object sender, RoutedEventArgs e)
         {
             GridSmaller();
@@ -263,6 +266,11 @@ namespace HWiNFOVSBViewer
         #endregion Menu events
 
         #region Window events
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            IsHWiNFORunning();
+        }
+
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             log.Info("{0} is shutting down.", AppInfo.AppName);
@@ -273,6 +281,8 @@ namespace HWiNFOVSBViewer
             // save settings
             UserSettings.Setting.WindowLeft = Left;
             UserSettings.Setting.WindowTop = Top;
+            UserSettings.Setting.WindowWidth = Width;
+            UserSettings.Setting.WindowHeight = Height;
             UserSettings.SaveSettings();
         }
         #endregion Window events
@@ -409,6 +419,66 @@ namespace HWiNFOVSBViewer
             }
         }
         #endregion Save grid to CSV file
+
+        #region Save to HTML
+        private void SaveToHtml()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<!DOCTYPE HTML>")
+                .AppendLine("<html>")
+                .AppendLine("<head>")
+                .AppendLine("<title> HWiNFO Registry Info </title>")
+                .AppendLine("<meta http-equiv='content-type' content='text/html;charset = utf-8' />")
+                .AppendLine("</head>")
+                .AppendLine("<style>")
+                .AppendLine("body {font-family: Sans-serif; font-size: 90%; background-color: #E1E3E6;}")
+                .AppendLine("td { padding: 5px;}")
+                .AppendLine("th { background-color: #AFEEEE; color: #2F2F2F; padding: 7px 0px 7px 0px;}")
+                .Append("table {table-layout: fixed; width: 100%; background-color: #FAFAFA; ")
+                .AppendLine("box-shadow: 0 0 10px 10px #9E9E9E;}")
+                .Append("table, th, td { border-style: solid; border-width: 1px; border-color: #2F2F2F; ")
+                .AppendLine("border-collapse: collapse; word-wrap: break-word;}")
+                .AppendLine("div {width: 95%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;} ")
+                .AppendLine("</style>")
+                .AppendLine("<body><div><br>")
+                .AppendLine("<table>")
+                .AppendLine("<tr>")
+                .Append("<th style='width: 3.5%;'>Index</th>")
+                .Append("<th style='width: 25%;'>Sensor</th>")
+                .Append("<th style='width: 25%;'>Label</th>")
+                .Append("<th style='width: 10%;'>Value</th>")
+                .Append("<th style='width: 10%;'>Value Raw</th>")
+                .AppendLine("</tr>");
+            foreach (HWiNFO row in HWiNFO.HWList)
+            {
+                sb.Append("<tr>")
+                    .Append("<td style='text-align: center'>").Append(row.Index).Append("</td>")
+                    .Append("<td >").Append(row.Sensor).Append("</td>")
+                    .Append("<td >").Append(row.Label).Append("</td>")
+                    .Append("<td >").Append(row.Value).Append("</td>")
+                    .Append("<td >").Append(row.ValueRaw).Append("</td>")
+                    .Append("</tr>");
+            }
+            sb.AppendLine("</table>")
+                .AppendLine("</br></div></body>")
+                .AppendLine("</html>");
+            string html = sb.ToString();
+
+            string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".html";
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Title = "Save Grid as HTML FIle",
+                Filter = "HTML File|*.html",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                FileName = fname
+            };
+            bool? result = dialog.ShowDialog();
+            if (result == true)
+            {
+                File.WriteAllText(dialog.FileName, html, Encoding.UTF8);
+            }
+        }
+        #endregion Save to HTML
 
         #region Unhandled Exceptions
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
