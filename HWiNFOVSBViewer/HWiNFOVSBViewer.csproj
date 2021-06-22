@@ -62,6 +62,7 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppInfo.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="UserSettings.cs" />
     <Page Include="About.xaml">
