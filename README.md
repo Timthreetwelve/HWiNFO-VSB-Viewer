@@ -22,4 +22,5 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 ### Screenshot
 ![Screenshot](/Images/HWiNFOVSBViewer.png?raw=true)
 
-
+### Download
+Download form [here](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
