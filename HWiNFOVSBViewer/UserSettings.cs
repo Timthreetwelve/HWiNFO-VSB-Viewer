@@ -3,6 +3,7 @@
 #region Using directives
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using TKUtils;
 #endregion Using directives
 
@@ -78,7 +79,7 @@ namespace HWiNFOVSBViewer
         {
             get
             {
-                if (windowLeft < 0)
+                if (windowLeft < 0 || windowLeft >= SystemParameters.VirtualScreenWidth)
                 {
                     windowLeft = 0;
                 }
@@ -91,7 +92,7 @@ namespace HWiNFOVSBViewer
         {
             get
             {
-                if (windowTop < 0)
+                if (windowTop < 0 || windowTop >= SystemParameters.VirtualScreenHeight)
                 {
                     windowTop = 0;
                 }

@@ -62,8 +62,11 @@ namespace HWiNFOVSBViewer
             Width = UserSettings.Setting.WindowWidth;
             Height = UserSettings.Setting.WindowHeight;
 
-            // Max screen height slightly smaller than screen
-            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight - 20;
+            // Window state
+            WindowState = WindowState.Normal;
+
+            // Max screen height
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
 
             // Set Datagrid zoom
             double curZoom = UserSettings.Setting.GridZoom;
