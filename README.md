@@ -24,3 +24,6 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 
 ### Download
 Download form [here](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
+
+### Thanks
+Thanks to my brother-in-law for inspiring me to make this application. 👋
