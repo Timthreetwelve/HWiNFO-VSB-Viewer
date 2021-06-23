@@ -8,9 +8,9 @@
     Title="HWiNFO VSB Viewer"
     Width="800"
     Height="460"
-    Loaded="Window_Loaded"
     Closing="Window_Closing"
     KeyDown="Window_KeyDown"
+    Loaded="Window_Loaded"
     mc:Ignorable="d">
 
     <!--#region Styles-->
@@ -28,21 +28,21 @@
                     <ControlTemplate TargetType="{x:Type TextBox}">
                         <Grid>
                             <Border
-                        Background="White"
-                        BorderBrush="LightGray"
-                        BorderThickness="1" />
+                                Background="White"
+                                BorderBrush="LightGray"
+                                BorderThickness="1" />
                             <ScrollViewer
-                        x:Name="PART_ContentHost"
-                        Margin="5,0,0,0"
-                        VerticalAlignment="Center" />
+                                x:Name="PART_ContentHost"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center" />
                             <Label
-                        x:Name="WaterMarkLabel"
-                        Margin="5,-3,0,0"
-                        VerticalAlignment="Center"
-                        Content="{TemplateBinding Tag}"
-                        FontSize="14"
-                        Foreground="LightGray"
-                        Visibility="Collapsed" />
+                                x:Name="WaterMarkLabel"
+                                Margin="5,-3,0,0"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Tag}"
+                                FontSize="14"
+                                Foreground="LightGray"
+                                Visibility="Collapsed" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <MultiTrigger>
@@ -68,15 +68,15 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid x:Name="grid">
                             <Border
-                        x:Name="border"
-                        Background="White"
-                        BorderBrush="White"
-                        BorderThickness="1">
+                                x:Name="border"
+                                Background="White"
+                                BorderBrush="White"
+                                BorderThickness="1">
 
                                 <ContentPresenter
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            TextElement.FontWeight="Normal" />
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    TextElement.FontWeight="Normal" />
                             </Border>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -188,8 +188,9 @@
                 <TextBox
                     x:Name="tbxSearch"
                     Width="200"
-                    Height="24"
-                    FontSize="15"
+                    Height="25"
+                    VerticalContentAlignment="Top"
+                    FontSize="14"
                     Style="{StaticResource MyWaterMarkStyle}"
                     Tag="Filter Text"
                     TextChanged="TbxSearch_TextChanged" />
