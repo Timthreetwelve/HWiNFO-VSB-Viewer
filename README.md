@@ -1,8 +1,8 @@
 # HWiNFO VSB Viewer
 
-[![GitHub](https://img.shields.io/github/license/Timthreetwelve/Timnigma?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/Timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/LICENSE)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases/latest) 
-[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/Timnigma/total?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases)  
+[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/HWiNFO-VSB-Viewer/total?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases)  
 
 HWiNFO VSB Viewer is an application that will read the HWiNFO VSB registry values and display them in a grid. The Index values shown in the grid can then be used in Rainmeter skins.
 
