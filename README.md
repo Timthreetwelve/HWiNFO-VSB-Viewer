@@ -18,6 +18,7 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 *	It checks to make sure that HWiNFO (either 32 or 64 bit) is running.
 *	Displays the HWiNFO/VSB registry key values in a scrollable, sortable grid.
 * Initially sorted by Index number.
+* Filter to find text quickly. 🆕
 *	Data can be refreshed (F5).
 *	The entire grid can be exported as CSV or HTML.
 *	Individual grid cells can copied to the clipboard.
