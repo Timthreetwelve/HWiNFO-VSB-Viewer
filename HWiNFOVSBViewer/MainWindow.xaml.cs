@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
@@ -265,6 +266,30 @@ namespace HWiNFOVSBViewer
         private void MnuAbout_Click(object sender, RoutedEventArgs e)
         {
             ShowAbout();
+        }
+
+        private void TbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = tbxSearch.Text;
+
+            // I really don't understand how this works
+            ICollectionView cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
+            cv.Filter = filter?.Length == 0
+                ? (Predicate<object>)null
+                : (o =>
+                {
+                    HWiNFO hw = o as HWiNFO;
+                    return hw.Label.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                           hw.Sensor.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                           hw.Value.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                           hw.Index.ToString().IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0;
+                });
+            btnSearch.IsEnabled = !string.IsNullOrEmpty(tbxSearch.Text);
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            tbxSearch.Clear();
         }
         #endregion Menu events
 

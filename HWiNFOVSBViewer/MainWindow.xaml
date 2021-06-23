@@ -22,6 +22,73 @@
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Margin" Value="5,0,10,0" />
         </Style>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border
+                        Background="White"
+                        BorderBrush="LightGray"
+                        BorderThickness="1" />
+                            <ScrollViewer
+                        x:Name="PART_ContentHost"
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center" />
+                            <Label
+                        x:Name="WaterMarkLabel"
+                        Margin="5,-3,0,0"
+                        VerticalAlignment="Center"
+                        Content="{TemplateBinding Tag}"
+                        FontSize="14"
+                        Foreground="LightGray"
+                        Visibility="Collapsed" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value="" />
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="WaterMarkLabel" Property="Visibility" Value="Visible" />
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="myButton" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border
+                        x:Name="border"
+                        Background="White"
+                        BorderBrush="White"
+                        BorderThickness="1">
+
+                                <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextElement.FontWeight="Normal" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="Red" />
+                                <Setter TargetName="border" Property="TextElement.Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <!--#endregion-->
 
@@ -116,6 +183,30 @@
                         InputGestureText="F1" />
                 </MenuItem>
             </Menu>
+            <!--#region Search box-->
+            <StackPanel Margin="150,-24,0,0" Orientation="Horizontal">
+                <TextBox
+                    x:Name="tbxSearch"
+                    Width="200"
+                    Height="24"
+                    FontSize="15"
+                    Style="{StaticResource MyWaterMarkStyle}"
+                    Tag="Filter Text"
+                    TextChanged="TbxSearch_TextChanged" />
+                <Button
+                    x:Name="btnSearch"
+                    Width="12"
+                    Height="15"
+                    Margin="-20,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    Click="BtnSearch_Click"
+                    Content="X"
+                    FontSize="10"
+                    Foreground="Red"
+                    Style="{DynamicResource myButton}" />
+            </StackPanel>
+            <!--#endregion-->
         </DockPanel>
         <!--#endregion-->
 
