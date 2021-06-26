@@ -31,7 +31,7 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 ![Screenshot](/Images/HWiNFOVSBViewer.png?raw=true)
 
 ### Filtered rows
-![Screenshot](/Images/HWiNFOVSBViewer_filtered.png?raw=true)
+![Screenshot](/Images/HWiNFO-Filtering.gif)
 
 ### Download
 Download form [here](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
