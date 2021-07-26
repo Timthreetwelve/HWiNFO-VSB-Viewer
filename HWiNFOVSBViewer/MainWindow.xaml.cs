@@ -89,6 +89,45 @@ namespace HWiNFOVSBViewer
         }
         #endregion Settings
 
+        #region Check registry for HWiNFO64 and HWiNFO32
+        private void CheckRegistry()
+        {
+            RegistryKey key64 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO64\\VSB");
+            RegistryKey key32 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO32\\VSB");
+
+            if (key64 != null)
+            {
+                HWiNFO.RegistryKey = "Software\\HWiNFO64\\VSB";
+                key64.Close();
+                key64.Dispose();
+                log.Debug("HKCU\\Software\\HWiNFO64\\VSB was found.");
+                ReadVSB();
+                LoadGrid();
+            }
+            else if (key32 != null)
+            {
+                HWiNFO.RegistryKey = "Software\\HWiNFO32\\VSB";
+                key32.Close();
+                key32.Dispose();
+                log.Debug("HKCU\\Software\\HWiNFO32\\VSB was found.");
+                ReadVSB();
+                LoadGrid();
+            }
+            else
+            {
+                HWiNFO info = new HWiNFO
+                {
+                    Index = 0,
+                    Sensor = "No registry values found."
+                };
+                log.Error("No registry values found.");
+                HWiNFO.HWList.Add(info);
+                LoadGrid();
+                IsHWiNFORunning();
+            }
+        }
+        #endregion Check registry for HWiNFO64 and HWiNFO32
+
         #region Check to see if HWiNFO is running
         private void IsHWiNFORunning()
         {
@@ -102,19 +141,13 @@ namespace HWiNFOVSBViewer
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
             }
-            else
-            {
-                log.Debug("HWiNFO is running");
-                ReadVSB();
-                LoadGrid();
-            }
         }
         #endregion Check to see if HWiNFO is running
 
         #region Read registry and add values to a list
         private void ReadVSB()
         {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO64\\VSB"))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(HWiNFO.RegistryKey))
             {
                 HWiNFO info = new HWiNFO();
                 if (key != null)
@@ -148,13 +181,6 @@ namespace HWiNFOVSBViewer
                         }
                     }
                 }
-                else
-                {
-                    info.Index = 0;
-                    info.Sensor = "No registry values found. Is HWiNFO running and configured correctly?";
-                    log.Error("No registry values found. Is HWiNFO running and configured correctly?");
-                    HWiNFO.HWList.Add(info);
-                }
             }
         }
         #endregion Read registry and add values to a list
@@ -172,7 +198,8 @@ namespace HWiNFOVSBViewer
         private void RefreshData()
         {
             HWiNFO.HWList.Clear();
-            ReadVSB();
+            CheckRegistry();
+            //ReadVSB();
             List<HWiNFO> sortedList = HWiNFO.HWList;
             sortedList.Sort();
             HWGrid.ItemsSource = sortedList;
@@ -296,7 +323,7 @@ namespace HWiNFOVSBViewer
         #region Window events
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            IsHWiNFORunning();
+            CheckRegistry();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -330,7 +357,7 @@ namespace HWiNFOVSBViewer
         private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
         {
             PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-            var newValue = prop?.GetValue(sender, null);
+            object newValue = prop?.GetValue(sender, null);
             switch (e.PropertyName)
             {
                 case "ShadeAltRows":
