@@ -19,6 +19,8 @@ namespace HWiNFOVSBViewer
 
         public static List<HWiNFO> HWList = new List<HWiNFO>();
 
+        public static string RegistryKey { get; set; }
+
         public int CompareTo(HWiNFO other)
         {
             // A null value means that this object is greater.
