@@ -17,7 +17,7 @@ namespace HWiNFOVSBViewer
 
         public string ValueRaw { get; set; }
 
-        public static List<HWiNFO> HWList = new List<HWiNFO>();
+        public static List<HWiNFO> HWList = new();
 
         public static string RegistryKey { get; set; }
 

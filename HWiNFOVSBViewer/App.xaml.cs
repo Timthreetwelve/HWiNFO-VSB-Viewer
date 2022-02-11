@@ -1,15 +1,15 @@
 ﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-// This inspired by the of answers from this question
-// https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
-// and this blog post
-// https://weblog.west-wind.com/posts/2016/May/13/Creating-Single-Instance-WPF-Applications-that-open-multiple-Files
-
-using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows;
-
+/// <summary>
+/// <para>
+/// This inspired by the of answers from this question
+/// https://stackoverflow.com/questions/19147/what-is-the-correct-way-to-create-a-single-instance-wpf-application
+/// </para>
+/// <para>
+/// And this blog post
+/// https://weblog.west-wind.com/posts/2016/May/13/Creating-Single-Instance-WPF-Applications-that-open-multiple-Files
+/// </para>
+/// </summary>
 namespace HWiNFOVSBViewer
 {
     public partial class App : Application
@@ -18,7 +18,7 @@ namespace HWiNFOVSBViewer
 
         public App()
         {
-            SingleInstanceCheck();
+            //SingleInstanceCheck();
         }
 
         public void SingleInstanceCheck()

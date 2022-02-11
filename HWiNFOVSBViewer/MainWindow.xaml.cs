@@ -1,564 +1,447 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#region Using directives
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using Microsoft.Win32;
-using NLog;
-using TKUtils;
-#endregion Using directives
+namespace HWiNFOVSBViewer;
 
-namespace HWiNFOVSBViewer
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    #region NLog Instance
+    private static readonly Logger log = LogManager.GetCurrentClassLogger();
+    #endregion NLog Instance
+
+    #region Stopwatch
+    private readonly Stopwatch stopwatch = new();
+    #endregion Stopwatch
+
+    public MainWindow()
     {
-        #region NLog Instance
-        private static readonly Logger log = LogManager.GetCurrentClassLogger();
-        #endregion NLog Instance
+        InitializeSettings();
 
-        #region Regex instances
-        private static readonly Regex numOnly = new Regex(@"\D");
-        private static readonly Regex noNums = new Regex(@"\d");
-        #endregion Regex instances
+        InitializeComponent();
 
-        public MainWindow()
+        ReadSettings();
+    }
+
+    #region Settings
+    private void InitializeSettings()
+    {
+        stopwatch.Start();
+
+        UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+    }
+
+    public void ReadSettings()
+    {
+        // Set NLog configuration
+        NLHelpers.NLogConfig(true);
+
+        // Unhandled exception handler
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        // Put the version number in the title bar
+        Title = $"{AppInfo.AppName} - {AppInfo.TitleVersion}";
+
+        // Log the version, build date and commit id
+        log.Info($"{AppInfo.AppName} {AppInfo.AppVersion} is starting up");
+        log.Info($"{AppInfo.AppName} Built: {Properties.Resources.BuildDate.TrimEnd()} ");
+        log.Info($"{AppInfo.AppName} Commit: {Properties.Resources.CurrentCommit.TrimEnd()} ");
+
+        // Log the .NET version, app framework and OS platform
+        string version = Environment.Version.ToString();
+        log.Debug($".NET version: {AppInfo.RuntimeVersion.Replace(".NET", "")}  ({version})");
+        log.Debug(AppInfo.Framework);
+        log.Debug(AppInfo.OsPlatform);
+
+        // Window position
+        Top = UserSettings.Setting.WindowTop;
+        Left = UserSettings.Setting.WindowLeft;
+        Height = UserSettings.Setting.WindowHeight;
+        Width = UserSettings.Setting.WindowWidth;
+        Topmost = UserSettings.Setting.KeepOnTop;
+
+        // Light or dark
+        SetBaseTheme((ThemeType)UserSettings.Setting.DarkMode);
+
+        // Primary color
+        SetPrimaryColor((AccentColor)UserSettings.Setting.PrimaryColor);
+
+        // UI size
+        double size = UIScale((MySize)UserSettings.Setting.UISize);
+        MainGrid.LayoutTransform = new ScaleTransform(size, size);
+
+        // Settings change event
+        UserSettings.Setting.PropertyChanged += UserSettingChanged;
+
+        NavigateToPage(NavPage.Viewer);
+    }
+    #endregion Settings
+
+    #region Setting change
+    private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
+    {
+        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        object newValue = prop?.GetValue(sender, null);
+        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
+        switch (e.PropertyName)
         {
-            UserSettings.Init(UserSettings.AppFolder, UserSettings.DefaultFilename, true);
+            case nameof(UserSettings.Setting.KeepOnTop):
+                Topmost = (bool)newValue;
+                break;
 
-            InitializeComponent();
+            case nameof(UserSettings.Setting.IncludeDebug):
+                NLHelpers.SetLogLevel((bool)newValue);
+                break;
 
-            ReadSettings();
+            case nameof(UserSettings.Setting.DarkMode):
+                SetBaseTheme((ThemeType)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.PrimaryColor):
+                SetPrimaryColor((AccentColor)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.UISize):
+                int size = (int)newValue;
+                double newSize = UIScale((MySize)size);
+                MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+                break;
         }
+    }
+    #endregion Setting change
 
-        #region Settings
-        private void ReadSettings()
+    #region Navigation
+    internal void NavigateToPage(NavPage page)
+    {
+        switch (page)
         {
-            // Change the log file filename when debugging
-            string env = Debugger.IsAttached ? "debug" : "temp";
-            GlobalDiagnosticsContext.Set("TempOrDebug", env);
-
-            // Startup message in the temp file
-            log.Info($"{AppInfo.AppName} {AppInfo.TitleVersion} is starting up");
-
-            // Unhandled exception handler
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
-            // Settings change event
-            UserSettings.Setting.PropertyChanged += UserSettingChanged;
-
-            // Window position
-            Top = UserSettings.Setting.WindowTop;
-            Left = UserSettings.Setting.WindowLeft;
-            Width = UserSettings.Setting.WindowWidth;
-            Height = UserSettings.Setting.WindowHeight;
-
-            // Window state
-            WindowState = WindowState.Normal;
-
-            // Max screen height
-            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-
-            // Set Datagrid zoom
-            double curZoom = UserSettings.Setting.GridZoom;
-            HWGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
-
-            // Alternate row shading
-            if (UserSettings.Setting.ShadeAltRows)
-            {
-                AltRowShadingOn();
-            }
-
-            // Show grid lines
-            if (!UserSettings.Setting.ShowGridLines)
-            {
-                HWGrid.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            }
-
-            Title = AppInfo.AppName + " - " + AppInfo.TitleVersion;
+            default:
+                _ = MainFrame.Navigate(new Page1());
+                PageTitle.Text = "HWiNFO VSB Viewer";
+                NavDrawer.IsLeftDrawerOpen = false;
+                break;
+            case NavPage.Settings:
+                _ = MainFrame.Navigate(new Page2());
+                PageTitle.Text = "Settings";
+                NavDrawer.IsLeftDrawerOpen = false;
+                break;
+            case NavPage.About:
+                _ = MainFrame.Navigate(new Page3());
+                PageTitle.Text = "About";
+                NavDrawer.IsLeftDrawerOpen = false;
+                break;
+            case NavPage.Exit:
+                Application.Current.Shutdown();
+                break;
         }
-        #endregion Settings
+        NavListBox.SelectedIndex = (int)page;
+    }
 
-        #region Check registry for HWiNFO64 and HWiNFO32
-        private void CheckRegistry()
+    private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        NavigateToPage((NavPage)NavListBox.SelectedIndex);
+    }
+    #endregion Navigation
+
+    #region Window Events
+    private void Window_Closing(object sender, CancelEventArgs e)
+    {
+        stopwatch.Stop();
+        log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+
+        // Shut down NLog
+        LogManager.Shutdown();
+
+        // Save settings
+        UserSettings.Setting.WindowLeft = Math.Floor(Left);
+        UserSettings.Setting.WindowTop = Math.Floor(Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(Width);
+        UserSettings.Setting.WindowHeight = Math.Floor(Height);
+        UserSettings.SaveSettings();
+    }
+    #endregion Window Events
+
+    #region Set light or dark theme
+    private static void SetBaseTheme(ThemeType mode)
+    {
+        //Retrieve the app's existing theme
+        PaletteHelper paletteHelper = new();
+        ITheme theme = paletteHelper.GetTheme();
+
+        switch (mode)
         {
-            RegistryKey key64 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO64\\VSB");
-            RegistryKey key32 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO32\\VSB");
-
-            if (key64 != null)
-            {
-                HWiNFO.RegistryKey = "Software\\HWiNFO64\\VSB";
-                key64.Close();
-                key64.Dispose();
-                log.Debug("HKCU\\Software\\HWiNFO64\\VSB was found.");
-                ReadVSB();
-                LoadGrid();
-            }
-            else if (key32 != null)
-            {
-                HWiNFO.RegistryKey = "Software\\HWiNFO32\\VSB";
-                key32.Close();
-                key32.Dispose();
-                log.Debug("HKCU\\Software\\HWiNFO32\\VSB was found.");
-                ReadVSB();
-                LoadGrid();
-            }
-            else
-            {
-                HWiNFO info = new HWiNFO
+            case ThemeType.Light:
+                theme.SetBaseTheme(Theme.Light);
+                break;
+            case ThemeType.Dark:
+                theme.SetBaseTheme(Theme.Dark);
+                break;
+            case ThemeType.System:
+                if (GetSystemTheme().Equals("light", StringComparison.OrdinalIgnoreCase))
                 {
-                    Index = 0,
-                    Sensor = "No registry values found."
-                };
-                log.Error("No registry values found.");
-                HWiNFO.HWList.Add(info);
-                LoadGrid();
-                IsHWiNFORunning();
-            }
-        }
-        #endregion Check registry for HWiNFO64 and HWiNFO32
-
-        #region Check to see if HWiNFO is running
-        private void IsHWiNFORunning()
-        {
-            Process[] pname64 = Process.GetProcessesByName("HWiNFO64");
-            Process[] pname32 = Process.GetProcessesByName("HWiNFO32");
-            if (pname64.Length == 0 && pname32.Length == 0)
-            {
-                log.Error("HWiNFO is not running");
-                _ = MessageBox.Show("HWiNFO is not running",
-                                    "ERROR",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-            }
-        }
-        #endregion Check to see if HWiNFO is running
-
-        #region Read registry and add values to a list
-        private void ReadVSB()
-        {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(HWiNFO.RegistryKey))
-            {
-                HWiNFO info = new HWiNFO();
-                if (key != null)
+                    theme.SetBaseTheme(Theme.Light);
+                }
+                else
                 {
-                    log.Debug($"{key.ValueCount} registry values found");
-                    foreach (string valname in key.GetValueNames())
-                    {
-                        string value = Registry.GetValue(key.Name, valname, "missing").ToString();
-                        string index = numOnly.Replace(valname, "");
-                        string regText = noNums.Replace(valname, "");
-                        info.Index = int.Parse(index);
-                        switch (regText.ToLower())
-                        {
-                            case "color":
-                                // Don't need the color value
-                                break;
-                            case "sensor":
-                                info.Sensor = value;
-                                break;
-                            case "label":
-                                info.Label = value;
-                                break;
-                            case "value":
-                                info.Value = value;
-                                break;
-                            case "valueraw":
-                                info.ValueRaw = value;
-                                HWiNFO.HWList.Add(info);
-                                info = new HWiNFO();
-                                break;
-                        }
-                    }
+                    theme.SetBaseTheme(Theme.Dark);
+                }
+                break;
+            default:
+                theme.SetBaseTheme(Theme.Light);
+                break;
+        }
+
+        //Change the app's current theme
+        paletteHelper.SetTheme(theme);
+    }
+
+    private static string GetSystemTheme()
+    {
+        BaseTheme? sysTheme = Theme.GetSystemTheme();
+        if (sysTheme != null)
+        {
+            return sysTheme.ToString();
+        }
+        return string.Empty;
+    }
+    #endregion Set light or dark theme
+
+    #region Set primary color
+    private static void SetPrimaryColor(AccentColor color)
+    {
+        PaletteHelper paletteHelper = new();
+        ITheme theme = paletteHelper.GetTheme();
+
+        PrimaryColor primary;
+        switch (color)
+        {
+            case AccentColor.Red:
+                primary = PrimaryColor.Red;
+                break;
+            case AccentColor.Pink:
+                primary = PrimaryColor.Pink;
+                break;
+            case AccentColor.Purple:
+                primary = PrimaryColor.Purple;
+                break;
+            case AccentColor.DeepPurple:
+                primary = PrimaryColor.DeepPurple;
+                break;
+            case AccentColor.Indigo:
+                primary = PrimaryColor.Indigo;
+                break;
+            case AccentColor.Blue:
+                primary = PrimaryColor.Blue;
+                break;
+            case AccentColor.LightBlue:
+                primary = PrimaryColor.LightBlue;
+                break;
+            case AccentColor.Cyan:
+                primary = PrimaryColor.Cyan;
+                break;
+            case AccentColor.Teal:
+                primary = PrimaryColor.Teal;
+                break;
+            case AccentColor.Green:
+                primary = PrimaryColor.Green;
+                break;
+            case AccentColor.LightGreen:
+                primary = PrimaryColor.LightGreen;
+                break;
+            case AccentColor.Lime:
+                primary = PrimaryColor.Lime;
+                break;
+            case AccentColor.Yellow:
+                primary = PrimaryColor.Yellow;
+                break;
+            case AccentColor.Amber:
+                primary = PrimaryColor.Amber;
+                break;
+            case AccentColor.Orange:
+                primary = PrimaryColor.Orange;
+                break;
+            case AccentColor.DeepOrange:
+                primary = PrimaryColor.DeepOrange;
+                break;
+            case AccentColor.Brown:
+                primary = PrimaryColor.Brown;
+                break;
+            case AccentColor.Grey:
+                primary = PrimaryColor.Grey;
+                break;
+            case AccentColor.BlueGray:
+                primary = PrimaryColor.BlueGrey;
+                break;
+            default:
+                primary = PrimaryColor.LightBlue;
+                break;
+        }
+        theme.SetPrimaryColor(SwatchHelper.Lookup[(MaterialDesignColor)primary]);
+        paletteHelper.SetTheme(theme);
+    }
+    #endregion Set primary color
+
+    #region Smaller/Larger
+    private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        if (Keyboard.Modifiers != ModifierKeys.Control)
+            return;
+
+        if (e.Delta > 0)
+        {
+            EverythingLarger();
+        }
+        else if (e.Delta < 0)
+        {
+            EverythingSmaller();
+        }
+    }
+
+    public void EverythingSmaller()
+    {
+        int size = UserSettings.Setting.UISize;
+        if (size > 0)
+        {
+            size--;
+            UserSettings.Setting.UISize = size;
+            double newSize = UIScale((MySize)size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+            SnackbarMsg.ClearAndQueueMessage($"Size set to {(MySize)UserSettings.Setting.UISize}");
+        }
+    }
+
+    public void EverythingLarger()
+    {
+        int size = UserSettings.Setting.UISize;
+        if (size < 4)
+        {
+            size++;
+            UserSettings.Setting.UISize = size;
+            double newSize = UIScale((MySize)size);
+            MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+            SnackbarMsg.ClearAndQueueMessage($"Size set to {(MySize)UserSettings.Setting.UISize}");
+        }
+    }
+    #endregion Smaller/Larger
+
+    #region UI scale converter
+    private static double UIScale(MySize size)
+    {
+        switch (size)
+        {
+            case MySize.Smallest:
+                return 0.90;
+            case MySize.Smaller:
+                return 0.95;
+            case MySize.Default:
+                return 1.0;
+            case MySize.Larger:
+                return 1.05;
+            case MySize.Largest:
+                return 1.1;
+            default:
+                return 1.0;
+        }
+    }
+    #endregion UI scale converter
+
+    #region Keyboard Events
+    private void Window_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+        {
+            if (e.Key == Key.A)
+            {
+                if (UserSettings.Setting.PrimaryColor >= (int)AccentColor.BlueGray)
+                {
+                    UserSettings.Setting.PrimaryColor = 0;
+                }
+                else
+                {
+                    UserSettings.Setting.PrimaryColor++;
                 }
             }
-        }
-        #endregion Read registry and add values to a list
-
-        #region Load the datagrid
-        private void LoadGrid()
-        {
-            List<HWiNFO> sortedList = HWiNFO.HWList;
-            sortedList.Sort();
-            HWGrid.ItemsSource = sortedList;
-        }
-        #endregion Load the datagrid
-
-        #region Reread the registry and refresh the datagrid
-        private void RefreshData()
-        {
-            HWiNFO.HWList.Clear();
-            CheckRegistry();
-            //ReadVSB();
-            List<HWiNFO> sortedList = HWiNFO.HWList;
-            sortedList.Sort();
-            HWGrid.ItemsSource = sortedList;
-            ResetCols();
-            HWGrid.Items.Refresh();
-        }
-        #endregion Reread the registry and refresh the datagrid
-
-        #region Keyboard events
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F1)
+            if (e.Key == Key.M)
             {
-                ShowAbout();
-            }
-
-            if (e.Key == Key.F5)
-            {
-                RefreshData();
-            }
-
-            if (e.Key == Key.Add && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
-            {
-                GridLarger();
-            }
-
-            if (e.Key == Key.Subtract && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
-            {
-                GridSmaller();
-            }
-        }
-        #endregion Keyboard events
-
-        #region Mouse Events
-        private void DataGridTasks_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if (Keyboard.Modifiers != ModifierKeys.Control)
-                return;
-
-            if (e.Delta > 0)
-            {
-                GridLarger();
-            }
-            else if (e.Delta < 0)
-            {
-                GridSmaller();
-            }
-        }
-        #endregion Mouse Events
-
-        #region Menu events
-        private void MnuExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void MnuRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshData();
-        }
-
-        private void MnuRemoveSort_Click(object sender, RoutedEventArgs e)
-        {
-            ResetCols();
-        }
-        private void MnuCopy_Click(object sender, RoutedEventArgs e)
-        {
-            Copy2Clipboard();
-        }
-
-        private void MnuSaveToCsv_Click(object sender, RoutedEventArgs e)
-        {
-            SaveToCSV();
-        }
-
-        private void MnuSaveToHtml_Click(object sender, RoutedEventArgs e)
-        {
-            SaveToHtml();
-        }
-
-        private void GridSmaller_Click(object sender, RoutedEventArgs e)
-        {
-            GridSmaller();
-        }
-
-        private void GridLarger_Click(object sender, RoutedEventArgs e)
-        {
-            GridLarger();
-        }
-
-        private void MnuAbout_Click(object sender, RoutedEventArgs e)
-        {
-            ShowAbout();
-        }
-
-        private void TbxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string filter = tbxSearch.Text;
-
-            // I really don't understand how this works
-            ICollectionView cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
-            cv.Filter = filter?.Length == 0
-                ? (Predicate<object>)null
-                : (o =>
+                switch (UserSettings.Setting.DarkMode)
                 {
-                    HWiNFO hw = o as HWiNFO;
-                    return hw.Label.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                           hw.Sensor.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                           hw.Value.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                           hw.Index.ToString().IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0;
-                });
-            btnSearch.IsEnabled = !string.IsNullOrEmpty(tbxSearch.Text);
-        }
-
-        private void BtnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            tbxSearch.Clear();
-        }
-        #endregion Menu events
-
-        #region Window events
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            CheckRegistry();
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            log.Info("{0} is shutting down.", AppInfo.AppName);
-
-            // Shut down NLog
-            LogManager.Shutdown();
-
-            // save settings
-            UserSettings.Setting.WindowLeft = Left;
-            UserSettings.Setting.WindowTop = Top;
-            UserSettings.Setting.WindowWidth = Width;
-            UserSettings.Setting.WindowHeight = Height;
-            UserSettings.SaveSettings();
-        }
-        #endregion Window events
-
-        #region Reset column sort
-        private void ResetCols()
-        {
-            foreach (DataGridColumn column in HWGrid.Columns)
-            {
-                column.SortDirection = null;
+                    case (int)ThemeType.Light:
+                        UserSettings.Setting.DarkMode = (int)ThemeType.Dark;
+                        break;
+                    case (int)ThemeType.Dark:
+                        UserSettings.Setting.DarkMode = (int)ThemeType.System;
+                        break;
+                    case (int)ThemeType.System:
+                        UserSettings.Setting.DarkMode = (int)ThemeType.Light;
+                        break;
+                }
+                SnackbarMsg.ClearAndQueueMessage($"Theme set to {(ThemeType)UserSettings.Setting.DarkMode}");
             }
-            HWGrid.Items.SortDescriptions.Clear();
-        }
-        #endregion Reset column sort
-
-        #region Setting change
-        private void UserSettingChanged(object sender, PropertyChangedEventArgs e)
-        {
-            PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
-            object newValue = prop?.GetValue(sender, null);
-            switch (e.PropertyName)
+            if (e.Key == Key.Add)
             {
-                case "ShadeAltRows":
-                    if ((bool)newValue)
-                    {
-                        AltRowShadingOn();
-                    }
-                    else
-                    {
-                        AltRowShadingOff();
-                    }
-                    break;
-                case "ShowGridLines":
-                    if ((bool)newValue)
-                    {
-                        HWGrid.GridLinesVisibility = DataGridGridLinesVisibility.All;
-                    }
-                    else
-                    {
-                        HWGrid.GridLinesVisibility = DataGridGridLinesVisibility.None;
-                    }
-                    break;
+                EverythingLarger();
             }
-            //log.Debug($"***Setting change: {e.PropertyName} New Value: {newValue}");
-        }
-        #endregion Setting change
-
-        #region Alternate row shading
-        private void AltRowShadingOff()
-        {
-            HWGrid.AlternationCount = 0;
-            HWGrid.RowBackground = new SolidColorBrush(Colors.White);
-            HWGrid.AlternatingRowBackground = new SolidColorBrush(Colors.White);
-            HWGrid.Items.Refresh();
-        }
-
-        private void AltRowShadingOn()
-        {
-            HWGrid.AlternationCount = 2;
-            HWGrid.RowBackground = new SolidColorBrush(Colors.White);
-            HWGrid.AlternatingRowBackground = new SolidColorBrush(Colors.WhiteSmoke);
-            HWGrid.Items.Refresh();
-        }
-        #endregion Alternate row shading
-
-        #region Grid Size
-        private void GridSmaller()
-        {
-            double curZoom = UserSettings.Setting.GridZoom;
-            if (curZoom > 0.5)
+            if (e.Key == Key.Subtract)
             {
-                curZoom -= .05;
-                UserSettings.Setting.GridZoom = Math.Round(curZoom, 2);
+                EverythingSmaller();
             }
-            HWGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
-        }
-
-        private void GridLarger()
-        {
-            double curZoom = UserSettings.Setting.GridZoom;
-            if (curZoom < 2.0)
+            if (e.Key == Key.OemComma)
             {
-                curZoom += .05;
-                UserSettings.Setting.GridZoom = Math.Round(curZoom, 2);
+                NavigateToPage(NavPage.Settings);
             }
-
-            HWGrid.LayoutTransform = new ScaleTransform(curZoom, curZoom);
-        }
-        #endregion Grid Size
-
-        #region Copy to clipboard
-        private void Copy2Clipboard()
-        {
-            // Clear the clipboard
-            Clipboard.Clear();
-
-            // Include the header row
-            HWGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-
-            // Temporarily set selection mode to all rows
-            HWGrid.SelectionMode = DataGridSelectionMode.Extended;
-
-            // Select all the cells
-            HWGrid.SelectAllCells();
-
-            // Execute the copy
-            ApplicationCommands.Copy.Execute(null, HWGrid);
-
-            // Unselect the cells
-            HWGrid.UnselectAllCells();
-
-            // Set selection mode back to one row
-            HWGrid.SelectionMode = DataGridSelectionMode.Single;
-        }
-        #endregion Copy to clipboard
-
-        #region Save grid to CSV file
-        private void SaveToCSV()
-        {
-            string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".csv";
-            SaveFileDialog dialog = new SaveFileDialog
+            if (e.Key == Key.NumPad0)
             {
-                Title = "Save Grid as CSV FIle",
-                Filter = "CSV File|*.csv",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                FileName = fname
-            };
-            var result = dialog.ShowDialog();
-            if (result == true)
+                UserSettings.Setting.UISize = (int)MySize.Default;
+            }
+            if (e.Key == Key.R)
             {
-                Copy2Clipboard();
-                string gridData = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-                File.WriteAllText(dialog.FileName, gridData, Encoding.UTF8);
+                Page1.P1.ResetCols();
             }
         }
-        #endregion Save grid to CSV file
 
-        #region Save to HTML
-        private void SaveToHtml()
+        if (e.Key == Key.F1)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<!DOCTYPE HTML>")
-                .AppendLine("<html>")
-                .AppendLine("<head>")
-                .AppendLine("<title> HWiNFO Registry Info </title>")
-                .AppendLine("<meta http-equiv='content-type' content='text/html;charset = utf-8' />")
-                .AppendLine("</head>")
-                .AppendLine("<style>")
-                .AppendLine("body {font-family: Sans-serif; font-size: 90%; background-color: #E1E3E6;}")
-                .AppendLine("td { padding: 5px;}")
-                .AppendLine("th { background-color: #AFEEEE; color: #2F2F2F; padding: 7px 0px 7px 0px;}")
-                .Append("table {table-layout: fixed; width: 100%; background-color: #FAFAFA; ")
-                .AppendLine("box-shadow: 0 0 10px 10px #9E9E9E;}")
-                .Append("table, th, td { border-style: solid; border-width: 1px; border-color: #2F2F2F; ")
-                .AppendLine("border-collapse: collapse; word-wrap: break-word;}")
-                .AppendLine("div {width: 95%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;} ")
-                .AppendLine("</style>")
-                .AppendLine("<body><div><br>")
-                .AppendLine("<table>")
-                .AppendLine("<tr>")
-                .Append("<th style='width: 3.5%;'>Index</th>")
-                .Append("<th style='width: 25%;'>Sensor</th>")
-                .Append("<th style='width: 25%;'>Label</th>")
-                .Append("<th style='width: 10%;'>Value</th>")
-                .Append("<th style='width: 10%;'>Value Raw</th>")
-                .AppendLine("</tr>");
-            foreach (HWiNFO row in HWiNFO.HWList)
-            {
-                sb.Append("<tr>")
-                    .Append("<td style='text-align: center'>").Append(row.Index).Append("</td>")
-                    .Append("<td >").Append(row.Sensor).Append("</td>")
-                    .Append("<td >").Append(row.Label).Append("</td>")
-                    .Append("<td >").Append(row.Value).Append("</td>")
-                    .Append("<td >").Append(row.ValueRaw).Append("</td>")
-                    .Append("</tr>");
-            }
-            sb.AppendLine("</table>")
-                .AppendLine("</br></div></body>")
-                .AppendLine("</html>");
-            string html = sb.ToString();
-
-            string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".html";
-            SaveFileDialog dialog = new SaveFileDialog
-            {
-                Title = "Save Grid as HTML FIle",
-                Filter = "HTML File|*.html",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                FileName = fname
-            };
-            bool? result = dialog.ShowDialog();
-            if (result == true)
-            {
-                File.WriteAllText(dialog.FileName, html, Encoding.UTF8);
-            }
+            NavigateToPage(NavPage.About);
         }
-        #endregion Save to HTML
 
-        #region Unhandled Exceptions
-        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+        if (e.Key == Key.F5)
         {
-            log.Error("Unhandled Exception");
-            Exception e = (Exception)args.ExceptionObject;
-            log.Error(e.Message);
-            if (e.InnerException != null)
-            {
-                log.Error(e.InnerException.ToString());
-            }
-            log.Error(e.StackTrace);
+            Page1.P1.RefreshData();
         }
-        #endregion Unhandled Exceptions
-
-        #region Show the About window
-        private void ShowAbout()
-        {
-            About about = new About
-            {
-                Owner = Application.Current.MainWindow,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner
-            };
-            _ = about.ShowDialog();
-        }
-        #endregion Show the About window
     }
+    #endregion Keyboard Events
+
+    #region PopupBox button events
+    private void BtnData_Click(object sender, RoutedEventArgs e)
+    {
+        string dir = AppInfo.AppDirectory;
+        TextFileViewer.ViewTextFile(Path.Combine(dir, "DailyDocuments.json"));
+    }
+
+    private void BtnLog_Click(object sender, RoutedEventArgs e)
+    {
+        TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
+    }
+
+    private void BtnReadme_Click(object sender, RoutedEventArgs e)
+    {
+        string dir = AppInfo.AppDirectory;
+        TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt"));
+    }
+    #endregion PopupBox button events
+
+    #region Unhandled Exception Handler
+    private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+    {
+        log.Error("Unhandled Exception");
+        Exception e = (Exception)args.ExceptionObject;
+        log.Error(e.Message);
+        if (e.InnerException != null)
+        {
+            log.Error(e.InnerException.ToString());
+        }
+        log.Error(e.StackTrace);
+
+        //_ = new MDCustMsgBox("An error has occurred. See the log file",
+        //    "DailyDocuments Error", ButtonType.Ok).ShowDialog();
+    }
+    #endregion Unhandled Exception Handler
 }

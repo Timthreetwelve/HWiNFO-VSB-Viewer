@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+/HWiNFOVSBViewer/Misc/BuildDate.txt
+/HWiNFOVSBViewer/Misc/CurrentCommit.txt
