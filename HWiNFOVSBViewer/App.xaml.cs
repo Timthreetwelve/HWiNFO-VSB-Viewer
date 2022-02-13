@@ -18,7 +18,7 @@ namespace HWiNFOVSBViewer
 
         public App()
         {
-            //SingleInstanceCheck();
+            SingleInstanceCheck();
         }
 
         public void SingleInstanceCheck()

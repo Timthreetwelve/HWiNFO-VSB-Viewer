@@ -9,9 +9,9 @@ namespace HWiNFOVSBViewer
 {
     public static class BuildInfo
     {
-        public const string CommitIDString = "a27d0fa";
+        public const string CommitIDString = "9972153";
 
-        public const string BuildDateString = "02/13/2022 09:57:11";
+        public const string BuildDateString = "02/13/2022 11:59:02";
 
         public static readonly DateTime BuildDateObj = DateTime.Parse(BuildDateString);
     }
