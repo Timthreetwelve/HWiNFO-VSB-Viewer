@@ -48,3 +48,18 @@ internal enum AccentColor
     Grey = 17,
     BlueGray = 18
 }
+
+public enum Weight
+{
+    Thin = 0,
+    Regular = 1,
+    SemiBold = 2,
+    Bold = 3
+}
+
+public enum Spacing
+{
+    Compact = 0,
+    Comfortable = 1,
+    Wide = 2
+}

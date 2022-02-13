@@ -2,6 +2,9 @@
 
 namespace HWiNFOVSBViewer.Pages;
 
+/// <summary>
+/// Displays the primary page
+/// </summary>
 public partial class Page1 : UserControl
 {
     #region NLog Instance
@@ -13,23 +16,72 @@ public partial class Page1 : UserControl
     private static readonly Regex noNums = new(@"\d");
     #endregion Regex instances
 
-    #region Static property P1
+    #region Static property for Page1
     internal static Page1 P1 { get; set; }
-    #endregion Static property P1
+    #endregion Static property for Page1
 
     public Page1()
     {
         InitializeComponent();
     }
 
-    #region Loaded event
+    #region Page Loaded event
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
+        P1 = this;
         HWiNFO.HWList.Clear();
         CheckRegistry();
-        P1 = this;
+        SetFontWeight((Weight)UserSettings.Setting.GridFontWeight);
+        SetRowSpacing((Spacing)UserSettings.Setting.RowSpacing);
     }
-    #endregion Loaded event
+    #endregion Page Loaded event
+
+    #region Set the row spacing
+    /// <summary>
+    /// Sets the padding around the rows in the datagrid
+    /// </summary>
+    /// <param name="spacing"></param>
+    public void SetRowSpacing(Spacing spacing)
+    {
+        switch (spacing)
+        {
+            case Spacing.Compact:
+                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 2, 15, 2));
+                break;
+            case Spacing.Comfortable:
+                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 5, 15, 5));
+                break;
+            case Spacing.Wide:
+                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 8, 15, 8));
+                break;
+        }
+    }
+    #endregion Set the row spacing
+
+    #region Set the font weight
+    /// <summary>
+    /// Sets the weight of the font in the datagrid
+    /// </summary>
+    /// <param name="weight"></param>
+    public void SetFontWeight(Weight weight)
+    {
+        switch (weight)
+        {
+            case Weight.Thin:
+                HWGrid.FontWeight = FontWeights.Thin;
+                break;
+            case Weight.Regular:
+                HWGrid.FontWeight = FontWeights.Regular;
+                break;
+            case Weight.SemiBold:
+                HWGrid.FontWeight = FontWeights.SemiBold;
+                break;
+            case Weight.Bold:
+                HWGrid.FontWeight = FontWeights.Bold;
+                break;
+        }
+    }
+    #endregion Set the font weight
 
     #region Check registry for HWiNFO64 and HWiNFO32
     /// <summary>
@@ -172,7 +224,14 @@ public partial class Page1 : UserControl
         {
             FilterTheGrid();
         }
-        SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} items refreshed", 1000);
+        if (HWGrid.Items.Count == 1)
+        {
+            SnackbarMsg.ClearAndQueueMessage("1 item refreshed", 1000);
+        }
+        else
+        {
+            SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} items refreshed", 1000);
+        }
     }
     #endregion Reread the registry and refresh the datagrid
 
@@ -261,7 +320,7 @@ public partial class Page1 : UserControl
     /// <summary>
     /// Builds an HTML file then presents a file save dialog
     /// </summary>
-    private static async Task SaveToHtmlAsync()
+    private async Task SaveToHtmlAsync()
     {
         StringBuilder sb = new();
         sb.AppendLine("<!DOCTYPE HTML>")
@@ -289,7 +348,7 @@ public partial class Page1 : UserControl
             .Append("<th style='width: 10%;'>Value</th>")
             .Append("<th style='width: 10%;'>Value Raw</th>")
             .AppendLine("</tr>");
-        foreach (HWiNFO row in HWiNFO.HWList)
+        foreach (HWiNFO row in HWGrid.Items)
         {
             sb.Append("<tr>")
                 .Append("<td style='text-align: center'>").Append(row.Index).Append("</td>")
@@ -402,21 +461,35 @@ public partial class Page1 : UserControl
     {
         string filter = tbxSearch.Text;
 
+        if (string.Equals(filter, "~"))
+        {
+            filter = "\u00b0";
+        }
+
         ICollectionView cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
         if (filter?.Length == 0)
         {
             cv.Filter = (Predicate<object>)null;
+            SnackbarMsg.ClearAndQueueMessage("Showing all rows", 2000);
         }
         else
         {
-            cv.Filter = (o =>
+            cv.Filter = o =>
             {
                 HWiNFO hw = o as HWiNFO;
                 return hw.Label.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
                        hw.Sensor.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
                        hw.Value.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
                        hw.Index.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase);
-            });
+            };
+            if (HWGrid.Items.Count == 1)
+            {
+                SnackbarMsg.ClearAndQueueMessage("1 row shown", 1000);
+            }
+            else
+            {
+                SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} rows shown", 1000);
+            }
         }
     }
     #endregion Filter textbox changed event

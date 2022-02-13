@@ -15,6 +15,16 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
         }
     }
 
+    public int GridFontWeight
+    {
+        get => gridFontWeight;
+        set
+        {
+            gridFontWeight = value;
+            OnPropertyChanged();
+        }
+    }
+
     public bool IncludeDebug
     {
         get => includeDebug;
@@ -42,6 +52,17 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
             OnPropertyChanged();
         }
     }
+
+    public int RowSpacing
+    {
+        get => rowSpacing;
+        set
+        {
+            rowSpacing = value;
+            OnPropertyChanged();
+        }
+    }
+
     public int UISize
     {
         get => uiSize;
@@ -106,9 +127,11 @@ public class UserSettings : SettingsManager<UserSettings>, INotifyPropertyChange
 
     #region Private backing fields
     private int darkmode = (int)ThemeType.Light;
+    private int gridFontWeight = (int)Weight.Regular;
     private bool includeDebug = false;
     private bool keepOnTop = false;
     private int primaryColor = (int)AccentColor.Blue;
+    private int rowSpacing = (int)Spacing.Comfortable;
     private int uiSize = (int)MySize.Default;
     private double windowHeight = 500;
     private double windowLeft = 100;

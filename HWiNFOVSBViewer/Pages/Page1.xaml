@@ -58,7 +58,10 @@
                     Margin="15,0"
                     DockPanel.Dock="Top">
 
-                    <MenuItem Header="{materialDesign:PackIcon Kind=ContentCopy, Size=22}" ToolTip="Copy Menu">
+                    <MenuItem
+                        Header="{materialDesign:PackIcon Kind=ContentCopy,
+                                                         Size=22}"
+                        ToolTip="Copy Menu">
                         <MenuItem
                             Name="mnuCopy"
                             Click="MnuCopy_Click"
@@ -75,7 +78,10 @@
                     <Separator
                         Width="20"
                         Background="Transparent" />
-                    <MenuItem Header="{materialDesign:PackIcon Kind=Glasses, Size=24}" ToolTip="View Menu">
+                    <MenuItem
+                        Header="{materialDesign:PackIcon Kind=Glasses,
+                                                         Size=24}"
+                        ToolTip="View Menu">
                         <MenuItem
                             x:Name="mnuLarger"
                             Click="GridLarger_Click"
@@ -92,15 +98,17 @@
                         <MenuItem
                             Name="mnuRemoveSort"
                             Click="MnuRemoveSort_Click"
-                            InputGestureText="Ctrl + R"
-                            Header="Remove Column Sort" />
+                            Header="Remove Column Sort"
+                            InputGestureText="Ctrl + R" />
                     </MenuItem>
                     <Separator
                         Width="20"
                         Background="Transparent" />
                     <MenuItem
                         Click="MnuRefresh_Click"
-                        Header="{materialDesign:PackIcon Kind=Refresh, Size=24}" ToolTip="Refresh - F5"/>
+                        Header="{materialDesign:PackIcon Kind=Refresh,
+                                                         Size=24}"
+                        ToolTip="Refresh - F5" />
                 </Menu>
             </StackPanel>
         </DockPanel>

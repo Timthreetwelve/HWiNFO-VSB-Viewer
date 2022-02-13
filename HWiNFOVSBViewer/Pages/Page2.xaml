@@ -59,6 +59,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="35" />
                             <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -89,8 +90,8 @@
                         </StackPanel>
 
                         <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Row="2"
+                            Grid.Column="0"
                             Orientation="Horizontal">
                             <Label
                                 Width="80"
@@ -152,6 +153,57 @@
                                 </ComboBox.Items>
                             </ComboBox>
                         </StackPanel>
+
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Label
+                                Width="100"
+                                Content="Font Weight" />
+                            <ComboBox
+                                x:Name="cbxFW"
+                                Width="110"
+                                Margin="0,0,0,5"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Font Weight"
+                                MaxDropDownHeight="170"
+                                SelectedIndex="{Binding GridFontWeight, Source={x:Static local:UserSettings.Setting}}"
+                                Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Thin" />
+                                    <ComboBoxItem Content="Regular" />
+                                    <ComboBoxItem Content="Semi Bold" />
+                                    <ComboBoxItem Content="Bold" />
+
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Label
+                                Width="100"
+                                Content="Row Height" />
+                            <ComboBox
+                                x:Name="cbxSpacing"
+                                Width="110"
+                                Margin="0,0,0,5"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Height"
+                                MaxDropDownHeight="170"
+                                SelectedIndex="{Binding RowSpacing, Source={x:Static local:UserSettings.Setting}}"
+                                Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Compact" />
+                                    <ComboBoxItem Content="Comfortable" />
+                                    <ComboBoxItem Content="Wide" />
+                                </ComboBox.Items>
+                            </ComboBox>
+                        </StackPanel>
+
                     </Grid>
                 </materialDesign:Card>
                 <!--#endregion-->
@@ -183,7 +235,7 @@
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}" />
                             <Label
                                 Margin="10,-1,0,0"
-                                Content="Keep Daily Documents on top of other windows" />
+                                Content="Keep HWiNFO VSB Viewer on top of other windows" />
                         </StackPanel>
 
                         <StackPanel
