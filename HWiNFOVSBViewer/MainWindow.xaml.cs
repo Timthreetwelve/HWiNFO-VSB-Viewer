@@ -42,8 +42,8 @@ public partial class MainWindow : Window
 
         // Log the version, build date and commit id
         log.Info($"{AppInfo.AppName} {AppInfo.AppVersion} is starting up");
-        log.Info($"{AppInfo.AppName} Built: {Properties.Resources.BuildDate.TrimEnd()} ");
-        log.Info($"{AppInfo.AppName} Commit: {Properties.Resources.CurrentCommit.TrimEnd()} ");
+        log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateObj:f}");
+        log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString} ");
 
         // Log the .NET version, app framework and OS platform
         string version = Environment.Version.ToString();
@@ -97,6 +97,14 @@ public partial class MainWindow : Window
 
             case nameof(UserSettings.Setting.PrimaryColor):
                 SetPrimaryColor((AccentColor)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.GridFontWeight):
+                Page1.P1.SetFontWeight((Weight)newValue);
+                break;
+
+            case nameof(UserSettings.Setting.RowSpacing):
+                Page1.P1.SetRowSpacing((Spacing)newValue);
                 break;
 
             case nameof(UserSettings.Setting.UISize):
@@ -375,6 +383,32 @@ public partial class MainWindow : Window
                 }
                 SnackbarMsg.ClearAndQueueMessage($"Theme set to {(ThemeType)UserSettings.Setting.DarkMode}");
             }
+            if (e.Key == Key.R)
+            {
+                Page1.P1.ResetCols();
+            }
+            if (e.Key == Key.S)
+            {
+                if (UserSettings.Setting.RowSpacing >= (int)Spacing.Wide)
+                {
+                    UserSettings.Setting.RowSpacing = 0;
+                }
+                else
+                {
+                    UserSettings.Setting.RowSpacing++;
+                }
+            }
+            if (e.Key == Key.W)
+            {
+                if (UserSettings.Setting.GridFontWeight >= (int)Weight.Bold)
+                {
+                    UserSettings.Setting.GridFontWeight = 0;
+                }
+                else
+                {
+                    UserSettings.Setting.GridFontWeight++;
+                }
+            }
             if (e.Key == Key.Add)
             {
                 EverythingLarger();
@@ -383,17 +417,13 @@ public partial class MainWindow : Window
             {
                 EverythingSmaller();
             }
-            if (e.Key == Key.OemComma)
-            {
-                NavigateToPage(NavPage.Settings);
-            }
             if (e.Key == Key.NumPad0)
             {
                 UserSettings.Setting.UISize = (int)MySize.Default;
             }
-            if (e.Key == Key.R)
+            if (e.Key == Key.OemComma)
             {
-                Page1.P1.ResetCols();
+                NavigateToPage(NavPage.Settings);
             }
         }
 

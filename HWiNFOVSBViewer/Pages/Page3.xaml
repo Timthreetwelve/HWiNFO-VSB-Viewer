@@ -6,7 +6,6 @@
     xmlns:local="clr-namespace:HWiNFOVSBViewer"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prop="clr-namespace:HWiNFOVSBViewer.Properties"
     d:DesignHeight="450"
     d:DesignWidth="600"
     Background="{DynamicResource MaterialDesignPaper}"
@@ -116,7 +115,7 @@
                         <Hyperlink
                             Click="BtnLicense_Click"
                             Foreground="{DynamicResource PrimaryHueMidBrush}">
-                            <TextBlock Text="This project is licensed under the terms of the MIT license." />
+                            <TextBlock Text="This project is licensed under the terms of the MIT license" />
                         </Hyperlink>
                     </TextBlock>
 
@@ -142,7 +141,7 @@
                     <TextBlock
                         Grid.Row="7"
                         Grid.Column="1"
-                        Text="{x:Static prop:Resources.CurrentCommit}" />
+                        Text="{x:Static local:BuildInfo.CommitIDString}" />
 
                     <TextBlock
                         Grid.Row="2"
@@ -151,7 +150,7 @@
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="1"
-                        Text="{x:Static prop:Resources.BuildDate}" />
+                        Text="{Binding Source={x:Static local:BuildInfo.BuildDateObj}, StringFormat=f}" />
                 </Grid>
             </materialDesign:Card>
         </ScrollViewer>
