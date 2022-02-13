@@ -6,7 +6,7 @@ $class =
 "// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 //
 // This file is generated during the pre-build event by GenBuildInfo.ps1.
-// Do not change this file as any changes to $outputFile will be overwritten.
+// Any edits to this file will be overwritten during the next build!
 
 using System;
 
