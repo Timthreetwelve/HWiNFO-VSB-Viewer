@@ -2,8 +2,8 @@
 
 [![GitHub](https://img.shields.io/github/license/Timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/LICENSE)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases/latest) 
+[![GitHub Release Date](https://img.shields.io/github/release-date/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic&color=orange)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases/latest) 
 [![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/HWiNFO-VSB-Viewer/total?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases)
-[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/HWiNFO-VSB-Viewer/total?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
 [![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/timthreetwelve/HWiNFO-VSB-Viewer/latest?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/commits/main)
 
