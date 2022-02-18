@@ -11,7 +11,7 @@ HWiNFO VSB Viewer is an application that will read the HWiNFO VSB registry value
 
 This app gets the same information from the registry as the `reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB` command and then puts it in an easy to use grid. 
 
-✨ HWiNFO VSB Viewer requires .NET 6. [*](#framework)
+✨ HWiNFO VSB Viewer requires up-to-date .NET 6. [*](#framework)
 
 For more information on using HWiNFO with Rainmeter, read this [https://docs.rainmeter.net/tips/hwinfo/](https://docs.rainmeter.net/tips/hwinfo/)
 
