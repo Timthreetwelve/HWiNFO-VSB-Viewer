@@ -44,8 +44,10 @@ internal static class TextFileViewer
                 {
                     log.Error(ex, $"Unable to open {txtfile}");
                     SystemSounds.Exclamation.Play();
-                    ErrorDialog error = new();
-                    error.Message = $"Unable to open {txtfile}. See the log file for more information.";
+                    ErrorDialog error = new()
+                    {
+                        Message = $"Unable to open {txtfile}. See the log file for more information."
+                    };
                     _ = await DialogHost.Show(error, "MainDialogHost");
                 }
             }

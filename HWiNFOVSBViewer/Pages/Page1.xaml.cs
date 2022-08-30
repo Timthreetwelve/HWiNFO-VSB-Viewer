@@ -140,8 +140,10 @@ public partial class Page1 : UserControl
         if (pname64.Length == 0 && pname32.Length == 0)
         {
             log.Error("HWiNFO is not running");
-            ErrorDialog error = new();
-            error.Message = "HWiNFO is not running.\n\nCould not find a process named HWiNFO64 or HWiNFO32.";
+            ErrorDialog error = new()
+            {
+                Message = "HWiNFO is not running.\n\nCould not find a process named HWiNFO64 or HWiNFO32."
+            };
             _ = await DialogHost.Show(error, "MainDialogHost");
         }
     }
@@ -308,8 +310,10 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 log.Error(ex, "Error saving file.");
-                ErrorDialog error = new();
-                error.Message = $"Error saving file.\n\n{ ex.Message}";
+                ErrorDialog error = new()
+                {
+                    Message = $"Error saving file.\n\n{ex.Message}"
+                };
                 _ = await DialogHost.Show(error, "MainDialogHost");
             }
         }
@@ -381,8 +385,10 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 log.Error(ex, "Error saving file.");
-                ErrorDialog error = new();
-                error.Message = $"Error saving file.\n\n{ ex.Message}";
+                ErrorDialog error = new()
+                {
+                    Message = $"Error saving file.\n\n{ex.Message}"
+                };
                 _ = await DialogHost.Show(error, "MainDialogHost");
             }
         }
