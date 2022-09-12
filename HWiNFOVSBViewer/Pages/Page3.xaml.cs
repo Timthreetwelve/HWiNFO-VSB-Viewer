@@ -10,6 +10,8 @@ public partial class Page3 : UserControl
     public Page3()
     {
         InitializeComponent();
+
+        txtBuildDate.Text = $"{BuildInfo.BuildDateUtc:f}  (UTC)";
     }
 
     #region License click

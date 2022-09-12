@@ -1,7 +1,18 @@
-﻿param($outputFile="BuildInfo.cs")
+﻿Param(
+    [Parameter(Mandatory = $true)] [string] $assemblyName,
+    [Parameter(Mandatory = $true)] [string] $assemblyVersion,
+    [Parameter(Mandatory = $false)] [string] $outputFile="BuildInfo.cs"
+)
+Write-Host "GenBuildInfo: Assembly name parameter: $assemblyName"
+Write-Host "GenBuildInfo: Assembly version parameter: $assemblyVersion"
 
-$buildDate = Get-Date
-$gitOutput = git rev-parse --short HEAD
+$nowUTC = (Get-Date).ToUniversalTime()
+
+$commitID = git rev-parse --short HEAD
+if ($commitID.Length -lt 1 ) {
+    $commitID = "n/a"
+}
+
 $class =
 "// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 //
@@ -10,19 +21,19 @@ $class =
 
 using System;
 
-namespace HWiNFOVSBViewer
+namespace $assemblyName
 {
     public static class BuildInfo
     {
-        public const string CommitIDString = `"$gitOutput`";
+        public const string CommitIDString = `"$commitID`";
 
-        public const string BuildDateString = `"$buildDate`";
+        public const string BuildDateString = `"$nowUTC`";
 
-        public static readonly DateTime BuildDateObj = DateTime.Parse(BuildDateString);
+        public static readonly DateTime BuildDateUtc = DateTime.SpecifyKind(DateTime.Parse(BuildDateString), DateTimeKind.Utc);
     }
 }"
 
 Set-Content -Path $outputFile -Value $class
 
 $fullName = Get-Item $outputFile
-Write-Host "GenBuildInfo completed. Output written to $fullName"
+Write-Host "GenBuildInfo: Output written to $fullName"
