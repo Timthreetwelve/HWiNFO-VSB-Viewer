@@ -10,7 +10,7 @@
     <Version>$(AssemblyVersion)</Version>
     <Description>HWiNFO VSB Viewer</Description>
     <Product>HWiNFO VSB Viewer</Product>
-    <Copyright>Copyright © $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
+    <Copyright>© 2021 - $([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
     <ApplicationIcon>Images\H-in-blue-cloud.ico</ApplicationIcon>
   </PropertyGroup>
 

@@ -16,7 +16,7 @@
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
-#define StartCopyrightYear   "2019"
+#define StartCopyrightYear   "2021"
 #define CurrentYear          GetDateTimeString('yyyy', '/', ':')
 #define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
 #define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
