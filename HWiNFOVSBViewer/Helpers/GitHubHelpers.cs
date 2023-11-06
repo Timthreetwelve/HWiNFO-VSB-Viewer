@@ -62,36 +62,36 @@ internal static class GitHubHelpers
             {
                 string msg = GetStringResource("MsgText_AppUpdateNoneFound");
                 _log.Debug(msg);
-                //_ = new MDCustMsgBox(msg,
-                //    "Windows Update Viewer",
-                //    ButtonType.Ok,
-                //    false,
-                //    true,
-                //    _mainWindow,
-                //    false).ShowDialog();
+                _ = new MDCustMsgBox(msg,
+                    "HWiNFO VSB Viewer",
+                    ButtonType.Ok,
+                    false,
+                    true,
+                    _mainWindow,
+                    false).ShowDialog();
             }
             else
             {
                 string msg = string.Format(GetStringResource("MsgText_AppUpdateNewerFound"), latestVersion);
                 _log.Debug(msg);
-                //_ = new MDCustMsgBox($"{ msg }\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
-                //    "Windows Update Viewer",
-                //    ButtonType.YesNo,
-                //    false,
-                //    true,
-                //    _mainWindow,
-                //    false).ShowDialog();
+                _ = new MDCustMsgBox($"{msg}\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
+                    "HWiNFO VSB Viewer",
+                    ButtonType.YesNo,
+                    false,
+                    true,
+                    _mainWindow,
+                    false).ShowDialog();
 
-                //if (MDCustMsgBox.CustResult == CustResultType.Yes)
-                //{
-                //    string opening = GetStringResource("MsgText_Opening");
-                //    _log.Debug($"{opening} {release.HtmlUrl}");
-                //    string url = release.HtmlUrl;
-                //    Process p = new();
-                //    p.StartInfo.FileName = url;
-                //    p.StartInfo.UseShellExecute = true;
-                //    p.Start();
-                //}
+                if (MDCustMsgBox.CustResult == CustResultType.Yes)
+                {
+                    string opening = GetStringResource("MsgText_Opening");
+                    _log.Debug($"{opening} {release.HtmlUrl}");
+                    string url = release.HtmlUrl;
+                    Process p = new();
+                    p.StartInfo.FileName = url;
+                    p.StartInfo.UseShellExecute = true;
+                    p.Start();
+                }
             }
         }
         catch (Exception ex)
@@ -132,13 +132,13 @@ internal static class GitHubHelpers
     /// </summary>
     internal static void CheckFailed()
     {
-        //_ = new MDCustMsgBox(GetStringResource("MsgText_AppUpdateCheckFailed"),
-        //    "Windows Update Viewer",
-        //    ButtonType.Ok,
-        //    false,
-        //    true,
-        //    _mainWindow,
-        //    true).ShowDialog();
+        _ = new MDCustMsgBox(GetStringResource("MsgText_AppUpdateCheckFailed"),
+            "HWiNFO VSB Viewer",
+            ButtonType.Ok,
+            false,
+            true,
+            _mainWindow,
+            true).ShowDialog();
     }
     #endregion Check failed message
 }

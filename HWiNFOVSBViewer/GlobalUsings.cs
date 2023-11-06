@@ -3,6 +3,7 @@
 // Like it says on the tin, this is a global using file
 
 global using System;
+global using System.Collections;
 global using System.Collections.Generic;
 global using System.ComponentModel;
 global using System.Diagnostics;
@@ -26,7 +27,6 @@ global using System.Windows.Media;
 global using System.Windows.Navigation;
 global using System.Windows.Markup;
 
-
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 
@@ -48,4 +48,3 @@ global using NLog.Config;
 global using NLog.Targets;
 
 global using static HWiNFOVSBViewer.Helpers.ResourceHelpers;
-

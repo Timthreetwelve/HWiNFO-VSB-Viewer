@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HWiNFOVSBViewer"
-    xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
-    xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
+    xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
     d:DesignHeight="450" d:DesignWidth="600"
     FontSize="14" TextElement.FontSize="14"
     TextElement.FontWeight="Regular"
@@ -65,12 +65,13 @@
                 </Grid.RowDefinitions>
                 <!--#endregion-->
 
+                <!--#region Logo image-->
                 <Image
                     Grid.Row="0" Grid.RowSpan="2"
                     Grid.Column="2" Width="50"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Source="\Images\IP.png" />
+                    Source="/Images/H-in-blue-cloud.png" />
                 <!--#endregion-->
 
                 <!--#region TextBlocks-->

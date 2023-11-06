@@ -46,6 +46,7 @@ internal partial class UILanguage : ObservableObject
     private static List<UILanguage> LanguageList { get; } = new()
     {
         new UILanguage {Language = "English", LanguageCode = "en-US", LanguageNative = "English",    Contributor = "Timthreetwelve", Note="Default"},
+        new UILanguage {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
     };
 
     /// <summary>

@@ -27,7 +27,6 @@ namespace HWiNFOVSBViewer.ViewModels
             TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt"));
         }
 
-
         [RelayCommand]
         public static async Task CheckReleaseAsync()
         {

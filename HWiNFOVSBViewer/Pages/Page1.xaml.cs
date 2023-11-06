@@ -444,12 +444,12 @@ public partial class Page1 : UserControl
 
     private void GridSmaller_Click(object sender, RoutedEventArgs e)
     {
-        (Application.Current.MainWindow as MainWindow)?.EverythingSmaller();
+        MainWindowUIHelpers.EverythingSmaller();
     }
 
     private void GridLarger_Click(object sender, RoutedEventArgs e)
     {
-        (Application.Current.MainWindow as MainWindow)?.EverythingLarger();
+        MainWindowUIHelpers.EverythingLarger();
     }
     #endregion Menu click events
 

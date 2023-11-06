@@ -176,7 +176,7 @@
                         <!--#endregion-->
 
                         <!--#region CheckBoxes (bottom)-->
-                        <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" MinHeight="38" />
                                 <RowDefinition Height="auto" MinHeight="38" />
@@ -216,7 +216,7 @@
                 </Expander>
                 <!--#endregion-->
 
-                <!--#region Language-->
+                <!--#region Language Settings-->
                 <Expander x:Name="LangExpander"
                           Grid.Row="2"
                           IsExpanded="{Binding Setting.LangExpanderOpen,
@@ -351,7 +351,7 @@
                                    TextWrapping="Wrap" />
 
                         <Rectangle Grid.Row="3" Grid.Column="1"
-                                   Margin="0,5,60,10"
+                                   Margin="0,5,75,10"
                                    HorizontalAlignment="Stretch"
                                    Fill="{DynamicResource MaterialDesignDivider}"
                                    Height="2"/>
