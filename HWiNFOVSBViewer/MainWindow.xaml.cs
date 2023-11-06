@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -43,6 +43,10 @@ public partial class MainWindow : Window
         log.Info($"{AppInfo.AppCopyright}");
         log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
         log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
+        if (IsAdministrator())
+        {
+            log.Debug($"{AppInfo.AppName} is running as Administrator");
+        }
 
         // Log the .NET version and OS platform
         log.Debug($"Operating System version: {AppInfo.OsPlatform}");
