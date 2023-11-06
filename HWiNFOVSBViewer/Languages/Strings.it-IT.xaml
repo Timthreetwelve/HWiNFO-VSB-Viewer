@@ -1,0 +1,160 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--
+        Refer to the "Contribute a Translation" topic in the Wiki:
+
+        https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
+
+        =======================================================================
+
+        Application name:            HWiNFO VSB Viewer
+
+        Language name:               Italian
+
+        Translation contributed by:  RB
+
+        Date last updated:           06.11.2023
+
+        =======================================================================
+
+    -->
+
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Data build</sys:String>
+    <sys:String x:Key="About_CommitID">ID commit</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">Guarda gli altri lavori di Tim su https://github.com/Tim Threetwelve</sys:String>
+    <sys:String x:Key="About_Description">Visualizza, ordina ed esporta i valori del registro HWiNFO VSB</sys:String>
+    <sys:String x:Key="About_Documentation">Documentazione</sys:String>
+    <sys:String x:Key="About_DocumentationText">Apri il file 'ReadMe'</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">Apri il file 'ReadMe' con l'applicazione predefinita.</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Visita la pagina HWiNFO VSB Viewer su GitHub</sys:String>
+    <sys:String x:Key="About_License">Licenza</sys:String>
+    <sys:String x:Key="About_LicenseText">Questo progetto è concesso in licenza secondo i termini della licenza MIT.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
+    <sys:String x:Key="About_Translations">Traduzioni</sys:String>
+    <sys:String x:Key="About_Update">Aggiorna HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="About_UpdateText">Controlla nuove versioni di HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Controlla su GitHub disponibilità nuove versioni</sys:String>
+    <sys:String x:Key="About_Version">Versione</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Close">Chiudi</sys:String>
+    <sys:String x:Key="Button_CloseToolTip">Chiudi questo menu</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Apri file registro eventi</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Apri cartella App</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Apri il file registro evento con l'applicazione predefinita.</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Azioni aggiuntive</sys:String>
+    <!--  Filter Box Hint Text  -->
+    <sys:String x:Key="FilterHint">Filter</sys:String>
+    <!--  DataGrid Column Headers  -->
+    <sys:String x:Key="GridColumn_Index">Indice</sys:String>
+    <sys:String x:Key="GridColumn_Sensor">Sensore</sys:String>
+    <sys:String x:Key="GridColumn_Label">Etichetta</sys:String>
+    <sys:String x:Key="GridColumn_Value">Valore</sys:String>
+    <sys:String x:Key="GridColumn_ValueRaw">Valore RAW</sys:String>
+    <!--  Menu Items  -->
+    <sys:String x:Key="MenuItem_CopyMenuTooltip">Menu copia</sys:String>
+    <sys:String x:Key="MenuItem_CopyToClipboard">Copia griglia negli Appiunti</sys:String>
+    <sys:String x:Key="MenuItem_Larger">Vista grande</sys:String>
+    <sys:String x:Key="MenuItem_Refresh">Aggiorna - F5</sys:String>
+    <sys:String x:Key="MenuItem_RemoveSort">Rimuovi ordinamento colonne</sys:String>
+    <sys:String x:Key="MenuItem_SaveCSV">Salva griglia in file CSV</sys:String>
+    <sys:String x:Key="MenuItem_SaveHTML">Salva griglia in file HTML</sys:String>
+    <sys:String x:Key="MenuItem_Smaller">Vista piccola</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_ApplicationShutdown">è in fase di chiusura</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">è in fase di avvio</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Verifica aggiornamenti non riuscita. Per maggiori informazioni consulta il registro .</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile una versione aggiornata ({0}).</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">Il programma è aggiornato.</sys:String>
+    <sys:String x:Key="MsgText_ColumnSortCleared">L'ordinamento delle colonne è stato rimosso</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingFile">Errore durante il salvataggio del file.</sys:String>
+    <sys:String x:Key="MsgText_NoRegistryValues">Nessun valore registro trovato.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO non è in esecuzione.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotFound">Impossibile trovare un processo denominato HWiNFO64 o HWiNFO32.</sys:String>
+    <sys:String x:Key="MsgText_RecordsParsed1">record analizzati da</sys:String>
+    <sys:String x:Key="MsgText_RecordsParsed2">valori registro</sys:String>
+    <sys:String x:Key="MsgText_RefreshedItems1">1 elemento aggiornato</sys:String>
+    <sys:String x:Key="MsgText_RefreshedItemsMany">elementi aggiornati</sys:String>
+    <sys:String x:Key="MsgText_RowsShown1">1 riga visualizzata</sys:String>
+    <sys:String x:Key="MsgText_RowsShownAll">Tutte le righe visualizzate</sys:String>
+    <sys:String x:Key="MsgText_RowsShownMany">righe visualizzate</sys:String>
+    <!--  Navigation Items  -->
+    <sys:String x:Key="NavItem_About">Info</sys:String>
+    <sys:String x:Key="NavItem_Exit">Esci</sys:String>
+    <sys:String x:Key="NavItem_Viewer">Visualizzatore</sys:String>
+    <sys:String x:Key="NavItem_Settings">Impostazioni</sys:String>
+    <sys:String x:Key="NavTitle_About">Info su HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="NavTitle_Viewer">HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Impostazioni</sys:String>
+    <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Impostazioni applicazione</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Impostazioni lingua GUI</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Tema, colore evidenziazione, dimensione GUI, altezza righe, posizione iniziale, opzioni registro e altro ancora</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Impostazioni test lingua GUI (lavori in corso)</sys:String>
+    <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
+    <sys:String x:Key="SettingsItem_FontWeight">Dimensione font</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua GUI causerà il riavvio dell'applicazione!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Abilita test lingua GUI</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug nel file registro eventi</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni finestra programma in primo piano</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa la lingua di visualizzazione di Windows</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata, se è disponibile la traduzione, verrà usata la lingua </sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">specificata nelle impostazioni di Windows, altrimenti verrà utilizzato l'inglese (en-US).</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ambra</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Nero</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blu</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blu griogio</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Marrone</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Ciano</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Arancio intenso</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Viola intenso</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Grigio</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Verde</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indaco</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Blu chiaro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Verde chiaro</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Arancio</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Rosa</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Viola</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Rosso</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Verde acqua</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">Bianco</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Giallo</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Bold">Grassetto</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Regular">Normale</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_SemiBold">Semi grassetto</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Thin">Leggero</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Standard</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compatta</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Larga</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Material scuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Scuro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
+    <!-- Recently added strings -->
+
+    <!-- Recently changed strings -->
+
+</ResourceDictionary>
