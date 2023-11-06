@@ -28,6 +28,13 @@ can select the accent color and you can choose between five sizes for the app. Y
 font weight and row spacing in the grid on the first page. There are also options to have the app
 stay on top of other windows and you can control the detail of the log file.
 
+You can choose the language used for the user interface, provided that a translation has been
+contributed for that language. Checking the ""Use Windows display language"" check box will tell
+the app to use the language specified in the Windows settings, which will be used if a translation
+is available; otherwise, English (en-US) will be used. The drop-down allows you to choose a
+specific language from the list of defined languages. Changing the language will cause the
+application to restart.
+
 The last screen is the About screen. This screen shows information about the app such as the version
 number and has a link to the GitHub repository where you can check for updates.
 
@@ -58,18 +65,32 @@ Notices and License
 ===================
 HWiNFO VSB Viewer was written in C# by Tim Kennedy.
 
-HWiNFO VSB Viewer uses the following icons & packages:
+HWiNFO VSB Viewer uses the following icons and applications:
 
-* Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
+    * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
-* NLog https://nlog-project.org/
+    * CommunityToolkit.Mvvm https://github.com/CommunityToolkit/dotnet
 
-* Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+    * NLog https://nlog-project.org/
+
+    * GitVersion https://github.com/GitTools/GitVersion
+
+    * Octokit https://github.com/octokit/octokit.net
+
+    * GitKraken was used for everything Git related. https://www.gitkraken.com/
+
+    * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
+
+    * Visual Studio Community was used throughout the development of this project. https://visualstudio.microsoft.com/vs/community/
+
+    * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
+
+    * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
 
 
 MIT License
-Copyright (c) 2022 Tim Kennedy
+Copyright (c) 2021 - 2023 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
