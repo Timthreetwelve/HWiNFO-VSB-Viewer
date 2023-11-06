@@ -136,7 +136,7 @@
                                 Margin="5,2"
                                 IsChecked="{Binding IsLeftDrawerOpen, ElementName=NavDrawer}"
                                 Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
-                                ToolTip="Click to navigate" />
+                                ToolTip="{DynamicResource Button_NavigateToolTip}" />
 
                             <TextBlock
                                 x:Name="PageTitle" Margin="6,0,0,0"
