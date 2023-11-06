@@ -1,28 +1,31 @@
-; -----------------------------------------------------
+﻿; -----------------------------------------------------
 ; HWiNFOVSBViewer
 ; -----------------------------------------------------
 
-#define MyAppName            "HWiNFO VSB Viewer"
-#define MyAppVersion         GetStringFileInfo("D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish\HWiNFOVSBViewer.exe", "FileVersion")
-#define MyAppExeName         "HWiNFOVSBViewer.exe"
-#define MySourceDir          "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish"
-#define MySetupIcon          "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\Images\H-in-blue-cloud.ico"
-
-#define MyCompanyName        "T_K"
-#define MyPublisherName      "Tim Kennedy"
-#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
-#define MyCopyright          "(c) " + CurrentYear + " Tim Kennedy"
-#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define BaseDir              "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer"
+#define MySourceDir          BaseDir + "\bin\Publish"
+#define MySetupIcon          BaseDir + "\Images\H-in-blue-cloud.ico"
 #define MyOutputDir          "D:\InnoSetup\Output"
 #define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
-#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
-#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
-#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
-#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
-;#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
 
 #define MyAppID              "{D9C48FED-F5A8-468F-A907-E612266C2830}"
-#define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
+#define MyAppName            "HWiNFO VSB Viewer"
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyAppExeName         "HWiNFOVSBViewer.exe"
+#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define StartCopyrightYear   "2019"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(c) " + StartCopyrightYear + "-" + CurrentYear + " Tim Kennedy"
+#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
+#define MyAppSupportURL      "https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer"
+
+;#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
+
 
 ; -----------------------------------------------------
 ; Include the localization file. Thanks bovirus!
@@ -72,7 +75,7 @@ DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
-DisableReadyMemo=yes
+DisableReadyMemo=no
 DisableStartupPrompt=yes
 DisableWelcomePage=no
 OutputBaseFilename={#MyInstallerFilename}
@@ -80,7 +83,7 @@ OutputDir={#MyOutputDir}
 OutputManifestFile={#MyAppName}_{#MyAppVersion}_FileList.txt
 SetupIconFile={#MySetupIcon}
 SetupLogging=yes
-SolidCompression=yes
+SolidCompression=no
 SourceDir={#MySourceDir}
 
 ;[Tasks]

@@ -1,4 +1,4 @@
-[LangOptions]
+﻿[LangOptions]
 DialogFontSize=9
 DialogFontName="Segoe UI"
 WelcomeFontSize=12
