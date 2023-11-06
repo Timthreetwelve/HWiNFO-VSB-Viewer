@@ -12,7 +12,7 @@
 #define MyAppName            "HWiNFO VSB Viewer"
 #define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
 #define MyAppExeName         "HWiNFOVSBViewer.exe"
-#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName) 
+#define MyAppVersion         GetVersionNumbersString(MySourceDir + "\" + MyAppExeName)
 #define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
 #define MyCompanyName        "T_K"
 #define MyPublisherName      "Tim Kennedy"
@@ -24,7 +24,7 @@
 #define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
 #define MyAppSupportURL      "https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer"
 
-;#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
+;#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run"
 
 
 ; -----------------------------------------------------
@@ -67,7 +67,7 @@ UsePreviousLanguage=no
 WizardStyle=modern
 WizardSizePercent=100,100
 WizardImageFile={#MyLargeImage}
-WizardSmallImageFile={#MySmallImage}
+;WizardSmallImageFile={#MySmallImage}
 
 AllowNoIcons=yes
 Compression=lzma
@@ -115,7 +115,7 @@ Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: string;
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: string; ValueName: "Install Date"; ValueData: "{#MyDateTimeString}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: string; ValueName: "Version"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: string; ValueName: "Install Folder"; ValueData: "{autopf}\{#MyCompanyName}\{#MyAppName}"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: string; ValueName: "Edition"; ValueData: "Installer Fix"; Flags: uninsdeletekeyRoot: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Installer Language"; ValueData:"{language}" ;Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: String; ValueName: "Installer Language"; ValueData:"{language}"; Flags: uninsdeletekey
 ; Delete this key from previous installs
 Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; ValueName: "Edition"; Flags: uninsdeletekey deletevalue
 
@@ -130,7 +130,7 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
     case CurUninstallStep of
       usPostUninstall:
         begin
-          mres := MsgBox({cm:ClearSettings}, mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+          mres := MsgBox(CustomMessage('ClearSettings'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
           if mres = IDYES then
           begin
             DelTree(ExpandConstant('{app}\*.json'), False, True, False);
@@ -140,3 +140,16 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
    end;
 end;
 
+// Copies setup log to app folder
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  logfilepathname, newfilepathname: string;
+begin
+    if CurStep = ssDone then
+    begin
+      logfilepathname := ExpandConstant('{log}');
+      newfilepathname := ExpandConstant('{app}\') + 'Setup_Log.txt';
+      Log('Setup log file copied to: ' + newfilepathname);
+      FileCopy(logfilepathname, newfilepathname, False);
+   end;
+end;
