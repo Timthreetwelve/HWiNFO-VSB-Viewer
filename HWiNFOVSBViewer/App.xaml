@@ -11,10 +11,11 @@
                 <materialDesign:BundledTheme
                     BaseTheme="Dark"
                     ColorAdjustment="{materialDesign:ColorAdjustment}"
-                    PrimaryColor="Blue"
-                    SecondaryColor="Red" />
+                    PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <!--  es-US will be the fallback source for localized strings  -->
+                <ResourceDictionary Source="Languages/Strings.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Style for the page headers  -->
@@ -49,6 +50,36 @@
                 <Setter Property="HorizontalContentAlignment" Value="Right" />
                 <Setter Property="Margin" Value="0,0,10,0" />
             </Style>
+
+            <!--#region Button style: Outlined button without accent color-->
+            <Style
+                x:Key="PlainOutlinedButton"
+                BasedOn="{StaticResource MaterialDesignOutlinedButton}"
+                TargetType="Button">
+                <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignDivider}" />
+                <Setter Property="BorderThickness" Value="1.5" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                <Setter Property="Height" Value="35" />
+                <Setter Property="Margin" Value="5,5" />
+                <Setter Property="Padding" Value="0,0,0,3" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="Width" Value="125" />
+                <Setter Property="materialDesign:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignBody}" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Style for ALL ScrollBars-->
+            <Style TargetType="ScrollBar"
+           BasedOn="{StaticResource MaterialDesignScrollBar}">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="materialDesign:ScrollBarAssist.ButtonsVisibility" Value="Collapsed" />
+                <Setter Property="materialDesign:ScrollBarAssist.ThumbCornerRadius" Value="4" />
+                <Setter Property="materialDesign:ScrollBarAssist.ThumbHeight" Value="7" />
+                <Setter Property="materialDesign:ScrollBarAssist.ThumbWidth" Value="7" />
+            </Style>
+            <!--#endregion-->
 
         </ResourceDictionary>
     </Application.Resources>

@@ -14,11 +14,81 @@ namespace HWiNFOVSBViewer
 {
     public partial class App : Application
     {
+        #region Properties
+        /// <summary>
+        /// Number of language strings in a resource dictionary
+        /// </summary>
+        public static int LanguageStrings { get; set; }
+
+        /// <summary>
+        /// Uri of the resource dictionary
+        /// </summary>
+        /// Number of language strings in the test resource dictionary
+        /// </summary>
+        public static int TestLanguageStrings { get; set; }
+
+        /// <summary>
+        /// Uri of the resource dictionary
+        /// </summary>
+        public static string LanguageFile { get; set; }
+
+        /// <summary>
+        /// Uri of the test resource dictionary
+        /// </summary>
+        public static string TestLanguageFile { get; set; }
+
+        /// <summary>
+        /// Culture at startup
+        /// </summary>
+        public static CultureInfo StartupCulture { get; set; }
+
+        /// <summary>
+        /// UI Culture at startup
+        /// </summary>
+        public static CultureInfo StartupUICulture { get; set; }
+
+        /// <summary>
+        /// Number of language strings in the default resource dictionary
+        /// </summary>
+        public static int DefaultLanguageStrings { get; set; }
+        #endregion Properties
+
         public Mutex Mutex;
 
         public App()
         {
             SingleInstanceCheck();
+        }
+
+        /// <summary>
+        /// Override the Startup Event.
+        /// </summary>
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+
+            // Initialize settings here so that saved language can be accessed below.
+            ConfigHelpers.InitializeSettings();
+
+            // Resource dictionary for language
+            ResourceDictionary resDict = new();
+
+            // Get culture info at startup
+            StartupCulture = CultureInfo.CurrentCulture;
+            StartupUICulture = CultureInfo.CurrentUICulture;
+
+            try
+            {
+                DefaultLanguageStrings = ResourceHelpers.GetTotalDefaultLanguageCount();
+            }
+            // If the above fails, set culture and language to en-US.
+            catch (Exception)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                resDict.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
+            }
         }
 
         public void SingleInstanceCheck()

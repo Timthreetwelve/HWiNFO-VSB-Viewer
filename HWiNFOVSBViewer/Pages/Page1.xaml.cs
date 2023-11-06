@@ -117,7 +117,7 @@ public partial class Page1 : UserControl
             HWiNFO info = new()
             {
                 Index = 0,
-                Sensor = "No registry values found."
+                Sensor = GetStringResource("MsgText_NoRegistryValues")
             };
             log.Error("No registry values found.");
             HWiNFO.HWList.Add(info);
@@ -142,7 +142,7 @@ public partial class Page1 : UserControl
             log.Error("HWiNFO is not running");
             ErrorDialog error = new()
             {
-                Message = "HWiNFO is not running.\n\nCould not find a process named HWiNFO64 or HWiNFO32."
+                Message = $"{GetStringResource("MsgText_HWiNFONotRunning")}\n\n{GetStringResource("MsgText_HWiNFONotFound")}"
             };
             _ = await DialogHost.Show(error, "MainDialogHost");
         }
@@ -197,7 +197,8 @@ public partial class Page1 : UserControl
                 }
             }
             log.Debug($"{HWiNFO.HWList.Count} records parsed from {key.ValueCount} registry values");
-            SnackbarMsg.QueueMessage($"{HWiNFO.HWList.Count} records parsed from {key.ValueCount} registry values", 2000);
+            SnackbarMsg.QueueMessage($"{HWiNFO.HWList.Count} {GetStringResource("MsgText_RecordsParsed1")}" +
+                                            $" {key.ValueCount} {GetStringResource("MsgText_RecordsParsed2")}", 2000);
         }
     }
     #endregion Read registry and add values to a list
@@ -228,11 +229,11 @@ public partial class Page1 : UserControl
         }
         if (HWGrid.Items.Count == 1)
         {
-            SnackbarMsg.ClearAndQueueMessage("1 item refreshed", 1000);
+            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RefreshedItems1"), 1000);
         }
         else
         {
-            SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} items refreshed", 1000);
+            SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} {GetStringResource("MsgText_RefreshedItemsMany")}", 1000);
         }
     }
     #endregion Reread the registry and refresh the datagrid
@@ -249,7 +250,7 @@ public partial class Page1 : UserControl
         }
         HWGrid.Items.SortDescriptions.Clear();
 
-        SnackbarMsg.ClearAndQueueMessage("Column sort cleared", 1000);
+        SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_ColumnSortCleared"), 1000);
     }
     #endregion Reset column sort
 
@@ -293,7 +294,7 @@ public partial class Page1 : UserControl
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".csv";
         SaveFileDialog dialog = new()
         {
-            Title = "Save Grid as CSV FIle",
+            Title = GetStringResource("MenuItem_SaveCSV"),
             Filter = "CSV File|*.csv",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
             FileName = fname
@@ -312,7 +313,7 @@ public partial class Page1 : UserControl
                 log.Error(ex, "Error saving file.");
                 ErrorDialog error = new()
                 {
-                    Message = $"Error saving file.\n\n{ex.Message}"
+                    Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
                 _ = await DialogHost.Show(error, "MainDialogHost");
             }
@@ -346,11 +347,11 @@ public partial class Page1 : UserControl
             .AppendLine("<body><div><br>")
             .AppendLine("<table>")
             .AppendLine("<tr>")
-            .Append("<th style='width: 3.5%;'>Index</th>")
-            .Append("<th style='width: 25%;'>Sensor</th>")
-            .Append("<th style='width: 25%;'>Label</th>")
-            .Append("<th style='width: 10%;'>Value</th>")
-            .Append("<th style='width: 10%;'>Value Raw</th>")
+            .Append("<th style='width: 3.5%;'>").Append(GetStringResource("GridColumn_Index")).Append("</th>")
+            .Append("<th style='width: 25%;'>").Append(GetStringResource("GridColumn_Sensor")).Append("</th>")
+            .Append("<th style='width: 25%;'>").Append(GetStringResource("GridColumn_Label")).Append("</th>")
+            .Append("<th style='width: 10%;'>").Append(GetStringResource("GridColumn_Value")).Append("</th>")
+            .Append("<th style='width: 10%;'>").Append(GetStringResource("GridColumn_ValueRaw")).Append("</th>")
             .AppendLine("</tr>");
         foreach (HWiNFO row in HWGrid.Items)
         {
@@ -370,7 +371,7 @@ public partial class Page1 : UserControl
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".html";
         SaveFileDialog dialog = new()
         {
-            Title = "Save Grid as HTML FIle",
+            Title = GetStringResource("MenuItem_SaveHTML"),
             Filter = "HTML File|*.html",
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
             FileName = fname
@@ -387,7 +388,7 @@ public partial class Page1 : UserControl
                 log.Error(ex, "Error saving file.");
                 ErrorDialog error = new()
                 {
-                    Message = $"Error saving file.\n\n{ex.Message}"
+                    Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
                 _ = await DialogHost.Show(error, "MainDialogHost");
             }
@@ -404,13 +405,13 @@ public partial class Page1 : UserControl
     private void Card_MouseEnter(object sender, MouseEventArgs e)
     {
         Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth3);
+        ElevationAssist.SetElevation(card, Elevation.Dp4);
     }
 
     private void Card_MouseLeave(object sender, MouseEventArgs e)
     {
         Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth2);
+        ElevationAssist.SetElevation(card, Elevation.Dp2);
     }
     #endregion Mouse enter/leave shadow effect
 
@@ -475,8 +476,8 @@ public partial class Page1 : UserControl
         ICollectionView cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
         if (filter?.Length == 0)
         {
-            cv.Filter = (Predicate<object>)null;
-            SnackbarMsg.ClearAndQueueMessage("Showing all rows", 2000);
+            cv.Filter = null;
+            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RowsShownAll"), 2000);
         }
         else
         {
@@ -490,11 +491,11 @@ public partial class Page1 : UserControl
             };
             if (HWGrid.Items.Count == 1)
             {
-                SnackbarMsg.ClearAndQueueMessage("1 row shown", 1000);
+                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RowsShown1"), 1000);
             }
             else
             {
-                SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} rows shown", 1000);
+                SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} {GetStringResource("MsgText_RowsShownMany")}", 1000);
             }
         }
     }

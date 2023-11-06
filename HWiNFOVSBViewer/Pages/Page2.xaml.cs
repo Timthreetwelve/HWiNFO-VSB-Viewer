@@ -13,17 +13,11 @@ public partial class Page2 : UserControl
         InitializeComponent();
     }
 
-    #region Mouse enter/leave shadow effect
-    private void Card_MouseEnter(object sender, MouseEventArgs e)
+    /// <summary>
+    /// Handles the Loaded event of the language ComboBox.
+    /// </summary>
+    private void CbxLanguage_Loaded(object sender, RoutedEventArgs e)
     {
-        Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth3);
+        cbxLanguage.SelectedIndex = LocalizationHelpers.GetLanguageIndex();
     }
-
-    private void Card_MouseLeave(object sender, MouseEventArgs e)
-    {
-        Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth2);
-    }
-    #endregion Mouse enter/leave shadow effect
 }

@@ -4,6 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HWiNFOVSBViewer"
+    xmlns:convert="clr-namespace:HWiNFOVSBViewer.Converters"
+    xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
+    xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
+    xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
@@ -14,246 +18,368 @@
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
-    <Grid>
-        <!--#region Row and Column definitions-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
-        </Grid.RowDefinitions>
-        <!--#endregion-->
-        <ScrollViewer
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Auto">
-            <ScrollViewer.Resources>
-                <Style
-                    BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"
-                    TargetType="ScrollBar" />
-            </ScrollViewer.Resources>
+
+    <!--#region DataContext & Resources-->
+    <UserControl.DataContext>
+        <viewmodels:SettingsViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <config:UserSettings x:Key="config" />
+        <config:TempSettings x:Key="tempconfig" />
+        <convert:BooleanInverter x:Key="boolInverter" />
+        <convert:LanguageConverter x:Key="langConverter" />
+        <convert:EnumBindingSource x:Key="EnumBindingSource" />
+    </UserControl.Resources>
+    <!--#endregion-->
+
+    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+        <ScrollViewer Margin="15,15,15,5"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
             <Grid>
+                <!--#region Row definitions-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <!--#endregion-->
 
-                <!--#region Top Card (ComboBoxes)-->
-                <materialDesign:Card
-                    Grid.Row="0"
-                    Width="500"
-                    Margin="5,10"
-                    Padding="10,10"
-                    HorizontalAlignment="Left"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                    MouseEnter="Card_MouseEnter"
-                    MouseLeave="Card_MouseLeave"
-                    UniformCornerRadius="7">
-                    <Grid>
+                <!--#region UI Settings-->
+                <Expander x:Name="UIExpander"
+                          Grid.Row="0"
+                          IsExpanded="{Binding Setting.UIExpanderOpen,
+                                               Source={StaticResource tempconfig}}">
+                    <Expander.Header>
+                        <Grid>
+                            <!--#region Row definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <materialDesign:PackIcon Grid.RowSpan="3"
+                                                     Width="28" Height="28"
+                                                     Margin="0,5,0,0"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Kind="MonitorEdit" />
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       FontSize="16" FontWeight="SemiBold"
+                                       Text="{DynamicResource SettingsSection_AppSettings}"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       FontSize="12"
+                                       Text="{DynamicResource SettingsSubHead_AppSettings}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Expander.Header>
+
+                    <Grid Margin="30,10,0,20">
+                        <!--#region Row & Column definitions-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="35" />
-                            <RowDefinition Height="35" />
-                            <RowDefinition Height="35" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="45" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
+                        <!--#endregion-->
 
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="Theme" />
-                            <ComboBox
-                                x:Name="cbxMode"
-                                Width="110"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Theme"
-                                SelectedIndex="{Binding DarkMode, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="{x:Static local:ThemeType.Light}" />
-                                    <ComboBoxItem Content="{x:Static local:ThemeType.Dark}" />
-                                    <ComboBoxItem Content="{x:Static local:ThemeType.System}" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
+                        <!--#region ComboBoxes (top)-->
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" MinWidth="100" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-                        <StackPanel
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="UI Size" />
-                            <ComboBox
-                                x:Name="cbxSize"
-                                Width="110"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Size"
-                                SelectedIndex="{Binding UISize, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="{x:Static local:MySize.Smallest}" />
-                                    <ComboBoxItem Content="{x:Static local:MySize.Smaller}" />
-                                    <ComboBoxItem Content="{x:Static local:MySize.Default}" />
-                                    <ComboBoxItem Content="{x:Static local:MySize.Larger}" />
-                                    <ComboBoxItem Content="{x:Static local:MySize.Largest}" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_Theme}" />
+                            <ComboBox Grid.Row="0" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:ThemeType}}}"
+                                      SelectedItem="{Binding Path=Setting.UITheme,
+                                                             Source={StaticResource config}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="80"
-                                Content="Color" />
-                            <ComboBox
-                                x:Name="cbxColor"
-                                Width="110"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Color"
-                                MaxDropDownHeight="170"
-                                SelectedIndex="{Binding PrimaryColor, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Red" />
-                                    <ComboBoxItem Content="Pink" />
-                                    <ComboBoxItem Content="Purple" />
-                                    <ComboBoxItem Content="Deep Purple" />
-                                    <ComboBoxItem Content="Indigo" />
-                                    <ComboBoxItem Content="Blue" />
-                                    <ComboBoxItem Content="Light Blue" />
-                                    <ComboBoxItem Content="Cyan" />
-                                    <ComboBoxItem Content="Teal" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Light Green" />
-                                    <ComboBoxItem Content="Lime" />
-                                    <ComboBoxItem Content="Yellow" />
-                                    <ComboBoxItem Content="Amber" />
-                                    <ComboBoxItem Content="Orange" />
-                                    <ComboBoxItem Content="Deep Orange" />
-                                    <ComboBoxItem Content="Brown" />
-                                    <ComboBoxItem Content="Grey" />
-                                    <ComboBoxItem Content="Blue Grey" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_UISize}" />
+                            <ComboBox x:Name="cbxSize"
+                                      Grid.Row="1" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:MySize}}}"
+                                      SelectedItem="{Binding Setting.UISize,
+                                                             Source={StaticResource config}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
 
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="100"
-                                Content="Font Weight" />
-                            <ComboBox
-                                x:Name="cbxFW"
-                                Width="110"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Font Weight"
-                                MaxDropDownHeight="170"
-                                SelectedIndex="{Binding GridFontWeight, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Thin" />
-                                    <ComboBoxItem Content="Regular" />
-                                    <ComboBoxItem Content="Semi Bold" />
-                                    <ComboBoxItem Content="Bold" />
+                            <Label Grid.Row="2" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_AccentColor}" />
+                            <ComboBox x:Name="cbxColor"
+                                      Grid.Row="2" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:AccentColor}}}"
+                                      MaxDropDownHeight="300"
+                                      SelectedItem="{Binding Setting.PrimaryColor,
+                                                             Source={StaticResource config}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
 
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
+                            <Label Grid.Row="3" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_RowHeight}" />
+                            <ComboBox Grid.Row="3" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:Spacing}}}"
+                                      SelectedItem="{Binding Setting.RowSpacing,
+                                                             Source={StaticResource config}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <Label
-                                Width="100"
-                                Content="Row Height" />
-                            <ComboBox
-                                x:Name="cbxSpacing"
-                                Width="110"
-                                Margin="0,0,0,5"
-                                HorizontalAlignment="Left"
-                                materialDesign:HintAssist.Hint="Height"
-                                MaxDropDownHeight="170"
-                                SelectedIndex="{Binding RowSpacing, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignComboBox}">
-                                <ComboBox.Items>
-                                    <ComboBoxItem Content="Compact" />
-                                    <ComboBoxItem Content="Comfortable" />
-                                    <ComboBoxItem Content="Wide" />
-                                </ComboBox.Items>
-                            </ComboBox>
-                        </StackPanel>
+                            <Label Grid.Row="4" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_FontWeight}" />
+                            <ComboBox Grid.Row="4" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding Source={convert:EnumBindingSource {x:Type models:Weight}}}"
+                                      SelectedItem="{Binding Setting.GridFontWeight,
+                                                             Source={StaticResource config}}"
+                                      Style="{StaticResource MaterialDesignComboBox}" />
+                        </Grid>
+                        <!--#endregion-->
 
+                        <!--#region CheckBoxes (bottom)-->
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" MinHeight="38" />
+                                <RowDefinition Height="auto" MinHeight="38" />
+                                <RowDefinition Height="auto" MinHeight="38" />
+                            </Grid.RowDefinitions>
+                            <CheckBox Grid.Row="0"
+                                      Padding="10,0"
+                                      IsChecked="{Binding StartCentered,
+                                                          Source={x:Static config:UserSettings.Setting}}">
+                                <TextBlock>
+                                    <AccessText Text="{DynamicResource SettingsItem_StartCentered}"
+                                                TextWrapping="Wrap" />
+                                </TextBlock>
+                            </CheckBox>
+                            <CheckBox Grid.Row="1"
+                                      Padding="10,0"
+                                      IsChecked="{Binding KeepOnTop,
+                                                          Source={x:Static config:UserSettings.Setting}}">
+                                <TextBlock>
+                                    <AccessText Text="{DynamicResource SettingsItem_KeepOnTop}"
+                                                TextWrapping="Wrap" />
+                                </TextBlock>
+                            </CheckBox>
+                            <CheckBox Grid.Row="2"
+                                      Padding="10,0"
+                                      IsChecked="{Binding IncludeDebug,
+                                                          Source={x:Static config:UserSettings.Setting}}">
+                                <TextBlock>
+                                    <AccessText Text="{DynamicResource SettingsItem_IncludeDebug}"
+                                                TextWrapping="Wrap" />
+                                </TextBlock>
+                            </CheckBox>
+
+                        </Grid>
+                        <!--#endregion-->
                     </Grid>
-                </materialDesign:Card>
+                </Expander>
                 <!--#endregion-->
 
-                <!--#region Bottom Card (Toggle buttons)-->
-                <materialDesign:Card
-                    Grid.Row="2"
-                    Width="500"
-                    Margin="5,10"
-                    Padding="10"
-                    HorizontalAlignment="Left"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                    MouseEnter="Card_MouseEnter"
-                    MouseLeave="Card_MouseLeave"
-                    UniformCornerRadius="7">
-                    <Grid>
+                <!--#region Language-->
+                <Expander x:Name="LangExpander"
+                          Grid.Row="2"
+                          IsExpanded="{Binding Setting.LangExpanderOpen,
+                                               Source={StaticResource tempconfig}}">
+                    <Expander.Header>
+                        <Grid>
+                            <!--#region Row definitions-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <materialDesign:PackIcon Grid.RowSpan="3"
+                                                     Width="28" Height="28"
+                                                     Margin="0,5,0,0"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Kind="Language" />
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       FontSize="16" FontWeight="SemiBold"
+                                       Text="{DynamicResource SettingsSection_Language}"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       FontSize="12"
+                                       Text="{DynamicResource SettingsSubHead_Language}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Expander.Header>
+
+                    <Grid Margin="30,10,0,20">
+                        <Grid.DataContext>
+                            <models:UILanguage />
+                        </Grid.DataContext>
+                        <!--#region Row & Column definitions-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="31" />
-                            <RowDefinition Height="31" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="38" />
+                            <RowDefinition Height="22" />
+                            <RowDefinition Height="38" />
                         </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
 
-                        <StackPanel
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <ToggleButton
-                                HorizontalAlignment="Left"
-                                IsChecked="{Binding KeepOnTop, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-                            <Label
-                                Margin="10,-1,0,0"
-                                Content="Keep HWiNFO VSB Viewer on top of other windows" />
+                        <StackPanel Grid.Row="0" Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <CheckBox Grid.Row="0" Grid.Column="1"
+                                      Padding="10,0"
+                                      VerticalContentAlignment="Center"
+                                      Content="{DynamicResource SettingsItem_UseOSLanguageCheckBox}"
+                                      IsChecked="{Binding UseOSLanguage,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <TextBlock Margin="5,8,0,0"
+                                       ToolTipService.InitialShowDelay="300"
+                                       ToolTipService.Placement="Top">
+                                <materialDesign:PackIcon Width="20" Height="20"
+                                                         Kind="InfoOutline" />
+                                <TextBlock.ToolTip>
+                                    <TextBlock LineHeight="18">
+                                        <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine1}" />
+                                        <LineBreak />
+                                        <Run Text="{DynamicResource SettingsItem_UseOSLanguageToolTipLine2}" />
+                                    </TextBlock>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
                         </StackPanel>
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                            <ToggleButton
-                                HorizontalAlignment="Left"
-                                IsChecked="{Binding IncludeDebug, Source={x:Static local:UserSettings.Setting}}"
-                                Style="{StaticResource MaterialDesignSwitchToggleButton}" />
-                            <Label
-                                Margin="10,-1,0,0"
-                                Content="Include debug level messages in log file" />
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Content="{DynamicResource SettingsItem_Language}" />
+                            <ComboBox x:Name="cbxLanguage"
+                                      Grid.Row="1" Grid.Column="2"
+                                      Width="Auto" MinWidth="200"
+                                      Margin="0,3,0,0" Padding="2,0,0,3"
+                                      HorizontalAlignment="Left"
+                                      IsEnabled="{Binding Path=Setting.UseOSLanguage,
+                                                          Source={StaticResource config},
+                                                          Converter={StaticResource boolInverter}}"
+                                      ItemsSource="{Binding DefinedLanguages}"
+                                      Loaded="CbxLanguage_Loaded"
+                                      SelectedItem="{Binding Path=Setting.UILanguage,
+                                                             Source={StaticResource config},
+                                                             Converter={StaticResource langConverter}}"
+                                      Style="{StaticResource MaterialDesignComboBox}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="15" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0"
+                                                       Text="{Binding LanguageNative}" />
+                                            <TextBlock Grid.Column="2"
+                                                       Text="{Binding LanguageCode,
+                                                                      StringFormat=({0})}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBlock Grid.Row="1" Grid.Column="4"
+                                       VerticalAlignment="Center"
+                                       FontSize="13" Opacity=".8">
+                                <Run Text="{Binding CurrentLanguageStringCount}" />
+                                <Run Text="/" />
+                                <Run Text="{Binding DefaultStringCount}" />
+                                <Run Text="{DynamicResource MsgText_Translated}" />
+                            </TextBlock>
+                        </Grid>
+
+                        <TextBlock Grid.Row="2" Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   Foreground="OrangeRed"
+                                   Text="{DynamicResource SettingsItem_ChangingLanguageWarning}"
+                                   TextWrapping="Wrap" />
+
+                        <Rectangle Grid.Row="3" Grid.Column="1"
+                                   Margin="0,5,60,10"
+                                   HorizontalAlignment="Stretch"
+                                   Fill="{DynamicResource MaterialDesignDivider}"
+                                   Height="2"/>
+
+                        <StackPanel Grid.Row="4" Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <StackPanel.DataContext>
+                                <viewmodels:SettingsViewModel />
+                            </StackPanel.DataContext>
+                            <CheckBox Grid.Row="0" Grid.Column="1"
+                                      Padding="10,0"
+                                      VerticalContentAlignment="Center"
+                                      Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
+                                      IsChecked="{Binding LanguageTesting,
+                                                          Source={x:Static config:UserSettings.Setting}}" />
+                            <Button Width="auto"
+                                    Margin="20,0" Padding="20,0"
+                                    Command="{Binding OpenAppFolderCommand}"
+                                    Content="{DynamicResource Button_OpenAppFolder}"
+                                    Style="{StaticResource PlainOutlinedButton}" />
                         </StackPanel>
                     </Grid>
-                </materialDesign:Card>
+                </Expander>
                 <!--#endregion-->
+
             </Grid>
         </ScrollViewer>
     </Grid>
+
+
 </UserControl>

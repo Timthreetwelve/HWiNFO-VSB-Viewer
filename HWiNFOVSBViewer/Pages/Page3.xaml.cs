@@ -11,7 +11,7 @@ public partial class Page3 : UserControl
     {
         InitializeComponent();
 
-        txtBuildDate.Text = $"{BuildInfo.BuildDateUtc:f}  (UTC)";
+        //txtBuildDate.Text = $"{BuildInfo.BuildDateUtc:f}  (UTC)";
     }
 
     #region License click
@@ -33,17 +33,15 @@ public partial class Page3 : UserControl
     }
     #endregion URL click
 
-    #region Mouse enter/leave shadow effect
-    private void Card_MouseEnter(object sender, MouseEventArgs e)
+    #region Mouse down in ListView
+    /// <summary>
+    /// Handle mouse down by doing nothing
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ListView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
     {
-        Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth3);
+        e.Handled = true;
     }
-
-    private void Card_MouseLeave(object sender, MouseEventArgs e)
-    {
-        Card card = sender as Card;
-        ShadowAssist.SetShadowDepth(card, ShadowDepth.Depth2);
-    }
-    #endregion Mouse enter/leave shadow effect
+    #endregion Mouse down in ListView
 }

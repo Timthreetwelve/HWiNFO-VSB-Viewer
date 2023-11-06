@@ -49,6 +49,12 @@ public static class AppInfo
             Assembly.GetEntryAssembly().GetName().Version.ToString();
 
     /// <summary>
+    /// Returns the full version number as Version
+    /// </summary>
+    public static Version AppVersionVer =>
+            Assembly.GetEntryAssembly().GetName().Version;
+
+    /// <summary>
     /// Returns the full path including the EXE name
     /// </summary>
     public static string AppPath =>
