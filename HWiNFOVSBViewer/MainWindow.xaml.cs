@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -43,6 +43,7 @@ public partial class MainWindow : Window
         log.Info($"{AppInfo.AppCopyright}");
         log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
         log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
+        log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         if (IsAdministrator())
         {
             log.Debug($"{AppInfo.AppName} is running as Administrator");
@@ -55,6 +56,22 @@ public partial class MainWindow : Window
         // Log the startup & current culture
         log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
         log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
+
+        // Log the language file and number of strings loaded
+        if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
+        {
+            log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
+        }
+        else
+        {
+            log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
+        }
+
+        if (UserSettings.Setting.LanguageTesting)
+        {
+            log.Info("Language testing enabled");
+            log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
+        }
 
         // Window position
         MainWindowHelpers.SetWindowPosition();
@@ -113,7 +130,8 @@ public partial class MainWindow : Window
     private void Window_Closing(object sender, CancelEventArgs e)
     {
         stopwatch.Stop();
-        log.Info($"{AppInfo.AppName} is shutting down.  Elapsed time: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+        log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
+                        $"{GetStringResource("MsgText_ElapsedTime")}: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
         // Shut down NLog
         LogManager.Shutdown();
@@ -291,4 +309,15 @@ public partial class MainWindow : Window
         Width = width + 1;
     }
     #endregion Double click ColorZone
+
+    #region Running as Administrator?
+    /// <summary>
+    /// Determines if running as administrator (elevated)
+    /// </summary>
+    /// <returns>True if running elevated</returns>
+    public static bool IsAdministrator()
+    {
+        return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+    }
+    #endregion Running as Administrator?
 }
