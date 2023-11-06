@@ -2,42 +2,71 @@
 ; HWiNFOVSBViewer
 ; -----------------------------------------------------
 
-; Change the following for each project
-#define MyAppName "HWiNFO VSB Viewer"
-#define MyAppVersion GetStringFileInfo("D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish\HWiNFOVSBViewer.exe", "FileVersion")
-#define MyAppExeName "HWiNFOVSBViewer.exe"
-#define MySourceDir "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish"
-#define MySetupIcon "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\Images\H-in-blue-cloud.ico"
+#define MyAppName            "HWiNFO VSB Viewer"
+#define MyAppVersion         GetStringFileInfo("D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish\HWiNFOVSBViewer.exe", "FileVersion")
+#define MyAppExeName         "HWiNFOVSBViewer.exe"
+#define MySourceDir          "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\bin\Publish"
+#define MySetupIcon          "D:\Visual Studio\Source\Prod\HWiNFOVSBViewer\HWiNFOVSBViewer\Images\H-in-blue-cloud.ico"
 
-; Next items shouldn't need to change
-#define MyCompanyName "T_K"
-#define MyPublisherName "Tim Kennedy"
-#define MyCopyright "Copyright (C) 2022 Tim Kennedy"
-#define MyOutputDir "D:\InnoSetup\Output"
-#define MyLargeImage "D:\InnoSetup\Images\WizardImage.bmp"
-#define MySmallImage "D:\InnoSetup\Images\WizardSmallImage.bmp"
-#define MyDateTimeString GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
-#define MyAppNameNoSpaces StringChange(MyAppName, " ", "")
-#define MyInstallerFilename MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+#define MyCompanyName        "T_K"
+#define MyPublisherName      "Tim Kennedy"
+#define CurrentYear          GetDateTimeString('yyyy', '/', ':')
+#define MyCopyright          "(c) " + CurrentYear + " Tim Kennedy"
+#define MyLicFile            "D:\Visual Studio\Resources\License.rtf"
+#define MyOutputDir          "D:\InnoSetup\Output"
+#define MyLargeImage         "D:\InnoSetup\Images\WizardImage.bmp"
+#define MySmallImage         "D:\InnoSetup\Images\WizardSmallImage.bmp"
+#define MyDateTimeString     GetDateTimeString('yyyy/mm/dd hh:nn:ss', '/', ':')
+#define MyAppNameNoSpaces    StringChange(MyAppName, " ", "")
+#define MyInstallerFilename  MyAppNameNoSpaces + "_" + MyAppVersion + "_Setup"
+;#define RunRegKey            "Software\Microsoft\Windows\CurrentVersion\Run" 
+
+#define MyAppID              "{D9C48FED-F5A8-468F-A907-E612266C2830}"
+#define MyAppSupportURL      "https://github.com/Timthreetwelve/TimVer"
+
+; -----------------------------------------------------
+; Include the localization file. Thanks bovirus!
+; -----------------------------------------------------
+#include "HWiNFOVSBViewerLocalization.iss"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 ;---------------------------------------------
-AppId={{D9C48FED-F5A8-468F-A907-E612266C2830}
+AppId={{#MyAppID}
 ;---------------------------------------------
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ; Installs in %localappdata%\Programs\ instead of \Program Files(x86)
 ;---------------------------------------------
 PrivilegesRequired=lowest
 ;---------------------------------------------
-AllowNoIcons=yes
-AppCopyright={#MyCopyright}
 AppName={#MyAppName}
-AppPublisher={#MyPublisherName}
-AppVerName={#MyAppName} {#MyAppVersion}
 AppVersion={#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
+
+AppCopyright={#MyCopyright}
+
+AppPublisherURL={#MyAppSupportURL}
+AppSupportURL={#MyAppSupportURL}
+AppUpdatesURL={#MyAppSupportURL}
+
+VersionInfoDescription={#MyAppName} installer
+VersionInfoProductName={#MyAppName}
+VersionInfoVersion={#MyAppVersion}
+
+UninstallDisplayName={#MyAppName}
+UninstallDisplayIcon={app}\{#MyAppExeName}
+AppPublisher={#MyPublisherName}
+
+ShowLanguageDialog=yes
+UsePreviousLanguage=no
+WizardStyle=modern
+WizardSizePercent=100,100
+WizardImageFile={#MyLargeImage}
+WizardSmallImageFile={#MySmallImage}
+
+AllowNoIcons=yes
 Compression=lzma
 DefaultDirName={autopf}\{#MyCompanyName}\{#MyAppName}
 DefaultGroupName={#MyAppName}
@@ -53,27 +82,6 @@ SetupIconFile={#MySetupIcon}
 SetupLogging=yes
 SolidCompression=yes
 SourceDir={#MySourceDir}
-UninstallDisplayIcon={app}\{#MyAppExeName}
-VersionInfoVersion={#MyAppVersion}
-WizardImageFile={#MyLargeImage}
-WizardSmallImageFile={#MySmallImage}
-WizardStyle=modern
-WizardSizePercent=100,100
-;InfoBeforeFile="D:\InnoSetup\HWiNFOVSBViewer_Before.rtf"
-
-[Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-
-[LangOptions]
-DialogFontSize=9
-DialogFontName="Segoe UI"
-WelcomeFontSize=14
-WelcomeFontName="Verdana"
-
-[Messages]
-WelcomeLabel1=Welcome to [name] Setup
-WelcomeLabel2=This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing.%n%n%nNote that [name] requires .NET 6.%n
-FinishedHeadingLabel=Completing [name] Setup
 
 ;[Tasks]
 ;Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -119,7 +127,7 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
     case CurUninstallStep of
       usPostUninstall:
         begin
-          mres := MsgBox('Do you want to remove the settings files? '#13#13' Select ''No'' if you plan on reinstalling. ', mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
+          mres := MsgBox({cm:ClearSettings}, mbConfirmation, MB_YESNO or MB_DEFBUTTON2)
           if mres = IDYES then
           begin
             DelTree(ExpandConstant('{app}\*.json'), False, True, False);
