@@ -3,6 +3,7 @@
     [Parameter(Mandatory = $true)] [string] $assemblyVersion,
     [Parameter(Mandatory = $false)] [string] $outputFile="BuildInfo.cs"
 )
+
 $nowUTC = (Get-Date).ToUniversalTime().ToString('yyyy/MM/dd HH:mm:ss')
 
 $commitID = git rev-parse --short HEAD
@@ -48,4 +49,3 @@ $outputPath = Join-Path -Path $curPath.Path -ChildPath $outputFile
 
 Write-Host "GenBuildInfo: Output written to $outputPath"
 Set-Content -Path "$outputPath" -Value $class
-Write-Host "GenBuildInfo: Output written to $fullName"
