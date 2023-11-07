@@ -31,7 +31,7 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 * Individual grid cells can copied to the clipboard.
 
 ## Screenshot
-![Screenshot](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/Images/HWiNFOVSBViewer2.png)
+![Screenshot of 0.3.0](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/Images/HWiNFOVSBViewer3.png)
 
 ## Download
 Download from [here](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
