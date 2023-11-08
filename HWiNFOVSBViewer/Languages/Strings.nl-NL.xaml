@@ -1,0 +1,168 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--
+        Refer to the "Contribute a Translation" topic in the Wiki:
+
+        https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
+
+        =======================================================================
+
+        Application name:            HWiNFO VSB Viewer
+
+        Language name: Dutch
+
+        Translation contributed by: TiM
+
+        Date last updated:		2023-11-08
+
+        =======================================================================
+
+    -->
+
+    <!--  About Page  -->
+    <sys:String x:Key="About_BuildDate">Build Datum</sys:String>
+    <sys:String x:Key="About_CommitID">Project ID</sys:String>
+    <sys:String x:Key="About_CommitIDToolTip">Volledig Project ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Bijdrage</sys:String>
+    <sys:String x:Key="About_ContributeToolTip">Hoe kun je een bijdrage leveren</sys:String>
+    <sys:String x:Key="About_Copyright">Copyright</sys:String>
+    <sys:String x:Key="About_CreatedBy">Ontwerp door</sys:String>
+    <sys:String x:Key="About_CreatedByToolTip">Bekijk Tim zijn werk op https://github.com/Timthreetwelve</sys:String>
+    <sys:String x:Key="About_Description">Bekijk, sorteren en exporteren HWiNFO VSB Register Waardes</sys:String>
+    <sys:String x:Key="About_Documentation">Documentatie</sys:String>
+    <sys:String x:Key="About_DocumentationText">Open het leesmij bestand</sys:String>
+    <sys:String x:Key="About_DocumentationToolTip">Open het leesmij bestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="About_GitHubToolTip">Bezoek de HWiNFO VSB Viewer pagine op GitHub</sys:String>
+    <sys:String x:Key="About_License">:Licentie</sys:String>
+    <sys:String x:Key="About_LicenseText">Dit project is gelicensieerd onder de voorwaarden van het MIT.</sys:String>
+    <sys:String x:Key="About_LicenseToolTip">Bekijk de licentie voorwaarden</sys:String>
+    <sys:String x:Key="About_Translations">Vertalingen</sys:String>
+    <sys:String x:Key="About_Update">Bijwewerken HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="About_UpdateText">Controleer op nieuwe versies van HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="About_UpdateToolTip">Controleer GitHub voor een nieuwe versie</sys:String>
+    <sys:String x:Key="About_Version">Versie</sys:String>
+    <!--  Button Text  -->
+    <sys:String x:Key="Button_Close">Sluiten</sys:String>
+    <sys:String x:Key="Button_CloseToolTip">Sluit dit menu</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Open het logbestand</sys:String>
+    <sys:String x:Key="Button_OpenAppFolder">Open programmalocatie</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="Button_ThreeDotToolTip">Aanvullende acties</sys:String>
+    <!--  Filter Box Hint Text  -->
+    <sys:String x:Key="FilterHint">Filter</sys:String>
+    <!--  DataGrid Column Headers  -->
+    <sys:String x:Key="GridColumn_Index">Index</sys:String>
+    <sys:String x:Key="GridColumn_Sensor">Sensor</sys:String>
+    <sys:String x:Key="GridColumn_Label">Label</sys:String>
+    <sys:String x:Key="GridColumn_Value">Waarde</sys:String>
+    <sys:String x:Key="GridColumn_ValueRaw">Waarde Raw</sys:String>
+    <!--  Menu Items  -->
+    <sys:String x:Key="MenuItem_CopyMenuTooltip">Kopieer menu</sys:String>
+    <sys:String x:Key="MenuItem_CopyToClipboard">Kopieer tabel naar klembord</sys:String>
+    <sys:String x:Key="MenuItem_Larger">Uitgebreide weergave</sys:String>
+    <sys:String x:Key="MenuItem_Refresh">Verversen - F5</sys:String>
+    <sys:String x:Key="MenuItem_RemoveSort">Verwijder kolom sortering</sys:String>
+    <sys:String x:Key="MenuItem_SaveCSV">Bewaar tabel als CSV File</sys:String>
+    <sys:String x:Key="MenuItem_SaveHTML">Bewaar tabel als HTML File</sys:String>
+    <sys:String x:Key="MenuItem_Smaller">Compacte weergave</sys:String>
+    <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_ApplicationShutdown">sluit af</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">start op</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Controle op nieuwe versies niet gelukt. Controleer het log bestand voor meer informatie.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Controleren op updates</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Wil je naar de website?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">Er is een nieuwere versie ({0}) gevonden.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">Geen nieuwe versie gevonden.</sys:String>
+    <sys:String x:Key="MsgText_ColumnSortCleared">Kolom sortering verwijderd</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingFile">Fout bij bewaren bestand.</sys:String>
+    <sys:String x:Key="MsgText_NoRegistryValues">Geen registerwaardes gevonden.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is niet gestart.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotFound">Kon geen proces vinden met de naam HWiNFO64 of HWiNFO32.</sys:String>
+    <sys:String x:Key="MsgText_RecordsParsed1">Regels verwerkt van</sys:String>
+    <sys:String x:Key="MsgText_RecordsParsed2">Register waarden</sys:String>
+    <sys:String x:Key="MsgText_RefreshedItems1">1 item ververst</sys:String>
+    <sys:String x:Key="MsgText_RefreshedItemsMany">items ververst</sys:String>
+    <sys:String x:Key="MsgText_RowsShown1">1 rij tonen</sys:String>
+    <sys:String x:Key="MsgText_RowsShownAll">Alle rijen tonensh</sys:String>
+    <sys:String x:Key="MsgText_RowsShownMany">rijen tonen</sys:String>
+    <!--  Navigation Items  -->
+    <sys:String x:Key="NavItem_About">Over</sys:String>
+    <sys:String x:Key="NavItem_Exit">Afsluiten</sys:String>
+    <sys:String x:Key="NavItem_Viewer">Viewer</sys:String>
+    <sys:String x:Key="NavItem_Settings">Instellingen</sys:String>
+    <sys:String x:Key="NavTitle_About">Over HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="NavTitle_Viewer">HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="NavTitle_Settings">Instellingen</sys:String>
+    <!--  Settings Page Expander Headings  -->
+    <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
+    <sys:String x:Key="SettingsSection_Language">Taal instellingen</sys:String>
+    <sys:String x:Key="SettingsSubHead_AppSettings">Thema, Accent kleur, UI afmetingen, Rij hoogte, Start positie, Log opties en meer</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen (in ontwikeling)</sys:String>
+    <!--  Settings Page Items  -->
+    <sys:String x:Key="SettingsItem_AccentColor">Accent kleur</sys:String>
+    <sys:String x:Key="SettingsItem_FontWeight">Font dikte</sys:String>
+    <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Bij het veranderen van de weergave taal dient het programma opnieuw te worden opgestart!</sys:String>
+    <sys:String x:Key="SettingsItem_EnableLanguageTesting">Inschakelen taal test</sys:String>
+    <sys:String x:Key="SettingsItem_IncludeDebug">Uitgebreid logbestand</sys:String>
+    <sys:String x:Key="SettingsItem_KeepOnTop">Venster altijd boven</sys:String>
+    <sys:String x:Key="SettingsItem_RowHeight">Rij hoogte</sys:String>
+    <sys:String x:Key="SettingsItem_StartCentered">Venster altijd in het midden van het scherm openen</sys:String>
+    <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
+    <sys:String x:Key="SettingsItem_UISize">Venster grootte</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik standaard Windows taal instelling</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Als deze optie is geselecteerd, dan zal de taal instelling van Windows (i.p.v. Engels)</sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">worden gebruikt als er een vertaling beschikbaar is.</sys:String>
+    <!--  Enums for Combo Boxes on the Settings Page  -->
+    <sys:String x:Key="SettingsEnum_AccentColor_Amber">Amber</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Black">Zwart</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Blue">Blauw</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_BlueGray">Blauw Grijs</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Brown">Bruin</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Cyan">Cyaan</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepOrange">Donker oranje</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_DeepPurple">Donker paars</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Gray">Grijs</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Green">Groen</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Indigo">Indigo</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightBlue">Licht blauw</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_LightGreen">Licht groen</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Lime">Lime</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Orange">Oranje</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Pink">Roze</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Purple">Paars</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Red">Rood</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Teal">Groen blauw</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_White">Wit</sys:String>
+    <sys:String x:Key="SettingsEnum_AccentColor_Yellow">Geel</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Bold">Vet</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Regular">Normaal</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_SemiBold">Extra vet</sys:String>
+    <sys:String x:Key="SettingsEnum_FontWeight_Thin">Dun</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Default">100%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Large">105%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Larger">110%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Largest">120%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Small">95%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smaller">90%</sys:String>
+    <sys:String x:Key="SettingsEnum_Size_Smallest">80%</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Comfortable">Comfortabel</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
+    <sys:String x:Key="SettingsEnum_Spacing_Wide">Groot</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Dark">Materiaal donker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
+    <!-- Recently added strings -->
+    <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
+    <sys:String x:Key="Button_NavigateToolTip">Klik om te bladeren</sys:String>
+    <sys:String x:Key="Button_No">Nee</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_Yes">Ja</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Geselecteerde accent kleur {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Geselecteerde afmeting {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Geselecteerd thema {0}</sys:String>
+    <!-- Recently changed strings -->
+
+</ResourceDictionary>
