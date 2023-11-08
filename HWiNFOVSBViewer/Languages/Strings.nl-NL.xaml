@@ -163,6 +163,9 @@
     <sys:String x:Key="MsgText_UIColorSet">Geselecteerde accent kleur {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Geselecteerde afmeting {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Geselecteerd thema {0}</sys:String>
-    <!-- Recently changed strings -->
 
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
+    <!-- Recently changed strings -->
+    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
 </ResourceDictionary>
