@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           06.11.2023
+        Date last updated:           07.11.2023
 
         =======================================================================
 
@@ -24,7 +24,7 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribuisci</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuisci alla traduzione</sys:String>
     <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
@@ -39,7 +39,7 @@
     <sys:String x:Key="About_LicenseToolTip">Visualizza documento licenza</sys:String>
     <sys:String x:Key="About_Translations">Traduzioni</sys:String>
     <sys:String x:Key="About_Update">Aggiorna HWiNFO VSB Viewer</sys:String>
-    <sys:String x:Key="About_UpdateText">Controlla nuove versioni di HWiNFO VSB Viewer</sys:String>
+    <sys:String x:Key="About_UpdateText">Controlla disponibilità nuove versioni HWiNFO VSB Viewer</sys:String>
     <sys:String x:Key="About_UpdateToolTip">Controlla su GitHub disponibilità nuove versioni</sys:String>
     <sys:String x:Key="About_Version">Versione</sys:String>
     <!--  Button Text  -->
@@ -154,7 +154,15 @@
     <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
     <!-- Recently added strings -->
-
+    <sys:String x:Key="Button_Cancel">Annulla</sys:String>
+    <sys:String x:Key="Button_NavigateToolTip">Clic per navigare</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
+    <sys:String x:Key="Button_Yes">Sì</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Tempo tracsorso</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Dimensione = {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Tema = {0}</sys:String>
     <!-- Recently changed strings -->
 
 </ResourceDictionary>
