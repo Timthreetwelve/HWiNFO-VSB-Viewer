@@ -47,10 +47,11 @@ internal partial class UILanguage : ObservableObject
     {
         new UILanguage {Language = "English", LanguageCode = "en-US", LanguageNative = "English",    Contributor = "Timthreetwelve", Note="Default"},
         new UILanguage {Language = "Italian", LanguageCode = "it-IT", LanguageNative = "Italiano",   Contributor = "RB"},
+        new UILanguage {Language = "Dutch",   LanguageCode = "nl-NL", LanguageNative = "Nederlands", Contributor = "Tim"},
     };
 
     /// <summary>
     /// List of defined languages ordered by LanguageNative.
     /// </summary>
-    public static List<UILanguage> DefinedLanguages => LanguageList.OrderBy(x => x.LanguageNative).ToList();
+    public static List<UILanguage> DefinedLanguages => LanguageList.OrderBy(keySelector: x => x.LanguageNative).ToList();
 }
