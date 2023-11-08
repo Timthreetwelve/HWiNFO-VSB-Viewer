@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           07.11.2023
+        Date last updated:           08.11.2023
 
         =======================================================================
 
@@ -163,6 +163,9 @@
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione = {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema = {0}</sys:String>
-    <!-- Recently changed strings -->
 
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">Menu visualizza</sys:String>
+    <sys:String x:Key="About_GitHub">Sito GitHub</sys:String>
+    <!-- Recently changed strings -->
+    <sys:String x:Key="About_Contribute">Contribusci alla traduzione</sys:String>
 </ResourceDictionary>
