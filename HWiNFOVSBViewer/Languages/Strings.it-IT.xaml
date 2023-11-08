@@ -24,7 +24,7 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribuisci alla traduzione</sys:String>
+
     <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
