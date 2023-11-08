@@ -73,7 +73,7 @@
                     <MenuItem
                         Header="{materialDesign:PackIcon Kind=Glasses,
                                                          Size=24}"
-                        ToolTip="View Menu">
+                        ToolTip="{DynamicResource MenuItem_ViewMenuTooltip}">
                         <MenuItem
                             x:Name="mnuLarger"
                             Click="GridLarger_Click"

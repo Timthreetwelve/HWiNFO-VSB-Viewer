@@ -50,7 +50,7 @@
     <sys:String x:Key="Button_OpenLogFileToolTip">Apri il file registro evento con l'applicazione predefinita.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Azioni aggiuntive</sys:String>
     <!--  Filter Box Hint Text  -->
-    <sys:String x:Key="FilterHint">Filter</sys:String>
+    <sys:String x:Key="FilterHint">Filtro</sys:String>
     <!--  DataGrid Column Headers  -->
     <sys:String x:Key="GridColumn_Index">Indice</sys:String>
     <sys:String x:Key="GridColumn_Sensor">Sensore</sys:String>

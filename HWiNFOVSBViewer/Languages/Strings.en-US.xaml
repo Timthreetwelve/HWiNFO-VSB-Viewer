@@ -24,7 +24,6 @@
     <sys:String x:Key="About_BuildDate">Build Date</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribute</sys:String>
     <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Created by</sys:String>
@@ -163,6 +162,9 @@
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
-    <!-- Recently changed strings -->
 
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
+    <!-- Recently changed strings -->
+    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
 </ResourceDictionary>
