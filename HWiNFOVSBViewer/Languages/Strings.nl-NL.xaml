@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
 
@@ -33,6 +33,7 @@
     <sys:String x:Key="About_Documentation">Documentatie</sys:String>
     <sys:String x:Key="About_DocumentationText">Open het leesmij bestand</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Open het leesmij bestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Bezoek de HWiNFO VSB Viewer pagine op GitHub</sys:String>
     <sys:String x:Key="About_License">:Licentie</sys:String>
     <sys:String x:Key="About_LicenseText">Dit project is gelicensieerd onder de voorwaarden van het MIT.</sys:String>
@@ -43,12 +44,17 @@
     <sys:String x:Key="About_UpdateToolTip">Controleer GitHub voor een nieuwe versie</sys:String>
     <sys:String x:Key="About_Version">Versie</sys:String>
     <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
     <sys:String x:Key="Button_Close">Sluiten</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Sluit dit menu</sys:String>
-    <sys:String x:Key="Button_OpenLogFile">Open het logbestand</sys:String>
+    <sys:String x:Key="Button_NavigateToolTip">Klik om te bladeren</sys:String>
+    <sys:String x:Key="Button_No">Nee</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open programmalocatie</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Open het logbestand</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in standaard applicatie.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Aanvullende acties</sys:String>
+    <sys:String x:Key="Button_Yes">Ja</sys:String>
     <!--  Filter Box Hint Text  -->
     <sys:String x:Key="FilterHint">Filter</sys:String>
     <!--  DataGrid Column Headers  -->
@@ -66,6 +72,7 @@
     <sys:String x:Key="MenuItem_SaveCSV">Bewaar tabel als CSV File</sys:String>
     <sys:String x:Key="MenuItem_SaveHTML">Bewaar tabel als HTML File</sys:String>
     <sys:String x:Key="MenuItem_Smaller">Compacte weergave</sys:String>
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">sluit af</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">start op</sys:String>
@@ -75,10 +82,11 @@
     <sys:String x:Key="MsgText_AppUpdateNewerFound">Er is een nieuwere versie ({0}) gevonden.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Geen nieuwe versie gevonden.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">Kolom sortering verwijderd</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Fout bij bewaren bestand.</sys:String>
-    <sys:String x:Key="MsgText_NoRegistryValues">Geen registerwaardes gevonden.</sys:String>
-    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is niet gestart.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Kon geen proces vinden met de naam HWiNFO64 of HWiNFO32.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is niet gestart.</sys:String>
+    <sys:String x:Key="MsgText_NoRegistryValues">Geen registerwaardes gevonden.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">Regels verwerkt van</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">Register waarden</sys:String>
     <sys:String x:Key="MsgText_RefreshedItems1">1 item ververst</sys:String>
@@ -86,6 +94,9 @@
     <sys:String x:Key="MsgText_RowsShown1">1 rij tonen</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">Alle rijen tonensh</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">rijen tonen</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Geselecteerde accent kleur {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Geselecteerde afmeting {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Geselecteerd thema {0}</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Over</sys:String>
     <sys:String x:Key="NavItem_Exit">Afsluiten</sys:String>
@@ -153,19 +164,28 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
-    <!-- Recently added strings -->
-    <sys:String x:Key="Button_Cancel">Annuleren</sys:String>
-    <sys:String x:Key="Button_NavigateToolTip">Klik om te bladeren</sys:String>
-    <sys:String x:Key="Button_No">Nee</sys:String>
-    <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_Yes">Ja</sys:String>
-    <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
-    <sys:String x:Key="MsgText_UIColorSet">Geselecteerde accent kleur {0}</sys:String>
-    <sys:String x:Key="MsgText_UISizeSet">Geselecteerde afmeting {0}</sys:String>
-    <sys:String x:Key="MsgText_UIThemeSet">Geselecteerd thema {0}</sys:String>
 
-    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
-    <sys:String x:Key="About_GitHub">GitHub</sys:String>
-    <!-- Recently changed strings -->
-    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    LANGUAGE FILE UPDATES
+
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
+
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
+
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/11/11 @ 22:30 UTC -->
+    <!-- * | Updated comments in this file -->
+    <!-- * | Moved all items to appropriate sections above -->
+    <!-- Begin changes on 2023/11/11  -->
+
 </ResourceDictionary>

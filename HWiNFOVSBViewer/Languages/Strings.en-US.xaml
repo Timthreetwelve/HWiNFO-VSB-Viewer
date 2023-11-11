@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        Refer to the "Contribute a Translation" topic in the Wiki:
+        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
 
         https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
 
@@ -24,6 +24,7 @@
     <sys:String x:Key="About_BuildDate">Build Date</sys:String>
     <sys:String x:Key="About_CommitID">Commit ID</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">Full Commit ID:</sys:String>
+    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
     <sys:String x:Key="About_ContributeToolTip">How to contribute a translation</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Created by</sys:String>
@@ -32,6 +33,7 @@
     <sys:String x:Key="About_Documentation">Documentation</sys:String>
     <sys:String x:Key="About_DocumentationText">Open the ReadMe file</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Open the ReadMe file in the default application.</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visit the HWiNFO VSB Viewer page on GitHub</sys:String>
     <sys:String x:Key="About_License">License</sys:String>
     <sys:String x:Key="About_LicenseText">This project is licensed under the terms of the MIT license.</sys:String>
@@ -42,12 +44,17 @@
     <sys:String x:Key="About_UpdateToolTip">Check GitHub for a newer release</sys:String>
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
+    <sys:String x:Key="Button_Cancel">Cancel</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Close this menu</sys:String>
-    <sys:String x:Key="Button_OpenLogFile">Open the log file</sys:String>
+    <sys:String x:Key="Button_NavigateToolTip">Click to navigate</sys:String>
+    <sys:String x:Key="Button_No">No</sys:String>
+    <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
+    <sys:String x:Key="Button_OpenLogFile">Open the log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
+    <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Filter Box Hint Text  -->
     <sys:String x:Key="FilterHint">Filter</sys:String>
     <!--  DataGrid Column Headers  -->
@@ -65,6 +72,7 @@
     <sys:String x:Key="MenuItem_SaveCSV">Save Grid to CSV File</sys:String>
     <sys:String x:Key="MenuItem_SaveHTML">Save Grid to HTML File</sys:String>
     <sys:String x:Key="MenuItem_Smaller">Smaller View</sys:String>
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
     <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
@@ -74,10 +82,11 @@
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">Column sort cleared</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Error saving file.</sys:String>
-    <sys:String x:Key="MsgText_NoRegistryValues">No registry values found.</sys:String>
-    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is not running.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Could not find a process named HWiNFO64 or HWiNFO32.</sys:String>
+    <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is not running.</sys:String>
+    <sys:String x:Key="MsgText_NoRegistryValues">No registry values found.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">records parsed from</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">registry values</sys:String>
     <sys:String x:Key="MsgText_RefreshedItems1">1 item refreshed</sys:String>
@@ -85,6 +94,9 @@
     <sys:String x:Key="MsgText_RowsShown1">1 row shown</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">All rows shown</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">rows shown</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">About</sys:String>
     <sys:String x:Key="NavItem_Exit">Exit</sys:String>
@@ -100,9 +112,9 @@
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing (Work in Progress)</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
-    <sys:String x:Key="SettingsItem_FontWeight">Font Weight</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
+    <sys:String x:Key="SettingsItem_FontWeight">Font Weight</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
@@ -152,19 +164,28 @@
     <sys:String x:Key="SettingsEnum_Theme_Darker">Darker</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
-    <!-- Recently added strings -->
-    <sys:String x:Key="Button_Cancel">Cancel</sys:String>
-    <sys:String x:Key="Button_NavigateToolTip">Click to navigate</sys:String>
-    <sys:String x:Key="Button_No">No</sys:String>
-    <sys:String x:Key="Button_OK">OK</sys:String>
-    <sys:String x:Key="Button_Yes">Yes</sys:String>
-    <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
-    <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
-    <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
-    <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
 
-    <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
-    <sys:String x:Key="About_GitHub">GitHub</sys:String>
-    <!-- Recently changed strings -->
-    <sys:String x:Key="About_Contribute">Contribute a Translation</sys:String>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    LANGUAGE FILE UPDATES
+
+    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+    be associated with a comment made below this block.
+
+    Comment Format:
+       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+       Modified lines will follow, one comment line per line changed.
+       Comment lines use this syntax:  Change Type | Key Name
+
+     Change type:
+       A = Added
+       D = Deleted
+       U = Updated
+       * = Comment not related to a single line
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Begin changes on 2023/11/11 @ 22:30 UTC -->
+    <!-- * | Updated comments in this file -->
+    <!-- * | Moved all items to appropriate sections above -->
+    <!-- Begin changes on 2023/11/11  -->
+
 </ResourceDictionary>
