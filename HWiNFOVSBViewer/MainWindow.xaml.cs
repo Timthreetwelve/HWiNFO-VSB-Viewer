@@ -30,7 +30,7 @@ public partial class MainWindow : Window
     public void ReadSettings()
     {
         // Set NLog configuration
-        NLHelpers.NLogConfig(true);
+        NLHelpers.NLogConfig(false);
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -40,7 +40,7 @@ public partial class MainWindow : Window
 
         // Log the version, build date and commit id
         log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
-        log.Info($"{AppInfo.AppCopyright}");
+        log.Info($"Copyright {AppInfo.AppCopyright}");
         log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
         log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
         log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
