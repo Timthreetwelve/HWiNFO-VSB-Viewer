@@ -16,7 +16,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/commits/main)
 [![GitHub commits](https://img.shields.io/github/commit-activity/m/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/commits/main)
 [![GitHub Stars](https://img.shields.io/github/stars/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic&color=goldenrod&logo=github)](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars)
-[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/HWiNFO-VSB-Viewer/total?style=plastic)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases)
+[![GitHub all releases](https://img.shields.io/github/downloads/Timthreetwelve/HWiNFO-VSB-Viewer/total?style=plastic&label=total%20downloads)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases)
 [![GitHub release (by tag)](https://img.shields.io/github/downloads/timthreetwelve/HWiNFO-VSB-Viewer/latest/total?style=plastic&color=2196F3&label=downloads%20latest%20version)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases/latest)
 [![GitHub Issues](https://img.shields.io/github/issues/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic&color=orangered)](https://github.com/TimthreetwelveHWiNFO-VSB-Viewer/issues)
 [![GitHub Issues](https://img.shields.io/github/issues-closed/timthreetwelve/HWiNFO-VSB-Viewer?style=plastic&color=slateblue)](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/issues)
