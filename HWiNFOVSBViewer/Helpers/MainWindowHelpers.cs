@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -48,4 +48,18 @@ internal static class MainWindowHelpers
         return prop?.GetValue(sender, null);
     }
     #endregion Get property value
+
+    #region Window Title
+    /// <summary>
+    /// Puts the version number in the title bar as well as Administrator if running elevated
+    /// </summary>
+    public static string WindowTitleVersionAdmin()
+    {
+        // Set the windows title
+        return AppInfo.IsAdmin
+            ? $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
+            : $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion}";
+    }
+    #endregion Window Title
+
 }

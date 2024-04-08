@@ -34,7 +34,7 @@ public partial class MainWindow : Window
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         // Put the version number in the title bar
-        Title = $"{AppInfo.AppName} - {AppInfo.AppFileVersion}";
+        Title = MainWindowHelpers.WindowTitleVersionAdmin();
 
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
@@ -44,7 +44,7 @@ public partial class MainWindow : Window
         _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
         if (AppInfo.IsAdmin)
         {
-            log.Debug($"{AppInfo.AppName} is running as Administrator");
+            _log.Debug($"{AppInfo.AppName} is running as Administrator");
         }
 
         // Log the .NET version and OS platform
