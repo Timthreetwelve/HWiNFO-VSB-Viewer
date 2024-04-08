@@ -48,4 +48,5 @@ global using NLog;
 global using NLog.Config;
 global using NLog.Targets;
 
+global using static HWiNFOVSBViewer.Helpers.NLogHelpers;
 global using static HWiNFOVSBViewer.Helpers.ResourceHelpers;

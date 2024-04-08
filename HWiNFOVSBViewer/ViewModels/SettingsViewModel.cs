@@ -4,10 +4,6 @@ namespace HWiNFOVSBViewer.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     [RelayCommand]
     private static async Task OpenAppFolder()
     {
@@ -30,7 +26,7 @@ public partial class SettingsViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            log.Error(ex, $"Error trying to open {filePath}: {ex.Message}");
+            _log.Error(ex, $"Error trying to open {filePath}: {ex.Message}");
             ErrorDialog error = new()
             {
                 Message = $"{GetStringResource("MsgText_Error_FileExplorer")}\n\n{ex.Message}"

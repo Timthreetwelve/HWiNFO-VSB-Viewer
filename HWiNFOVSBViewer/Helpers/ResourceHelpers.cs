@@ -4,10 +4,6 @@ namespace HWiNFOVSBViewer.Helpers;
 
 internal static class ResourceHelpers
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region Count resource dictionary keys
     /// <summary>
     /// Gets the count of strings in the default resource dictionary.
@@ -47,7 +43,7 @@ internal static class ResourceHelpers
             }
             else
             {
-                log.Error(ex, $"Resource not found: {key}");
+                _log.Error(ex, $"Resource not found: {key}");
                 return $"Resource not found: {key}";
             }
         }
@@ -60,7 +56,7 @@ internal static class ResourceHelpers
             }
             else
             {
-                log.Error($"Resource not found: {key}");
+                _log.Error($"Resource not found: {key}");
                 return $"Resource not found: {key}";
             }
         }
@@ -100,29 +96,29 @@ internal static class ResourceHelpers
 
         if (same)
         {
-            log.Debug($"{dict1.Source} and {dict2.Source} have the same keys");
+            _log.Debug($"{dict1.Source} and {dict2.Source} have the same keys");
         }
         else
         {
             if (enUSDict.Keys.Except(compareDict.Keys).Any())
             {
-                log.Debug(new string('-', 68));
-                log.Debug($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys");
+                _log.Debug(new string('-', 68));
+                _log.Debug($"[{AppInfo.AppName}] {dict2.Source} is missing the following keys");
                 foreach (string item in enUSDict.Keys.Except(compareDict.Keys).OrderBy(s => s))
                 {
-                    log.Debug($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                    _log.Debug($"Key: {item}    Value: \"{GetStringResource(item)}\"");
                 }
-                log.Debug(new string('-', 68));
+                _log.Debug(new string('-', 68));
             }
 
             if (compareDict.Keys.Except(enUSDict.Keys).Any())
             {
-                log.Debug($"[{AppInfo.AppName}] {dict1.Source} is missing the following keys");
+                _log.Debug($"[{AppInfo.AppName}] {dict1.Source} is missing the following keys");
                 foreach (string item in compareDict.Keys.Except(enUSDict.Keys).OrderBy(s => s))
                 {
-                    log.Debug($"Key: {item}    Value: \"{GetStringResource(item)}\"");
+                    _log.Debug($"Key: {item}    Value: \"{GetStringResource(item)}\"");
                 }
-                log.Debug(new string('-', 68));
+                _log.Debug(new string('-', 68));
             }
         }
     }

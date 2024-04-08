@@ -7,10 +7,6 @@ namespace HWiNFOVSBViewer.Helpers;
 /// </summary>
 internal static class LocalizationHelpers
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     /// <summary>
     /// Gets the current culture.
     /// </summary>
@@ -39,7 +35,7 @@ internal static class LocalizationHelpers
         p.StartInfo.FileName = AppInfo.AppPath;
         p.StartInfo.UseShellExecute = true;
         _ = p.Start();
-        log.Debug("Restarting for language change.");
+        _log.Debug("Restarting for language change.");
         Application.Current.Shutdown();
     }
 

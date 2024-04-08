@@ -1,13 +1,9 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
 public partial class MainWindow : Window
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region Stopwatch
     private readonly Stopwatch stopwatch = new();
     #endregion Stopwatch
@@ -30,7 +26,7 @@ public partial class MainWindow : Window
     public void ReadSettings()
     {
         // Set NLog configuration
-        NLHelpers.NLogConfig(false);
+        NLogConfig(false);
 
         // Unhandled exception handler
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -39,38 +35,38 @@ public partial class MainWindow : Window
         Title = $"{AppInfo.AppName} - {AppInfo.AppFileVersion}";
 
         // Log the version, build date and commit id
-        log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
-        log.Info($"Copyright {AppInfo.AppCopyright}");
-        log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
-        log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
-        log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
-        if (IsAdministrator())
+        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
+        _log.Info($"Copyright {AppInfo.AppCopyright}");
+        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
+        _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
+        _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
+        if (AppInfo.IsAdmin)
         {
             log.Debug($"{AppInfo.AppName} is running as Administrator");
         }
 
         // Log the .NET version and OS platform
-        log.Debug($"Operating System version: {AppInfo.OsPlatform}");
-        log.Debug($".Net version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
+        _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
+        _log.Debug($".Net version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
 
         // Log the startup & current culture
-        log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
-        log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
+        _log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
+        _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
 
         // Log the language file and number of strings loaded
         if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
         {
-            log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
+            _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
         }
         else
         {
-            log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
+            _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
         }
 
         if (UserSettings.Setting.LanguageTesting)
         {
-            log.Info("Language testing enabled");
-            log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
+            _log.Info("Language testing enabled");
+            _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
         }
 
         // Window position
@@ -238,7 +234,7 @@ public partial class MainWindow : Window
             if (e.Key == Key.K)
             {
                 CompareLanguageDictionaries();
-                TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
+                TextFileViewer.ViewTextFile(GetLogfileName());
             }
             if (e.Key == Key.S)
             {
@@ -267,7 +263,7 @@ public partial class MainWindow : Window
 
     private void BtnLog_Click(object sender, RoutedEventArgs e)
     {
-        TextFileViewer.ViewTextFile(NLHelpers.GetLogfileName());
+        TextFileViewer.ViewTextFile(GetLogfileName());
     }
 
     private void BtnReadme_Click(object sender, RoutedEventArgs e)
@@ -280,14 +276,14 @@ public partial class MainWindow : Window
     #region Unhandled Exception Handler
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
-        log.Error("Unhandled Exception");
+        _log.Error("Unhandled Exception");
         Exception e = (Exception)args.ExceptionObject;
-        log.Error(e.Message);
+        _log.Error(e.Message);
         if (e.InnerException != null)
         {
-            log.Error(e.InnerException.ToString());
+            _log.Error(e.InnerException.ToString());
         }
-        log.Error(e.StackTrace);
+        _log.Error(e.StackTrace);
 
         //_ = new MDCustMsgBox("An error has occurred. See the log file",
         //    "DailyDocuments Error", ButtonType.Ok).ShowDialog();

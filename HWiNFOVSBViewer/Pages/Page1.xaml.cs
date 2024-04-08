@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Pages;
 
@@ -7,10 +7,6 @@ namespace HWiNFOVSBViewer.Pages;
 /// </summary>
 public partial class Page1 : UserControl
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region Regex instances
     private static readonly Regex numOnly = new(@"\D");
     private static readonly Regex noNums = new(@"\d");
@@ -99,7 +95,7 @@ public partial class Page1 : UserControl
             HWiNFO.RegistryKey = "Software\\HWiNFO64\\VSB";
             key64.Close();
             key64.Dispose();
-            log.Debug("HKCU\\Software\\HWiNFO64\\VSB was found.");
+            _log.Debug("HKCU\\Software\\HWiNFO64\\VSB was found.");
             ReadVSB();
             LoadGrid();
         }
@@ -108,7 +104,7 @@ public partial class Page1 : UserControl
             HWiNFO.RegistryKey = "Software\\HWiNFO32\\VSB";
             key32.Close();
             key32.Dispose();
-            log.Debug("HKCU\\Software\\HWiNFO32\\VSB was found.");
+            _log.Debug("HKCU\\Software\\HWiNFO32\\VSB was found.");
             ReadVSB();
             LoadGrid();
         }
@@ -119,7 +115,7 @@ public partial class Page1 : UserControl
                 Index = 0,
                 Sensor = GetStringResource("MsgText_NoRegistryValues")
             };
-            log.Error("No registry values found.");
+            _log.Error("No registry values found.");
             HWiNFO.HWList.Add(info);
             LoadGrid();
             _ = IsHWiNFORunningAsync();
@@ -139,7 +135,7 @@ public partial class Page1 : UserControl
         Process[] pname32 = Process.GetProcessesByName("HWiNFO32");
         if (pname64.Length == 0 && pname32.Length == 0)
         {
-            log.Error("HWiNFO is not running");
+            _log.Error("HWiNFO is not running");
             ErrorDialog error = new()
             {
                 Message = $"{GetStringResource("MsgText_HWiNFONotRunning")}\n\n{GetStringResource("MsgText_HWiNFONotFound")}"
@@ -196,7 +192,7 @@ public partial class Page1 : UserControl
                         break;
                 }
             }
-            log.Debug($"{HWiNFO.HWList.Count} records parsed from {key.ValueCount} registry values");
+            _log.Debug($"{HWiNFO.HWList.Count} records parsed from {key.ValueCount} registry values");
             SnackbarMsg.QueueMessage($"{HWiNFO.HWList.Count} {GetStringResource("MsgText_RecordsParsed1")}" +
                                             $" {key.ValueCount} {GetStringResource("MsgText_RecordsParsed2")}", 2000);
         }
@@ -310,7 +306,7 @@ public partial class Page1 : UserControl
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error saving file.");
+                _log.Error(ex, "Error saving file.");
                 ErrorDialog error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
@@ -385,7 +381,7 @@ public partial class Page1 : UserControl
             }
             catch (Exception ex)
             {
-                log.Error(ex, "Error saving file.");
+                _log.Error(ex, "Error saving file.");
                 ErrorDialog error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"

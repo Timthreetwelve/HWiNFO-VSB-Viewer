@@ -1,26 +1,39 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace HWiNFOVSBViewer;
+#nullable enable
+namespace HWiNFOVSBViewer.Helpers;
 
 /// <summary>
 /// Class for NLog helper methods
 /// </summary>
-internal static class NLHelpers
+internal static class NLogHelpers
 {
+    /// <summary>
+    /// Static instance for NLog Logger.
+    /// </summary>
+    /// <remarks>
+    /// Used with a "static using" in GlobalUsings.cs to avoid creating an instance in every class.
+    /// </remarks>
+    internal static readonly Logger _log = LogManager.GetLogger("logTemp");
+
     #region Create the NLog configuration
     /// <summary>
     /// Configure NLog
     /// </summary>
-    /// <param name="newfile">True to start with new log file. False to append to current file.</param>
-    public static void NLogConfig(bool newfile)
+    /// <param name="newFile">True to start with new log file. False to append to current file.</param>
+    public static void NLogConfig(bool newFile)
     {
+        // Throw exception if there are error in configuration
+        LogManager.ThrowConfigExceptions = true;
+
+        // New NLog configuration
         LoggingConfiguration config = new();
 
         // create log file Target for NLog
         FileTarget logfile = new("logfile")
         {
             // new file on startup
-            DeleteOldFileOnStartup = newfile,
+            DeleteOldFileOnStartup = newFile,
 
             // create the file if needed
             FileName = CreateFilename(),
@@ -59,7 +72,7 @@ internal static class NLHelpers
         LogManager.Configuration = config;
 
         // Lastly, set the logging level based on setting
-        SetLogLevel(UserSettings.Setting.IncludeDebug);
+        SetLogLevel(UserSettings.Setting!.IncludeDebug);
     }
     #endregion Create the NLog configuration
 
@@ -67,21 +80,21 @@ internal static class NLHelpers
     private static string CreateFilename()
     {
         // create filename string
-        string myname = AppInfo.AppName;
+        string appName = AppInfo.AppName;
         string today = DateTime.Now.ToString("yyyyMMdd");
         string filename;
         if (Debugger.IsAttached)
         {
-            filename = $"{myname}.{today}.debug.log";
+            filename = $"{appName}.{today}.debug.log";
         }
         else
         {
-            filename = $"{myname}.{today}.log";
+            filename = $"{appName}.{today}.log";
         }
 
         // combine temp folder with filename
-        string tempdir = Path.GetTempPath();
-        return Path.Combine(tempdir, "T_K", filename);
+        string tempDir = Path.GetTempPath();
+        return Path.Combine(tempDir, "T_K", filename);
     }
     #endregion Create a filename in the temp folder
 
@@ -114,17 +127,12 @@ internal static class NLHelpers
     /// <summary>
     /// Gets the filename for the NLog log fie
     /// </summary>
-    /// <returns>The log file name </returns>
-    public static string GetLogfileName()
+    /// <returns>Name of the log file.</returns>
+    public static string? GetLogfileName()
     {
         LoggingConfiguration config = LogManager.Configuration;
-        Target target = config.FindTargetByName("logfile");
-        if (target is FileTarget ft)
-        {
-            // remove the enclosing apostrophes
-            return ft.FileName.ToString().Trim('\'');
-        }
-        return string.Empty;
+        return (config.FindTargetByName("logfile")
+                as FileTarget)?.FileName.Render(new LogEventInfo { TimeStamp = DateTime.Now });
     }
     #endregion Get the log file name
 }

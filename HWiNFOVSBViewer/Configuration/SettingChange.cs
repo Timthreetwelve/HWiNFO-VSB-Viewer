@@ -7,10 +7,6 @@ namespace HWiNFOVSBViewer.Configuration;
 /// </summary>
 public static class SettingChange
 {
-    #region NLog Instance
-    private static readonly Logger log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region User Setting change
     /// <summary>
     /// Handle changes in UserSettings
@@ -18,12 +14,12 @@ public static class SettingChange
     public static void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
         object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
-        log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
+        _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
 
         switch (e.PropertyName)
         {
             case nameof(UserSettings.Setting.IncludeDebug):
-                NLHelpers.SetLogLevel((bool)newValue);
+                SetLogLevel((bool)newValue);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):
@@ -63,7 +59,7 @@ public static class SettingChange
     {
         object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
         // Write to trace level to avoid unnecessary message in log file
-        log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
+        _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
     }
     #endregion Temp setting change
 }
