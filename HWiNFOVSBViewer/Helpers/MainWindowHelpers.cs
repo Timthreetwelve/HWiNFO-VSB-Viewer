@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -62,4 +62,17 @@ internal static class MainWindowHelpers
     }
     #endregion Window Title
 
+    #region Show MainWindow
+    /// <summary>
+    /// Show the main window and set it's state to normal
+    /// </summary>
+    public static void ShowMainWindow()
+    {
+        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow.Visibility = Visibility.Visible;
+        Application.Current.MainWindow.WindowState = WindowState.Normal;
+        Application.Current.MainWindow.ShowInTaskbar = true;
+        _ = Application.Current.MainWindow.Activate();
+    }
+    #endregion Show MainWindow
 }
