@@ -27,8 +27,8 @@ public partial class Page1 : UserControl
         P1 = this;
         HWiNFO.HWList.Clear();
         CheckRegistry();
-        SetFontWeight((Weight)UserSettings.Setting.GridFontWeight);
-        SetRowSpacing((Spacing)UserSettings.Setting.RowSpacing);
+        SetFontWeight(UserSettings.Setting.GridFontWeight);
+        SetRowSpacing(UserSettings.Setting.RowSpacing);
     }
     #endregion Page Loaded event
 

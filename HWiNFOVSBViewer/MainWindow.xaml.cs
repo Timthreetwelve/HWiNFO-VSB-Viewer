@@ -75,13 +75,13 @@ public partial class MainWindow : Window
         MainWindowHelpers.SetWindowPosition();
 
         // Light or dark
-        MainWindowUIHelpers.SetBaseTheme((ThemeType)UserSettings.Setting.UITheme);
+        MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting.UITheme);
 
         // Primary color
-        MainWindowUIHelpers.SetPrimaryColor((AccentColor)UserSettings.Setting.PrimaryColor);
+        MainWindowUIHelpers.SetPrimaryColor(UserSettings.Setting.PrimaryColor);
 
         // UI size
-        MainWindowUIHelpers.UIScale((MySize)UserSettings.Setting.UISize);
+        MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
 
         // Settings change event
         UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
