@@ -10,6 +10,8 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
+        SingleInstance.Create(AppInfo.AppName);
+
         InitializeSettings();
 
         InitializeComponent();
