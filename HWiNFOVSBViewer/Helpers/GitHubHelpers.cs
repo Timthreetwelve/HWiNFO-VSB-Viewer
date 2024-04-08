@@ -9,10 +9,6 @@ namespace HWiNFOVSBViewer.Helpers;
 /// </summary>
 internal static class GitHubHelpers
 {
-    #region NLog Instance
-    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
-    #endregion NLog Instance
-
     #region MainWindow Instance
     private static readonly MainWindow _mainWindow = System.Windows.Application.Current.MainWindow as MainWindow;
     #endregion MainWindow Instance
@@ -50,11 +46,6 @@ internal static class GitHubHelpers
             }
 
             Version latestVersion = new(tag);
-            if (latestVersion == null)
-            {
-                CheckFailed();
-                return;
-            }
 
             _log.Debug($"Latest version is {latestVersion} released on {release.PublishedAt.Value.UtcDateTime} UTC");
 
