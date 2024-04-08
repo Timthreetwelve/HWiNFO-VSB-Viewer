@@ -90,7 +90,7 @@ HWiNFO VSB Viewer uses the following icons and applications:
 
 
 MIT License
-Copyright (c) 2021 - 2023 Tim Kennedy
+Copyright (c) 2021 - 2024 Tim Kennedy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction, including
