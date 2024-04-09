@@ -109,7 +109,8 @@
         <materialDesign:Card
             Grid.Row="2" Grid.Column="1"
             MinWidth="100" Margin="5,0"
-            materialDesign:ElevationAssist.Elevation="Dp6"
+            Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+            materialDesign:ElevationAssist.Elevation="Dp16"
             MouseEnter="Card_MouseEnter"
             MouseLeave="Card_MouseLeave"
             UniformCornerRadius="7">
@@ -119,6 +120,7 @@
                 d:ItemsSource="{d:SampleData ItemCount=10}"
                 materialDesign:ThemeAssist.Theme="Inherit"
                 AutoGenerateColumns="False"
+                Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                 CanUserAddRows="False"
                 CanUserDeleteRows="False" FontSize="14"
                 HeadersVisibility="Column"
