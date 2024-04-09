@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-namespace HWiNFOVSBViewer
+namespace HWiNFOVSBViewer.Models
 {
 #pragma warning disable S101 // Types should be named in PascalCase
     public class HWiNFO
