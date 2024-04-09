@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -206,11 +206,11 @@ public partial class MainWindow : Window
                     UserSettings.Setting.GridFontWeight++;
                 }
             }
-            if (e.Key == Key.Add)
+            if (e.Key is Key.Add or Key.OemPlus)
             {
                 MainWindowUIHelpers.EverythingLarger();
             }
-            if (e.Key == Key.Subtract)
+            if (e.Key is Key.Subtract or Key.OemMinus)
             {
                 MainWindowUIHelpers.EverythingSmaller();
             }

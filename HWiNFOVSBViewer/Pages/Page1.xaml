@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="HWiNFOVSBViewer.Pages.Page1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -78,13 +78,13 @@
                             x:Name="mnuLarger"
                             Click="GridLarger_Click"
                             Header="{DynamicResource MenuItem_Larger}"
-                            InputGestureText="Ctrl + Numpad Plus"
+                            InputGestureText="Ctrl + Plus"
                             StaysOpenOnClick="True" />
                         <MenuItem
                             x:Name="mnuSmaller"
                             Click="GridSmaller_Click"
                             Header="{DynamicResource MenuItem_Smaller}"
-                            InputGestureText="Ctrl + Numpad Minus"
+                            InputGestureText="Ctrl + Minus"
                             StaysOpenOnClick="True" />
                         <Separator />
                         <MenuItem
