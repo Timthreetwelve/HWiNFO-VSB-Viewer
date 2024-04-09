@@ -40,13 +40,12 @@ public static class SingleInstance
             eventName = $"{appName}-{uniqueID}";
         }
 
-        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle eventWaitHandle))
+        if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle? eventWaitHandle))
         {
             ActivateFirstInstanceWindow(eventWaitHandle);
 
             Environment.Exit(0);
         }
-
 
         var app = Application.Current;
         RegisterFirstInstanceWindowActivation(app, eventName);
@@ -84,10 +83,10 @@ public static class SingleInstance
 
     #region Show the main window
     /// <summary>Shows the main window of the original instance</summary>
-    private static void WaitOrTimerCallback(object state, bool timedOut)
+    private static void WaitOrTimerCallback(object? state, bool timedOut)
     {
-        Application app = (Application)state;
-        _ = app.Dispatcher.BeginInvoke(new Action(() => MainWindowHelpers.ShowMainWindow()));
+        Application? app = (Application?)state;
+        _ = app!.Dispatcher.BeginInvoke(new Action(() => MainWindowHelpers.ShowMainWindow()));
         if (_log.IsDebugEnabled)
         {
             _log.Debug($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");

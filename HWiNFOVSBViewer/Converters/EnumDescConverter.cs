@@ -2,14 +2,26 @@
 
 namespace HWiNFOVSBViewer.Converters;
 /// <summary>
-/// Enum description converter
+/// Enum description converter.
 /// </summary>
+/// /// <remarks>
+/// Allows use of "Light Blue" instead of LightBlue or Light_Blue.
+/// </remarks>
 internal class EnumDescConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <summary>
+    /// Converts a value.
+    /// </summary>
+    /// <param name="value">The value produced by the binding source.</param>
+    /// <param name="targetType">The type of the binding target property.</param>
+    /// <param name="parameter">The converter parameter to use.</param>
+    /// <param name="culture">The culture to use in the converter.</param>
+    /// <returns>
+    /// A converted value. If the method returns <see langword="null" />, the valid null value is used.
+    /// </returns>
+    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        Enum myEnum = (Enum)value;
-        if (myEnum == null)
+        if (value is not Enum myEnum)
         {
             return null;
         }
@@ -21,19 +33,24 @@ internal class EnumDescConverter : IValueConverter
         return myEnum.ToString();
     }
 
+    /// <summary>
+    /// Gets the enum description.
+    /// </summary>
+    /// <param name="enumObj">The enum</param>
+    /// <returns>The description</returns>
     internal static string GetEnumDescription(Enum enumObj)
     {
         if (enumObj == null)
         {
             return string.Empty;
         }
-        FieldInfo field = enumObj.GetType().GetField(enumObj.ToString());
-        object[] attrArray = field.GetCustomAttributes(false);
+        FieldInfo? field = enumObj.GetType().GetField(enumObj.ToString());
+        object[] attrArray = field!.GetCustomAttributes(false);
 
         if (attrArray.Length > 0)
         {
-            DescriptionAttribute attribute = attrArray[0] as DescriptionAttribute;
-            return attribute.Description;
+            DescriptionAttribute? attribute = attrArray[0] as DescriptionAttribute;
+            return attribute!.Description;
         }
         else
         {
@@ -41,6 +58,9 @@ internal class EnumDescConverter : IValueConverter
         }
     }
 
+    /// <summary>
+    /// Not used.
+    /// </summary>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return string.Empty;

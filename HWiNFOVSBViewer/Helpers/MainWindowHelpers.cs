@@ -11,10 +11,10 @@ internal static class MainWindowHelpers
     public static void SetWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting.WindowHeight;
-        mainWindow.Left = UserSettings.Setting.WindowLeft;
-        mainWindow.Top = UserSettings.Setting.WindowTop;
-        mainWindow.Width = UserSettings.Setting.WindowWidth;
+        mainWindow.Height = UserSettings.Setting!.WindowHeight;
+        mainWindow.Left = UserSettings.Setting!.WindowLeft;
+        mainWindow.Top = UserSettings.Setting!.WindowTop;
+        mainWindow.Width = UserSettings.Setting!.WindowWidth;
 
         if (UserSettings.Setting.StartCentered)
         {
@@ -28,10 +28,10 @@ internal static class MainWindowHelpers
     public static void SaveWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
+        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Set and Save MainWindow position and size
 
@@ -42,9 +42,9 @@ internal static class MainWindowHelpers
     /// <param name="sender"></param>
     /// <param name="e"></param>
     /// <returns>An object containing the value of the property</returns>
-    public static object GetPropertyValue(object sender, PropertyChangedEventArgs e)
+    public static object? GetPropertyValue(object sender, PropertyChangedEventArgs e)
     {
-        PropertyInfo prop = sender.GetType().GetProperty(e.PropertyName);
+        PropertyInfo? prop = sender.GetType().GetProperty(e.PropertyName!);
         return prop?.GetValue(sender, null);
     }
     #endregion Get property value

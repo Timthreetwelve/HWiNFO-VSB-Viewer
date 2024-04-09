@@ -17,7 +17,7 @@ public partial class Page1 : UserControl
     #endregion Regex instances
 
     #region Static property for Page1
-    internal static Page1 P1 { get; set; }
+    internal static Page1? P1 { get; set; }
     #endregion Static property for Page1
 
     public Page1()
@@ -31,8 +31,8 @@ public partial class Page1 : UserControl
         P1 = this;
         HWiNFO.HWList.Clear();
         CheckRegistry();
-        SetFontWeight(UserSettings.Setting.GridFontWeight);
-        SetRowSpacing(UserSettings.Setting.RowSpacing);
+        SetFontWeight(UserSettings.Setting!.GridFontWeight);
+        SetRowSpacing(UserSettings.Setting!.RowSpacing);
     }
     #endregion Page Loaded event
 
@@ -91,8 +91,8 @@ public partial class Page1 : UserControl
     /// </summary>
     private void CheckRegistry()
     {
-        RegistryKey key64 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO64\\VSB");
-        RegistryKey key32 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO32\\VSB");
+        RegistryKey? key64 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO64\\VSB");
+        RegistryKey? key32 = Registry.CurrentUser.OpenSubKey("Software\\HWiNFO32\\VSB");
 
         if (key64 != null)
         {
@@ -114,7 +114,7 @@ public partial class Page1 : UserControl
         }
         else
         {
-            HWiNFO info = new()
+            HWiNFO? info = new()
             {
                 Index = 0,
                 Sensor = GetStringResource("MsgText_NoRegistryValues")
@@ -140,7 +140,7 @@ public partial class Page1 : UserControl
         if (pname64.Length == 0 && pname32.Length == 0)
         {
             _log.Error("HWiNFO is not running");
-            ErrorDialog error = new()
+            ErrorDialog? error = new()
             {
                 Message = $"{GetStringResource("MsgText_HWiNFONotRunning")}\n\n{GetStringResource("MsgText_HWiNFONotFound")}"
             };
@@ -155,13 +155,13 @@ public partial class Page1 : UserControl
     /// </summary>
     private static void ReadVSB()
     {
-        using RegistryKey key = Registry.CurrentUser.OpenSubKey(HWiNFO.RegistryKey);
-        HWiNFO info = new();
+        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(HWiNFO.RegistryKey!);
+        HWiNFO? info = new();
         if (key != null)
         {
             foreach (string valname in key.GetValueNames())
             {
-                string value = Registry.GetValue(key.Name, valname, "missing").ToString();
+                string? value = Registry.GetValue(key.Name, valname, "missing")!.ToString();
                 // The registry values are in the form of
                 //    Color#
                 //    Label#
@@ -291,7 +291,7 @@ public partial class Page1 : UserControl
     private async Task SaveToCSVAsync()
     {
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".csv";
-        SaveFileDialog dialog = new()
+        SaveFileDialog? dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveCSV"),
             Filter = "CSV File|*.csv",
@@ -310,7 +310,7 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 _log.Error(ex, "Error saving file.");
-                ErrorDialog error = new()
+                ErrorDialog? error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
@@ -326,7 +326,7 @@ public partial class Page1 : UserControl
     /// </summary>
     private async Task SaveToHtmlAsync()
     {
-        StringBuilder sb = new();
+        StringBuilder? sb = new();
         sb.AppendLine("<!DOCTYPE HTML>")
             .AppendLine("<html>")
             .AppendLine("<head>")
@@ -368,7 +368,7 @@ public partial class Page1 : UserControl
         string html = sb.ToString();
 
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".html";
-        SaveFileDialog dialog = new()
+        SaveFileDialog? dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveHTML"),
             Filter = "HTML File|*.html",
@@ -385,7 +385,7 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 _log.Error(ex, "Error saving file.");
-                ErrorDialog error = new()
+                ErrorDialog? error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
@@ -403,14 +403,14 @@ public partial class Page1 : UserControl
     /// <param name="e"></param>
     private void Card_MouseEnter(object sender, MouseEventArgs e)
     {
-        Card card = sender as Card;
-        ElevationAssist.SetElevation(card, Elevation.Dp4);
+        Card? card = sender as Card;
+        ElevationAssist.SetElevation(card!, Elevation.Dp4);
     }
 
     private void Card_MouseLeave(object sender, MouseEventArgs e)
     {
-        Card card = sender as Card;
-        ElevationAssist.SetElevation(card, Elevation.Dp2);
+        Card? card = sender as Card;
+        ElevationAssist.SetElevation(card!, Elevation.Dp2);
     }
     #endregion Mouse enter/leave shadow effect
 
@@ -472,7 +472,7 @@ public partial class Page1 : UserControl
             filter = "\u00b0";
         }
 
-        ICollectionView cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
+        ICollectionView? cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
         if (filter?.Length == 0)
         {
             cv.Filter = null;
@@ -482,11 +482,11 @@ public partial class Page1 : UserControl
         {
             cv.Filter = o =>
             {
-                HWiNFO hw = o as HWiNFO;
-                return hw.Label.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Sensor.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Value.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Index.ToString().Contains(filter, StringComparison.OrdinalIgnoreCase);
+                HWiNFO? hw = o as HWiNFO;
+                return hw!.Label!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Sensor!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Value!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Index.ToString().Contains(filter!, StringComparison.OrdinalIgnoreCase);
             };
             if (HWGrid.Items.Count == 1)
             {

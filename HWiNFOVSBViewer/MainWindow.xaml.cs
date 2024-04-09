@@ -52,11 +52,11 @@ public partial class MainWindow : Window
         _log.Debug($".Net version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
 
         // Log the startup & current culture
-        _log.Debug($"Startup culture: {App.StartupCulture.Name}  UI: {App.StartupUICulture.Name}");
+        _log.Debug($"Startup culture: {App.StartupCulture!.Name}  UI: {App.StartupUICulture!.Name}");
         _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
 
         // Log the language file and number of strings loaded
-        if (!App.LanguageFile.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
+        if (!App.LanguageFile!.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
         {
             _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
         }
@@ -65,7 +65,7 @@ public partial class MainWindow : Window
             _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
         }
 
-        if (UserSettings.Setting.LanguageTesting)
+        if (UserSettings.Setting!.LanguageTesting)
         {
             _log.Info("Language testing enabled");
             _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
@@ -75,17 +75,17 @@ public partial class MainWindow : Window
         MainWindowHelpers.SetWindowPosition();
 
         // Light or dark
-        MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting.UITheme);
+        MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting!.UITheme);
 
         // Primary color
-        MainWindowUIHelpers.SetPrimaryColor(UserSettings.Setting.PrimaryColor);
+        MainWindowUIHelpers.SetPrimaryColor(UserSettings.Setting!.PrimaryColor);
 
         // UI size
-        MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
+        MainWindowUIHelpers.UIScale(UserSettings.Setting!.UISize);
 
         // Settings change event
-        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged!;
-        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged!;
+        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         NavigateToPage(NavPage.Viewer);
     }
@@ -147,7 +147,7 @@ public partial class MainWindow : Window
         {
             if (e.Key == Key.A)
             {
-                if (UserSettings.Setting.PrimaryColor >= AccentColor.White)
+                if (UserSettings.Setting!.PrimaryColor >= AccentColor.White)
                 {
                     UserSettings.Setting.PrimaryColor = 0;
                 }
@@ -161,7 +161,7 @@ public partial class MainWindow : Window
             }
             if (e.Key == Key.M)
             {
-                switch (UserSettings.Setting.UITheme)
+                switch (UserSettings.Setting!.UITheme)
                 {
                     case ThemeType.Light:
                         UserSettings.Setting.UITheme = ThemeType.Dark;
@@ -182,11 +182,11 @@ public partial class MainWindow : Window
             }
             if (e.Key == Key.R)
             {
-                Page1.P1.ResetCols();
+                Page1.P1!.ResetCols();
             }
             if (e.Key == Key.S)
             {
-                if (UserSettings.Setting.RowSpacing >= Spacing.Wide)
+                if (UserSettings.Setting!.RowSpacing >= Spacing.Wide)
                 {
                     UserSettings.Setting.RowSpacing = 0;
                 }
@@ -197,7 +197,7 @@ public partial class MainWindow : Window
             }
             if (e.Key == Key.W)
             {
-                if (UserSettings.Setting.GridFontWeight >= Weight.Bold)
+                if (UserSettings.Setting!.GridFontWeight >= Weight.Bold)
                 {
                     UserSettings.Setting.GridFontWeight = 0;
                 }
@@ -216,7 +216,7 @@ public partial class MainWindow : Window
             }
             if (e.Key == Key.NumPad0)
             {
-                UserSettings.Setting.UISize = MySize.Default;
+                UserSettings.Setting!.UISize = MySize.Default;
             }
             if (e.Key == Key.OemComma)
             {
@@ -251,7 +251,7 @@ public partial class MainWindow : Window
 
         if (e.Key == Key.F5)
         {
-            Page1.P1.RefreshData();
+            Page1.P1!.RefreshData();
         }
     }
     #endregion Keyboard Events

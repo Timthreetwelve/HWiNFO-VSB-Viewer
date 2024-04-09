@@ -13,33 +13,33 @@ public static class SettingChange
     /// </summary>
     public static void UserSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
         _log.Debug($"Setting change: {e.PropertyName} New Value: {newValue}");
 
         switch (e.PropertyName)
         {
             case nameof(UserSettings.Setting.IncludeDebug):
-                SetLogLevel((bool)newValue);
+                SetLogLevel((bool)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UITheme):
-                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue);
+                MainWindowUIHelpers.SetBaseTheme((ThemeType)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.PrimaryColor):
-                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue);
+                MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.GridFontWeight):
-                Page1.P1.SetFontWeight((Weight)newValue);
+                Page1.P1!.SetFontWeight((Weight)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.RowSpacing):
-                Page1.P1.SetRowSpacing((Spacing)newValue);
+                Page1.P1!.SetRowSpacing((Spacing)newValue!);
                 break;
 
             case nameof(UserSettings.Setting.UISize):
-                int size = (int)newValue;
+                int size = (int)newValue!;
                 MainWindowUIHelpers.UIScale((MySize)size);
                 break;
 
@@ -57,7 +57,7 @@ public static class SettingChange
     /// </summary>
     internal static void TempSettingChanged(object sender, PropertyChangedEventArgs e)
     {
-        object newValue = MainWindowHelpers.GetPropertyValue(sender, e);
+        object? newValue = MainWindowHelpers.GetPropertyValue(sender, e);
         // Write to trace level to avoid unnecessary message in log file
         _log.Trace($"Temp Setting change: {e.PropertyName} New Value: {newValue}");
     }

@@ -11,7 +11,7 @@ public partial class ErrorDialog : UserControl
     /// <summary>
     /// Message to be displayed
     /// </summary>
-    public string Message { get; set; }
+    public string? Message { get; set; }
 
     public ErrorDialog()
     {

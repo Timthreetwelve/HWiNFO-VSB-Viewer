@@ -9,7 +9,7 @@ internal static class MainWindowUIHelpers
     /// Gets the current theme
     /// </summary>
     /// <returns>Dark or Light</returns>
-    internal static string GetSystemTheme()
+    internal static string? GetSystemTheme()
     {
         BaseTheme? sysTheme = Theme.GetSystemTheme();
         return sysTheme != null ? sysTheme.ToString() : string.Empty;
@@ -27,7 +27,7 @@ internal static class MainWindowUIHelpers
 
         if (mode == ThemeType.System)
         {
-            mode = GetSystemTheme().Equals("light") ? ThemeType.Light : ThemeType.Darker;
+            mode = GetSystemTheme()!.Equals("light", StringComparison.Ordinal) ? ThemeType.Light : ThemeType.Darker;
         }
 
         switch (mode)
@@ -45,7 +45,7 @@ internal static class MainWindowUIHelpers
                 theme.Cards.Background = (Color)ColorConverter.ConvertFromString("#FF141414");
                 theme.Background = (Color)ColorConverter.ConvertFromString("#FF202020");
                 theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FF303030");
-                theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0"); 
+                theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0");
                 break;
             default:
                 theme.SetBaseTheme(BaseTheme.Light);
@@ -125,7 +125,7 @@ internal static class MainWindowUIHelpers
             MySize.Largest => 1.2,
             _ => 1.0,
         };
-        UserSettings.Setting.DialogScale = newSize;
+        UserSettings.Setting!.DialogScale = newSize;
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void EverythingSmaller()
     {
-        MySize size = UserSettings.Setting.UISize;
+        MySize size = UserSettings.Setting!.UISize;
         if (size > 0)
         {
             size--;
@@ -147,7 +147,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void EverythingLarger()
     {
-        MySize size = UserSettings.Setting.UISize;
+        MySize size = UserSettings.Setting!.UISize;
         if (size < MySize.Largest)
         {
             size++;
@@ -167,7 +167,7 @@ internal static class MainWindowUIHelpers
         MainWindowHelpers.SetWindowPosition();
 
         // Light or dark theme
-        SetBaseTheme(UserSettings.Setting.UITheme);
+        SetBaseTheme(UserSettings.Setting!.UITheme);
 
         // Primary accent color
         SetPrimaryColor(UserSettings.Setting.PrimaryColor);

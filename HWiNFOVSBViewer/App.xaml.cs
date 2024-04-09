@@ -20,22 +20,22 @@ namespace HWiNFOVSBViewer
         /// <summary>
         /// Uri of the resource dictionary
         /// </summary>
-        public static string LanguageFile { get; set; }
+        public static string? LanguageFile { get; set; }
 
         /// <summary>
         /// Uri of the test resource dictionary
         /// </summary>
-        public static string TestLanguageFile { get; set; }
+        public static string? TestLanguageFile { get; set; }
 
         /// <summary>
         /// Culture at startup
         /// </summary>
-        public static CultureInfo StartupCulture { get; set; }
+        public static CultureInfo? StartupCulture { get; set; }
 
         /// <summary>
         /// UI Culture at startup
         /// </summary>
-        public static CultureInfo StartupUICulture { get; set; }
+        public static CultureInfo? StartupUICulture { get; set; }
 
         /// <summary>
         /// Number of language strings in the default resource dictionary
@@ -71,25 +71,25 @@ namespace HWiNFOVSBViewer
                 string currentLanguage = Thread.CurrentThread.CurrentCulture.Name;
 
                 // If option to use OS language is true and it exists in the list of defined languages, use it but do not change current culture.
-                if (UserSettings.Setting.UseOSLanguage &&
+                if (UserSettings.Setting!.UseOSLanguage &&
                     UILanguage.DefinedLanguages.Exists(x => x.LanguageCode == currentLanguage))
                 {
                     resDict.Source = new Uri($"Languages/Strings.{currentLanguage}.xaml", UriKind.RelativeOrAbsolute);
                 }
                 // If option to use OS language is true and language is not defined, use en-US but do not change current culture.
-                else if (UserSettings.Setting.UseOSLanguage &&
+                else if (UserSettings.Setting!.UseOSLanguage &&
                          !UILanguage.DefinedLanguages.Exists(x => x.LanguageCode == currentLanguage))
                 {
                     resDict.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
                 }
                 // If a language is defined in settings and it exists in the list of defined languages, set the current culture and language to it.
-                else if (!UserSettings.Setting.UseOSLanguage &&
+                else if (!UserSettings.Setting!.UseOSLanguage &&
                          !string.IsNullOrEmpty(UserSettings.Setting.UILanguage) &&
-                         UILanguage.DefinedLanguages.Exists(x => x.LanguageCode == UserSettings.Setting.UILanguage))
+                         UILanguage.DefinedLanguages.Exists(x => x.LanguageCode == UserSettings.Setting!.UILanguage))
                 {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo(UserSettings.Setting.UILanguage);
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(UserSettings.Setting.UILanguage);
-                    resDict.Source = new Uri($"Languages/Strings.{UserSettings.Setting.UILanguage}.xaml", UriKind.RelativeOrAbsolute);
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo(UserSettings.Setting!.UILanguage);
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(UserSettings.Setting!.UILanguage);
+                    resDict.Source = new Uri($"Languages/Strings.{UserSettings.Setting!.UILanguage}.xaml", UriKind.RelativeOrAbsolute);
                 }
                 else
                 {
@@ -120,7 +120,7 @@ namespace HWiNFOVSBViewer
             }
 
             // Language testing
-            if (UserSettings.Setting.LanguageTesting)
+            if (UserSettings.Setting!.LanguageTesting)
             {
                 ResourceDictionary testDict = [];
                 string testLanguageFile = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");

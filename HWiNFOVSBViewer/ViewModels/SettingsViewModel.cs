@@ -34,6 +34,4 @@ public partial class SettingsViewModel : ObservableObject
             _ = await DialogHost.Show(error, "MainDialogHost");
         }
     }
-
-
 }
