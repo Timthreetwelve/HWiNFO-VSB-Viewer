@@ -58,7 +58,7 @@ namespace HWiNFOVSBViewer
             ConfigHelpers.InitializeSettings();
 
             // Resource dictionary for language
-            ResourceDictionary resDict = new();
+            ResourceDictionary resDict = [];
 
             // Get culture info at startup
             StartupCulture = CultureInfo.CurrentCulture;
@@ -122,7 +122,7 @@ namespace HWiNFOVSBViewer
             // Language testing
             if (UserSettings.Setting.LanguageTesting)
             {
-                ResourceDictionary testDict = new();
+                ResourceDictionary testDict = [];
                 string testLanguageFile = Path.Combine(AppInfo.AppDirectory, "Strings.test.xaml");
                 if (File.Exists(testLanguageFile))
                 {
