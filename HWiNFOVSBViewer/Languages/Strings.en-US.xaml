@@ -83,6 +83,10 @@
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">Column sort cleared</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
+    <sys:String x:Key="MsgText_ErrorGeneral">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Error opening {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Error reading {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Error saving file.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Could not find a process named HWiNFO64 or HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is not running.</sys:String>
@@ -94,6 +98,7 @@
     <sys:String x:Key="MsgText_RowsShown1">1 row shown</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">All rows shown</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">rows shown</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">See the log file for additional information.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Accent color set to {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Size set to {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Theme set to {0}</sys:String>
@@ -186,6 +191,13 @@
     <!-- Begin changes on 2023/11/11 @ 22:30 UTC -->
     <!-- * | Updated comments in this file -->
     <!-- * | Moved all items to appropriate sections above -->
-    <!-- Begin changes on 2023/11/11  -->
+    <!-- End of changes on 2023/11/11  -->
 
+    <!-- Begin changes on 2024/04/09 @ 00:45 UTC -->
+    <!-- A | MsgText_ErrorCaption -->
+    <!-- A | MsgText_ErrorGeneral -->
+    <!-- A | MsgText_ErrorOpeningFile -->
+    <!-- A | MsgText_ErrorReadingFile -->
+    <!-- A | MsgText_SeeLogFile -->
+    <!-- End of changes on 2024/04/09 @ 00:45 UTC -->
 </ResourceDictionary>

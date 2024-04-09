@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -128,7 +128,7 @@ public partial class MainWindow : Window
     private void Window_Closing(object sender, CancelEventArgs e)
     {
         stopwatch.Stop();
-        log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
+        _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
                         $"{GetStringResource("MsgText_ElapsedTime")}: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
         // Shut down NLog
@@ -287,8 +287,11 @@ public partial class MainWindow : Window
         }
         _log.Error(e.StackTrace);
 
-        //_ = new MDCustMsgBox("An error has occurred. See the log file",
-        //    "DailyDocuments Error", ButtonType.Ok).ShowDialog();
+        string msg = string.Format($"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
+        _ = MessageBox.Show(msg,
+            GetStringResource("MsgText_ErrorCaption"),
+            MessageBoxButton.OK,
+            MessageBoxImage.Error);
     }
     #endregion Unhandled Exception Handler
 
@@ -307,15 +310,4 @@ public partial class MainWindow : Window
         Width = width + 1;
     }
     #endregion Double click ColorZone
-
-    #region Running as Administrator?
-    /// <summary>
-    /// Determines if running as administrator (elevated)
-    /// </summary>
-    /// <returns>True if running elevated</returns>
-    public static bool IsAdministrator()
-    {
-        return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-    }
-    #endregion Running as Administrator?
 }
