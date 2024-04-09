@@ -166,9 +166,6 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void ApplyUISettings()
     {
-        // Put version number in window title
-        //_mainWindow.Title = MainWindowHelpers.WindowTitleVersionAdmin();
-
         // Window position
         MainWindowHelpers.SetWindowPosition();
 
