@@ -14,7 +14,7 @@
     d:DesignWidth="600"
     TextElement.FontSize="14"
     TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     mc:Ignorable="d">
@@ -33,7 +33,7 @@
     </UserControl.Resources>
     <!--#endregion-->
 
-    <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+    <Grid Background="{DynamicResource MaterialDesign.Brush.Card.Background}">
         <ScrollViewer Margin="15,15,15,5"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
@@ -70,7 +70,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="MonitorEdit" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"
@@ -238,7 +238,7 @@
                                                      Width="28" Height="28"
                                                      Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
-                                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                                     Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="Language" />
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                        FontSize="16" FontWeight="SemiBold"
@@ -353,7 +353,7 @@
                         <Rectangle Grid.Row="3" Grid.Column="1"
                                    Margin="0,5,75,10"
                                    HorizontalAlignment="Stretch"
-                                   Fill="{DynamicResource MaterialDesignDivider}"
+                                   Fill="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                                    Height="2"/>
 
                         <StackPanel Grid.Row="4" Grid.Column="1"

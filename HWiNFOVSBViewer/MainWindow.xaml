@@ -9,12 +9,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="800" Height="450"
     MinWidth="710" MinHeight="300"
-    Background="{DynamicResource MaterialDesignPaper}"
+    Background="{DynamicResource MaterialDesign.Brush.Background}"
     Closing="Window_Closing" FontSize="14"
     KeyDown="Window_KeyDown"
     Style="{StaticResource MaterialDesignWindow}"
     TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
     Topmost="{Binding KeepOnTop, Source={x:Static config:UserSettings.Setting}}"
@@ -46,7 +46,7 @@
 
             <materialDesign:DrawerHost
                 x:Name="NavDrawer" Grid.Row="1"
-                LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
+                LeftDrawerBackground="{DynamicResource MaterialDesign.Brush.Background}">
 
                 <!--#region Navigation Drawer Content-->
                 <materialDesign:DrawerHost.LeftDrawerContent>
@@ -153,7 +153,7 @@
                             ToolTip="{DynamicResource Button_ThreeDotToolTip}">
                             <Border
                                 Padding="3"
-                                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                BorderBrush="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
                                 BorderThickness="2">
                                 <Grid Width="Auto">
                                     <StackPanel Orientation="Vertical">
@@ -169,7 +169,7 @@
                                             ToolTip="{DynamicResource About_DocumentationToolTip}" />
                                         <Separator
                                             Margin="0" Padding="1"
-                                            Background="{DynamicResource MaterialDesignDivider}" />
+                                            Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                         <Button
                                             Height="35" Padding="15,1,15,22"
                                             HorizontalContentAlignment="Left"
