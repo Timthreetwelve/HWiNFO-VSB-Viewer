@@ -17,7 +17,7 @@ public static class TextFileViewer
     /// </summary>
     /// <param name="textFile">Full path for text file</param>
     ///
-    public static void ViewTextFile(string textFile)
+    public static void ViewTextFile(string? textFile)
     {
         try
         {

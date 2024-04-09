@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -84,8 +84,8 @@ public partial class MainWindow : Window
         MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
 
         // Settings change event
-        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged;
-        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged;
+        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged!;
+        TempSettings.Setting.PropertyChanged += SettingChange.TempSettingChanged!;
 
         NavigateToPage(NavPage.Viewer);
     }
