@@ -4,10 +4,6 @@ namespace HWiNFOVSBViewer.Helpers;
 
 internal static class MainWindowUIHelpers
 {
-    #region MainWindow instance
-    private static readonly MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
-    #endregion MainWindow instance
-
     #region Theme
     /// <summary>
     /// Gets the current theme
@@ -49,7 +45,7 @@ internal static class MainWindowUIHelpers
                 theme.Cards.Background = (Color)ColorConverter.ConvertFromString("#FF141414");
                 theme.Background = (Color)ColorConverter.ConvertFromString("#FF202020");
                 theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FF303030");
-                theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0");
+                theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0"); 
                 break;
             default:
                 theme.SetBaseTheme(BaseTheme.Light);
@@ -129,7 +125,7 @@ internal static class MainWindowUIHelpers
             MySize.Largest => 1.2,
             _ => 1.0,
         };
-        _mainWindow.MainGrid.LayoutTransform = new ScaleTransform(newSize, newSize);
+        UserSettings.Setting.DialogScale = newSize;
     }
 
     /// <summary>

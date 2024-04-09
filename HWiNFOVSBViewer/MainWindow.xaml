@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Class="HWiNFOVSBViewer.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -28,6 +28,11 @@
             <Setter Property="FontSize" Value="30" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
+        <ScaleTransform x:Key="DialogScale"
+                        ScaleX="{Binding Path=DialogScale,
+                                         Source={x:Static config:UserSettings.Setting}}"
+                        ScaleY="{Binding Path=DialogScale,
+                                         Source={x:Static config:UserSettings.Setting}}" />
     </Window.Resources>
     <!--#endregion-->
 

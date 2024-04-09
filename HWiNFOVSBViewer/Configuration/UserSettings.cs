@@ -7,6 +7,12 @@ public partial class UserSettings : ConfigManager<UserSettings>
 {
     #region Properties
     [ObservableProperty]
+    private static double _dialogScale = 1;
+
+    [ObservableProperty]
+    private Weight _gridFontWeight = Weight.Regular;
+
+    [ObservableProperty]
     private bool _includeDebug = true;
 
     [ObservableProperty]
@@ -47,8 +53,5 @@ public partial class UserSettings : ConfigManager<UserSettings>
 
     [ObservableProperty]
     private double _windowWidth = 1200;
-
-    [ObservableProperty]
-    private Weight _gridFontWeight = Weight.Regular;
     #endregion Properties
 }
