@@ -7,16 +7,23 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Width="800" Height="450"
+        Width="{Binding WindowWidth,
+                        Source={x:Static config:UserSettings.Setting}}"
+        Height="{Binding WindowHeight,
+                         Source={x:Static config:UserSettings.Setting}}"
         MinWidth="710" MinHeight="300"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
         Closing="Window_Closing" FontSize="14"
         KeyDown="Window_KeyDown"
+        Left="{Binding WindowLeft,
+                       Source={x:Static config:UserSettings.Setting}}"
         Style="{StaticResource MaterialDesignWindow}"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
+        Top="{Binding WindowTop,
+                      Source={x:Static config:UserSettings.Setting}}"
         Topmost="{Binding KeepOnTop,
                           Source={x:Static config:UserSettings.Setting}}">
 

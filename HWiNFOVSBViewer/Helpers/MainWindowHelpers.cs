@@ -11,12 +11,7 @@ internal static class MainWindowHelpers
     public static void SetWindowPosition()
     {
         Window mainWindow = Application.Current.MainWindow;
-        mainWindow.Height = UserSettings.Setting!.WindowHeight;
-        mainWindow.Left = UserSettings.Setting!.WindowLeft;
-        mainWindow.Top = UserSettings.Setting!.WindowTop;
-        mainWindow.Width = UserSettings.Setting!.WindowWidth;
-
-        if (UserSettings.Setting.StartCentered)
+        if (UserSettings.Setting!.StartCentered)
         {
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
