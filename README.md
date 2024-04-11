@@ -44,8 +44,11 @@ Get HWiNFO here [www.hwinfo.com](https://www.hwinfo.com/)
 * The entire grid can be exported as CSV or HTML.
 * Individual grid cells can copied to the clipboard.
 
-## Screenshot
-![Screenshot of 0.3.0](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/Images/HWiNFOVSBViewer3.png)
+## Main window
+![Screenshot 1](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/Images/HWiNFOVSBViewer_6a.png)
+
+## Filtered 
+![Screenshot 1](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/blob/main/Images/HWiNFOVSBViewer_6b.png)
 
 ## Download
 Download from [here](https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/releases) 
