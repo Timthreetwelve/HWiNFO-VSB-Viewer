@@ -3,21 +3,20 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
-
+        
         https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
-
+        
         =======================================================================
-
+        
         Application name:            HWiNFO VSB Viewer
-
+        
         Language name:               Italian
-
+        
         Translation contributed by:  RB
-
+        
         Date last updated:           08.11.2023
-
+        
         =======================================================================
-
     -->
 
     <!--  About Page  -->
@@ -122,7 +121,7 @@
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa la lingua di visualizzazione di Windows</sys:String>
-    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata, se è disponibile la traduzione, verrà usata la lingua </sys:String>
+    <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata, se è disponibile la traduzione, verrà usata la lingua</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine2">specificata nelle impostazioni di Windows, altrimenti verrà utilizzato l'inglese (en-US).</sys:String>
     <!--  Enums for Combo Boxes on the Settings Page  -->
     <sys:String x:Key="SettingsEnum_AccentColor_Amber">Ambra</sys:String>
@@ -165,27 +164,29 @@
     <sys:String x:Key="SettingsEnum_Theme_Light">Chiaro</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Sistema</sys:String>
 
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    LANGUAGE FILE UPDATES
+    <!--
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        LANGUAGE FILE UPDATES
+        
+        Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+        be associated with a comment made below this block.
+        
+        Comment Format:
+        There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+        Modified lines will follow, one comment line per line changed.
+        Comment lines use this syntax:  Change Type | Key Name
+        
+        Change type:
+        A = Added
+        D = Deleted
+        U = Updated
+        * = Comment not related to a single line
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    -->
 
-    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
-    be associated with a comment made below this block.
-
-    Comment Format:
-       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
-       Modified lines will follow, one comment line per line changed.
-       Comment lines use this syntax:  Change Type | Key Name
-
-     Change type:
-       A = Added
-       D = Deleted
-       U = Updated
-       * = Comment not related to a single line
-     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-    <!-- Begin changes on 2023/11/11 @ 22:30 UTC -->
-    <!-- * | Updated comments in this file -->
-    <!-- * | Moved all items to appropriate sections above -->
-    <!-- Begin changes on 2023/11/11  -->
+    <!--  Begin changes on 2023/11/11 @ 22:30 UTC  -->
+    <!--  * | Updated comments in this file  -->
+    <!--  * | Moved all items to appropriate sections above  -->
+    <!--  Begin changes on 2023/11/11  -->
 
 </ResourceDictionary>

@@ -1,23 +1,21 @@
-<UserControl
-    x:Class="HWiNFOVSBViewer.Pages.Page2"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:HWiNFOVSBViewer"
-    xmlns:convert="clr-namespace:HWiNFOVSBViewer.Converters"
-    xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
-    xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
-    xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="600"
-    TextElement.FontSize="14"
-    TextElement.FontWeight="Regular"
-    TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    mc:Ignorable="d">
+﻿<UserControl x:Class="HWiNFOVSBViewer.Pages.Page2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
+             xmlns:convert="clr-namespace:HWiNFOVSBViewer.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:HWiNFOVSBViewer"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
+             xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="600"
+             TextElement.FontSize="14"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto">
 
     <!--#region DataContext & Resources-->
     <UserControl.DataContext>
@@ -348,10 +346,10 @@
                                    TextWrapping="Wrap" />
 
                         <Rectangle Grid.Row="3" Grid.Column="1"
+                                   Height="2"
                                    Margin="0,5,75,10"
                                    HorizontalAlignment="Stretch"
-                                   Fill="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}"
-                                   Height="2"/>
+                                   Fill="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
 
                         <StackPanel Grid.Row="4" Grid.Column="1"
                                     Orientation="Horizontal">

@@ -1,17 +1,15 @@
-﻿<Application
-    x:Class="HWiNFOVSBViewer.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:HWiNFOVSBViewer"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    StartupUri="MainWindow.xaml">
+﻿<Application x:Class="HWiNFOVSBViewer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HWiNFOVSBViewer"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme
-                    BaseTheme="Dark"
-                    ColorAdjustment="{materialDesign:ColorAdjustment}"
-                    PrimaryColor="Blue" SecondaryColor="Red" />
+                <materialDesign:BundledTheme BaseTheme="Dark"
+                                             ColorAdjustment="{materialDesign:ColorAdjustment}"
+                                             PrimaryColor="Blue" SecondaryColor="Red" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
                 <!--  es-US will be the fallback source for localized strings  -->
                 <ResourceDictionary Source="Languages/Strings.en-US.xaml" />

@@ -22,7 +22,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region Refresh button style -->
+    <!--#region Refresh button style-->
     <Style TargetType="Button"
            x:Key="RefreshButton"
            BasedOn="{StaticResource MaterialDesignOutlinedButton}">

@@ -1,23 +1,22 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
         BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
-
+        
         https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
-
+        
         =======================================================================
-
+        
         Application name:            HWiNFO VSB Viewer
-
+        
         Language name:
-
+        
         Translation contributed by:
-
+        
         Date last updated:
-
+        
         =======================================================================
-
     -->
 
     <!--  About Page  -->
@@ -170,34 +169,36 @@
     <sys:String x:Key="SettingsEnum_Theme_Light">Light</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">System</sys:String>
 
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    LANGUAGE FILE UPDATES
+    <!--
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        LANGUAGE FILE UPDATES
+        
+        Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
+        be associated with a comment made below this block.
+        
+        Comment Format:
+        There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
+        Modified lines will follow, one comment line per line changed.
+        Comment lines use this syntax:  Change Type | Key Name
+        
+        Change type:
+        A = Added
+        D = Deleted
+        U = Updated
+        * = Comment not related to a single line
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    -->
 
-    Additions, Deletions and Updates will be made in the appropriate sections above. Each change will
-    be associated with a comment made below this block.
+    <!--  Begin changes on 2023/11/11 @ 22:30 UTC  -->
+    <!--  * | Updated comments in this file  -->
+    <!--  * | Moved all items to appropriate sections above  -->
+    <!--  End of changes on 2023/11/11  -->
 
-    Comment Format:
-       There will be a header indicating when the change was made (date yyyy/mm/dd and UTC time).
-       Modified lines will follow, one comment line per line changed.
-       Comment lines use this syntax:  Change Type | Key Name
-
-     Change type:
-       A = Added
-       D = Deleted
-       U = Updated
-       * = Comment not related to a single line
-     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-    <!-- Begin changes on 2023/11/11 @ 22:30 UTC -->
-    <!-- * | Updated comments in this file -->
-    <!-- * | Moved all items to appropriate sections above -->
-    <!-- End of changes on 2023/11/11  -->
-
-    <!-- Begin changes on 2024/04/09 @ 00:45 UTC -->
-    <!-- A | MsgText_ErrorCaption -->
-    <!-- A | MsgText_ErrorGeneral -->
-    <!-- A | MsgText_ErrorOpeningFile -->
-    <!-- A | MsgText_ErrorReadingFile -->
-    <!-- A | MsgText_SeeLogFile -->
-    <!-- End of changes on 2024/04/09 @ 00:45 UTC -->
+    <!--  Begin changes on 2024/04/09 @ 00:45 UTC  -->
+    <!--  A | MsgText_ErrorCaption  -->
+    <!--  A | MsgText_ErrorGeneral  -->
+    <!--  A | MsgText_ErrorOpeningFile  -->
+    <!--  A | MsgText_ErrorReadingFile  -->
+    <!--  A | MsgText_SeeLogFile  -->
+    <!--  End of changes on 2024/04/09 @ 00:45 UTC  -->
 </ResourceDictionary>
