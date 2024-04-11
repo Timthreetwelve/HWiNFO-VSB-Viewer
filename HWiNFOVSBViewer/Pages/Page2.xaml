@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="HWiNFOVSBViewer.Pages.Page2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -58,7 +58,6 @@
                             <!--#region Row definitions-->
                             <Grid.RowDefinitions>
                                 <RowDefinition />
-                                <RowDefinition Height="5" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -66,9 +65,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <materialDesign:PackIcon Grid.RowSpan="3"
+                            <materialDesign:PackIcon Grid.RowSpan="2"
                                                      Width="28" Height="28"
-                                                     Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
                                                      Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="MonitorEdit" />
@@ -76,7 +74,7 @@
                                        FontSize="16" FontWeight="SemiBold"
                                        Text="{DynamicResource SettingsSection_AppSettings}"
                                        TextWrapping="Wrap" />
-                            <TextBlock Grid.Row="2" Grid.Column="1"
+                            <TextBlock Grid.Row="1" Grid.Column="1"
                                        FontSize="12"
                                        Text="{DynamicResource SettingsSubHead_AppSettings}"
                                        TextWrapping="Wrap" />
@@ -176,7 +174,8 @@
                         <!--#endregion-->
 
                         <!--#region CheckBoxes (bottom)-->
-                        <Grid Grid.Row="1" Grid.Column="1" Margin="0,15,0,0">
+                        <Grid Grid.Row="1" Grid.Column="1"
+                              Margin="0,15,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" MinHeight="38" />
                                 <RowDefinition Height="auto" MinHeight="38" />
@@ -226,7 +225,6 @@
                             <!--#region Row definitions-->
                             <Grid.RowDefinitions>
                                 <RowDefinition />
-                                <RowDefinition Height="5" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -234,9 +232,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <materialDesign:PackIcon Grid.RowSpan="3"
+                            <materialDesign:PackIcon Grid.RowSpan="2"
                                                      Width="28" Height="28"
-                                                     Margin="0,5,0,0"
                                                      VerticalAlignment="Center"
                                                      Foreground="{DynamicResource MaterialDesign.Brush.Primary}"
                                                      Kind="Language" />
@@ -244,7 +241,7 @@
                                        FontSize="16" FontWeight="SemiBold"
                                        Text="{DynamicResource SettingsSection_Language}"
                                        TextWrapping="Wrap" />
-                            <TextBlock Grid.Row="2" Grid.Column="1"
+                            <TextBlock Grid.Row="1" Grid.Column="1"
                                        FontSize="12"
                                        Text="{DynamicResource SettingsSubHead_Language}"
                                        TextWrapping="Wrap" />
