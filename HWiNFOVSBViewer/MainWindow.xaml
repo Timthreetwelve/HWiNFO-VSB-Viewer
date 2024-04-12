@@ -29,11 +29,6 @@
 
     <!--#region Window resources-->
     <Window.Resources>
-        <Style TargetType="{x:Type materialDesign:SnackbarMessage}"
-               BasedOn="{StaticResource {x:Type materialDesign:SnackbarMessage}}">
-            <Setter Property="FontSize" Value="30" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-        </Style>
         <ScaleTransform x:Key="DialogScale"
                         ScaleX="{Binding Path=DialogScale,
                                          Source={x:Static config:UserSettings.Setting}}"
