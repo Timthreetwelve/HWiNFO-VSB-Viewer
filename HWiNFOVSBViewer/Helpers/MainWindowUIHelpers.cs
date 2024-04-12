@@ -43,7 +43,7 @@ internal static class MainWindowUIHelpers
                 // Set card and paper background colors a bit darker
                 theme.SetBaseTheme(BaseTheme.Dark);
                 theme.Cards.Background = (Color)ColorConverter.ConvertFromString("#FF141414");
-                theme.Background = (Color)ColorConverter.ConvertFromString("#FF202020");
+                theme.Background = (Color)ColorConverter.ConvertFromString("#FF282828");
                 theme.DataGrids.Selected = (Color)ColorConverter.ConvertFromString("#FF303030");
                 theme.Foreground = (Color)ColorConverter.ConvertFromString("#E5F0F0F0");
                 break;

@@ -1,4 +1,4 @@
-<Window x:Class="HWiNFOVSBViewer.MainWindow"
+﻿<Window x:Class="HWiNFOVSBViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
@@ -31,62 +31,63 @@
 
             <materialDesign:DrawerHost x:Name="NavDrawer"
                                        Grid.Row="1"
-                                       LeftDrawerBackground="{DynamicResource MaterialDesign.Brush.Background}">
-
+                                       OpenMode="Standard">
                 <!--#region Navigation Drawer Content-->
                 <materialDesign:DrawerHost.LeftDrawerContent>
-                    <ListBox x:Name="NavListBox"
-                             Width="Auto" MinWidth="160"
-                             Margin="0,16,0,16"
-                             HorizontalAlignment="Left"
-                             FontSize="16"
-                             SelectionChanged="NavListBox_SelectionChanged"
-                             Style="{StaticResource MaterialDesignNavigationListBox}">
-                        <ListBoxItem>
-                            <ListBoxItem.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Style="{StaticResource NavItemIndicator}" />
-                                    <materialDesign:PackIcon Width="24" Height="24"
-                                                             Kind="Binoculars" />
-                                    <TextBlock Margin="10,0" VerticalAlignment="Center"
-                                               Text="{DynamicResource NavItem_Viewer}" />
-                                </StackPanel>
-                            </ListBoxItem.Content>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <ListBoxItem.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Style="{StaticResource NavItemIndicator}" />
-                                    <materialDesign:PackIcon Width="24" Height="24"
-                                                             Kind="Cog" />
-                                    <TextBlock Margin="10,0" VerticalAlignment="Center"
-                                               Text="{DynamicResource NavItem_Settings}" />
-                                </StackPanel>
-                            </ListBoxItem.Content>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <ListBoxItem.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Style="{StaticResource NavItemIndicator}" />
-                                    <materialDesign:PackIcon Width="24" Height="24"
-                                                             Kind="AboutOutline" />
-                                    <TextBlock Margin="10,0" VerticalAlignment="Center"
-                                               Text="{DynamicResource NavItem_About}" />
-                                </StackPanel>
-                            </ListBoxItem.Content>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <ListBoxItem.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Style="{StaticResource NavItemIndicator}" />
-                                    <materialDesign:PackIcon Width="24" Height="24"
-                                                             Kind="ExitRun" />
-                                    <TextBlock Margin="10,0" VerticalAlignment="Center"
-                                               Text="{DynamicResource NavItem_Exit}" />
-                                </StackPanel>
-                            </ListBoxItem.Content>
-                        </ListBoxItem>
-                    </ListBox>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp2">
+                        <ListBox x:Name="NavListBox"
+                                 Width="Auto" MinWidth="160"
+                                 Margin="0,16,0,16"
+                                 HorizontalAlignment="Left"
+                                 FontSize="16"
+                                 SelectionChanged="NavListBox_SelectionChanged"
+                                 Style="{StaticResource MaterialDesignNavigationListBox}">
+                            <ListBoxItem>
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Style="{StaticResource NavItemIndicator}" />
+                                        <materialDesign:PackIcon Width="24" Height="24"
+                                                                 Kind="Binoculars" />
+                                        <TextBlock Margin="10,0" VerticalAlignment="Center"
+                                                   Text="{DynamicResource NavItem_Viewer}" />
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Style="{StaticResource NavItemIndicator}" />
+                                        <materialDesign:PackIcon Width="24" Height="24"
+                                                                 Kind="Cog" />
+                                        <TextBlock Margin="10,0" VerticalAlignment="Center"
+                                                   Text="{DynamicResource NavItem_Settings}" />
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Style="{StaticResource NavItemIndicator}" />
+                                        <materialDesign:PackIcon Width="24" Height="24"
+                                                                 Kind="AboutOutline" />
+                                        <TextBlock Margin="10,0" VerticalAlignment="Center"
+                                                   Text="{DynamicResource NavItem_About}" />
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Style="{StaticResource NavItemIndicator}" />
+                                        <materialDesign:PackIcon Width="24" Height="24"
+                                                                 Kind="ExitRun" />
+                                        <TextBlock Margin="10,0" VerticalAlignment="Center"
+                                                   Text="{DynamicResource NavItem_Exit}" />
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                        </ListBox>
+                    </materialDesign:Card>
                 </materialDesign:DrawerHost.LeftDrawerContent>
                 <!--#endregion-->
 
