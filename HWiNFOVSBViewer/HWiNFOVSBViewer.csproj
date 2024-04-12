@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="D:\Visual Studio\Source\NewProd\HWiNFOVSBViewer\HWiNFOVSBViewer\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Images\H-in-blue-cloud.png" />
   </ItemGroup>
 
