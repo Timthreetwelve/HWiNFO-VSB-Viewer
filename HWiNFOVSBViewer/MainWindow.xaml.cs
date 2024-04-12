@@ -34,7 +34,7 @@ public partial class MainWindow : Window
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         // Put the version number in the title bar
-        Title = MainWindowHelpers.WindowTitleVersionAdmin();
+        Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
 
         // Log the version, build date and commit id
         _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
@@ -70,9 +70,7 @@ public partial class MainWindow : Window
             _log.Info("Language testing enabled");
             _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
         }
-
-        // Window position
-        MainWindowHelpers.SetWindowPosition();
+        MainWindowUIHelpers.SetWindowPosition();
 
         // Light or dark
         MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting!.UITheme);
@@ -133,9 +131,7 @@ public partial class MainWindow : Window
 
         // Shut down NLog
         LogManager.Shutdown();
-
-        // Save settings
-        MainWindowHelpers.SaveWindowPosition();
+        MainWindowUIHelpers.SaveWindowPosition();
         ConfigHelpers.SaveSettings();
     }
     #endregion Window Events

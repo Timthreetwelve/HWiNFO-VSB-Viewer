@@ -163,8 +163,8 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void ApplyUISettings()
     {
-        // Window position
-        MainWindowHelpers.SetWindowPosition();
+        // Startup location
+        SetWindowPosition();
 
         // Light or dark theme
         SetBaseTheme(UserSettings.Setting!.UITheme);
@@ -176,4 +176,59 @@ internal static class MainWindowUIHelpers
         UIScale(UserSettings.Setting.UISize);
     }
     #endregion Apply UI settings
+
+    #region Startup location
+    /// <summary>
+    /// Sets the MainWindow startup location.
+    /// </summary>
+    public static void SetWindowPosition()
+    {
+        Window mainWindow = Application.Current.MainWindow;
+        if (UserSettings.Setting!.StartCentered)
+        {
+            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+    }
+    #endregion Startup location
+
+    #region Save window position
+    /// <summary>
+    /// Saves the MainWindow position and size.
+    /// </summary>
+    public static void SaveWindowPosition()
+    {
+        Window mainWindow = Application.Current.MainWindow;
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
+        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
+    }
+    #endregion Save window position
+
+    #region Window title
+    /// <summary>
+    /// Puts the version number in the title bar as well as Administrator if running elevated
+    /// </summary>
+    public static string WindowTitleVersionAdmin()
+    {
+        // Set the windows title
+        return AppInfo.IsAdmin
+            ? $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion} - ({GetStringResource("MsgText_WindowTitleAdministrator")})"
+            : $"{AppInfo.AppProduct}  {AppInfo.AppProductVersion}";
+    }
+    #endregion Window title
+
+    #region Show the main window
+    /// <summary>
+    /// Show the main window and set it's state to normal
+    /// </summary>
+    public static void ShowMainWindow()
+    {
+        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow.Visibility = Visibility.Visible;
+        Application.Current.MainWindow.WindowState = WindowState.Normal;
+        Application.Current.MainWindow.ShowInTaskbar = true;
+        _ = Application.Current.MainWindow.Activate();
+    }
+    #endregion Show the main window
 }
