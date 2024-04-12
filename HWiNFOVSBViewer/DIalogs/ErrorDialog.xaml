@@ -24,7 +24,7 @@
                     Command="materialDesign:DialogHost.CloseDialogCommand"
                     Content="OK" FontWeight="DemiBold"
                     IsDefault="True"
-                    Style="{StaticResource MaterialDesignRaisedAccentButton}">
+                    Style="{StaticResource MaterialDesignRaisedSecondaryButton}">
                 <Button.CommandParameter>
                     <system:Boolean>true</system:Boolean>
                 </Button.CommandParameter>
