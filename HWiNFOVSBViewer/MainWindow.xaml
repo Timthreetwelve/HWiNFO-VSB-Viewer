@@ -1,4 +1,4 @@
-﻿<Window x:Class="HWiNFOVSBViewer.MainWindow"
+<Window x:Class="HWiNFOVSBViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
@@ -7,35 +7,15 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Width="{Binding WindowWidth,
-                        Source={x:Static config:UserSettings.Setting}}"
-        Height="{Binding WindowHeight,
-                         Source={x:Static config:UserSettings.Setting}}"
         MinWidth="710" MinHeight="300"
         Background="{DynamicResource MaterialDesign.Brush.Background}"
         Closing="Window_Closing" FontSize="14"
         KeyDown="Window_KeyDown"
-        Left="{Binding WindowLeft,
-                       Source={x:Static config:UserSettings.Setting}}"
-        Style="{StaticResource MaterialDesignWindow}"
+        Style="{StaticResource WindowStyle}"
         TextElement.FontWeight="Regular"
         TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
         TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Top="{Binding WindowTop,
-                      Source={x:Static config:UserSettings.Setting}}"
-        Topmost="{Binding KeepOnTop,
-                          Source={x:Static config:UserSettings.Setting}}">
-
-    <!--#region Window resources-->
-    <Window.Resources>
-        <ScaleTransform x:Key="DialogScale"
-                        ScaleX="{Binding Path=DialogScale,
-                                         Source={x:Static config:UserSettings.Setting}}"
-                        ScaleY="{Binding Path=DialogScale,
-                                         Source={x:Static config:UserSettings.Setting}}" />
-    </Window.Resources>
-    <!--#endregion-->
+        TextOptions.TextRenderingMode="Auto">
 
     <materialDesign:DialogHost CloseOnClickAway="True"
                                DialogTheme="Inherit"

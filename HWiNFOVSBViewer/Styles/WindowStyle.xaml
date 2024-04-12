@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration">
+
+    <!--#region Window style to set size, position and topmost-->
+    <Style TargetType="Window"
+           x:Key="WindowStyle"
+           BasedOn="{StaticResource MaterialDesignWindow}">
+        <Setter Property="Top" Value="{Binding Path=WindowTop, Source={x:Static config:UserSettings.Setting}}" />
+        <Setter Property="Left" Value="{Binding Path=WindowLeft, Source={x:Static config:UserSettings.Setting}}" />
+        <Setter Property="Height" Value="{Binding Path=WindowHeight, Source={x:Static config:UserSettings.Setting}}" />
+        <Setter Property="Width" Value="{Binding Path=WindowWidth, Source={x:Static config:UserSettings.Setting}}" />
+        <Setter Property="Topmost" Value="{Binding Path=KeepOnTop, Source={x:Static config:UserSettings.Setting}}" />
+    </Style>
+    <!--#endregion-->
+
+    <ScaleTransform x:Key="DialogScale"
+                    ScaleX="{Binding Path=DialogScale,
+                                     Source={x:Static config:UserSettings.Setting}}"
+                    ScaleY="{Binding Path=DialogScale,
+                                     Source={x:Static config:UserSettings.Setting}}" />
+
+</ResourceDictionary>
