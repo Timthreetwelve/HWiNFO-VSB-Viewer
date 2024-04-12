@@ -82,6 +82,9 @@
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Il programma è aggiornato.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">L'ordinamento delle colonne è stato rimosso</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Tempo tracsorso</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Error in apertura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Error in lettura di {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Errore durante il salvataggio del file.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Impossibile trovare un processo denominato HWiNFO64 o HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO non è in esecuzione.</sys:String>
@@ -93,6 +96,7 @@
     <sys:String x:Key="MsgText_RowsShown1">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">Tutte le righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">righe visualizzate</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori info, consulta il file registro eventi.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Dimensione = {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Tema = {0}</sys:String>
@@ -108,7 +112,7 @@
     <sys:String x:Key="SettingsSection_AppSettings">Impostazioni applicazione</sys:String>
     <sys:String x:Key="SettingsSection_Language">Impostazioni lingua GUI</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Tema, colore evidenziazione, dimensione GUI, altezza righe, posizione iniziale, opzioni registro e altro ancora</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Impostazioni test lingua GUI (lavori in corso)</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Impostazioni test lingua GUI</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_FontWeight">Dimensione font</sys:String>
@@ -188,5 +192,14 @@
     <!--  * | Updated comments in this file  -->
     <!--  * | Moved all items to appropriate sections above  -->
     <!--  Begin changes on 2023/11/11  -->
+
+    <!--  Begin changes on 2024/04/12 @ 12:40 UTC  -->
+    <!--  A | MsgText_ErrorCaption  -->
+    <!--  A | MsgText_ErrorGeneral  -->
+    <!--  A | MsgText_ErrorOpeningFile  -->
+    <!--  A | MsgText_ErrorReadingFile  -->
+    <!--  A | MsgText_SeeLogFile  -->
+    <!--  U | SettingsSubHead_Language  -->
+    <!--  End of changes on 2024/04/1209 @ 12:40 UTC  -->
 
 </ResourceDictionary>

@@ -82,6 +82,7 @@
     <sys:String x:Key="MsgText_AppUpdateNoneFound">Geen nieuwe versie gevonden.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">Kolom sortering verwijderd</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
+    <sys:String x:Key="MsgText_ErrorCaption">FOUT</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Fout bij bewaren bestand.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Kon geen proces vinden met de naam HWiNFO64 of HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is niet gestart.</sys:String>
@@ -93,6 +94,7 @@
     <sys:String x:Key="MsgText_RowsShown1">1 rij tonen</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">Alle rijen tonensh</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">rijen tonen</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">Raadpleeg het logbestand voor meer informatie.</sys:String>
     <sys:String x:Key="MsgText_UIColorSet">Geselecteerde accent kleur {0}</sys:String>
     <sys:String x:Key="MsgText_UISizeSet">Geselecteerde afmeting {0}</sys:String>
     <sys:String x:Key="MsgText_UIThemeSet">Geselecteerd thema {0}</sys:String>
@@ -108,7 +110,7 @@
     <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
     <sys:String x:Key="SettingsSection_Language">Taal instellingen</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Thema, Accent kleur, UI afmetingen, Rij hoogte, Start positie, Log opties en meer</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen (in ontwikeling)</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent kleur</sys:String>
     <sys:String x:Key="SettingsItem_FontWeight">Font dikte</sys:String>
@@ -189,4 +191,10 @@
     <!--  * | Moved all items to appropriate sections above  -->
     <!--  Begin changes on 2023/11/11  -->
 
+    <!--  Begin changes on 2024/04/12 @ 12:40 UTC  -->
+    <!--  A | MsgText_SeeLogFile  -->
+    <!--  A | MsgText_ErrorCaption  -->
+    <!--  U | SettingsSubHead_Language  -->
+    <!--  End of changes on 2024/04/1209 @ 12:40 UTC  -->
+    
 </ResourceDictionary>
