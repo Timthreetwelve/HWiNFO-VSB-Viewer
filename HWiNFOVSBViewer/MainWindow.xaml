@@ -140,10 +140,10 @@
                                           ToolTip="{DynamicResource Button_NavigateToolTip}" />
 
                             <TextBlock x:Name="PageTitle"
-                                       Margin="6,0,0,0"
+                                       Margin="6,6,0,0"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="20" FontWeight="DemiBold"
+                                       FontSize="22" FontWeight="DemiBold"
                                        Text="Cool Title" />
 
                         </StackPanel>
