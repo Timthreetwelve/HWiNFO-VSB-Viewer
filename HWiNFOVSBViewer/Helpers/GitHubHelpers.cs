@@ -75,8 +75,7 @@ internal static class GitHubHelpers
 
                 if (MDCustMsgBox.CustResult == CustResultType.Yes)
                 {
-                    string opening = GetStringResource("MsgText_Opening");
-                    _log.Debug($"{opening} {release.HtmlUrl}");
+                    _log.Debug($"Opening {release.HtmlUrl}");
                     string url = release.HtmlUrl;
                     Process p = new();
                     p.StartInfo.FileName = url;
