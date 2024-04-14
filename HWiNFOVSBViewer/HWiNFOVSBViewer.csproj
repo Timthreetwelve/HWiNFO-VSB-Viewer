@@ -61,7 +61,7 @@
   <Target Name="PublishZip" AfterTargets="Publish">
     <PropertyGroup>
       <PowerShellScript>-File "D:\Visual Studio\Source\PowerShell\PublishZip\PubZipEx.ps1"</PowerShellScript>
-      <Name>-name "Windows Update Viewer"</Name>
+      <Name>-name "HWiNFO VSB Viewer"</Name>
       <Version>-version $(AssemblyVersion)</Version>
       <Path>-path "$(ProjectDir)"</Path>
       <PublishFolder>-pubDir $(PublishDir)</PublishFolder>
