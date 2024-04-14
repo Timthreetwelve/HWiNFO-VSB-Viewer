@@ -105,6 +105,7 @@ Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesu
 Source: "{#MySourceDir}\*.json"; Excludes: "usersettings.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\ReadMe.txt"; DestDir: "{app}"; Flags: ignoreversion isreadme
 Source: "{#MySourceDir}\License.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MySourceDir}\Strings.test.xaml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [InstallDelete]
