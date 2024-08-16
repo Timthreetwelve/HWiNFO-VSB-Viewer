@@ -6,7 +6,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"    # See documentation for possible values
-    directory: "/GetMyIP"         # Location of package manifests
+    directory: "/HWiNFO-VSB-Viewer"         # Location of package manifests
     schedule:
       interval: "daily"           # Check daily
     open-pull-requests-limit: 5   # Max number of pull requests
+    ignore:
+      - dependency-name: "GitVersion.MsBuild"
