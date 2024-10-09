@@ -2,9 +2,7 @@
 
 namespace HWiNFOVSBViewer.Models
 {
-#pragma warning disable S101 // Types should be named in PascalCase
     public class HWiNFO
-#pragma warning restore S101 // Types should be named in PascalCase
     {
         public int Index { get; set; }
 
