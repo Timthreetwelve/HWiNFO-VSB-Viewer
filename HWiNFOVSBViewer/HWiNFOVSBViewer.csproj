@@ -36,72 +36,26 @@
     <None Update="ReadMe.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Strings.test.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <!-- Generate BuildInfo.cs-->
-  <Target Name="BuildInfo" AfterTargets="UpdateAssemblyInfo">
+  <Target Name="BuildInfo" AfterTargets="BeforeBuild">
     <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
     <PropertyGroup>
       <PowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</PowerShellScript>
       <Name>-assemblyName $(AssemblyName)</Name>
-      <Version>-assemblyVersion $(AssemblyVersion)</Version>
     </PropertyGroup>
     <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version)" />
   </Target>
 
-  <!-- Publish to Zip file -->
-  <Target Name="PublishZip" AfterTargets="Publish">
-    <PropertyGroup>
-      <PowerShellScript>-File "D:\Source\Repos\PublishZip\PubZipEx.ps1"</PowerShellScript>
-      <Name>-name "HWiNFO VSB Viewer"</Name>
-      <Version>-version $(AssemblyVersion)</Version>
-      <Path>-path "$(ProjectDir)"</Path>
-      <PublishFolder>-pubDir $(PublishDir)</PublishFolder>
-    </PropertyGroup>
-    <!-- This is the framework dependent version -->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <PubType>-pubType "x64x86"</PubType>
-    </PropertyGroup>
-    <!-- This is the x64 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <PubType>-pubType SC_x64</PubType>
-    </PropertyGroup>
-    <!-- This is the x86 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <PubType>-pubType SC_x86</PubType>
-    </PropertyGroup>
-    <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(Name) $(Version) $(PubType) $(PublishFolder) $(Path)" />
+  <!-- Build complete message -->
+  <Target Name="VersionMessage" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="Build complete for $(AssemblyName). Assembly Version is $(AssemblyVersion)." />
   </Target>
-
-  <!-- Publish to Inno Setup installer-->
-  <Target Name="CompileSetup" AfterTargets="PublishZip">
-    <PropertyGroup>
-      <PowerShellScript>-File "D:\Source\Repos\PublishInnoSetup\PubSetupEx.ps1"</PowerShellScript>
-      <ScriptName>-issScript "$(ProjectDir)Inno_Setup\HWiNFOVSBViewerEx.iss"</ScriptName>
-    </PropertyGroup>
-    <!-- This is the framework dependent version -->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Framework_Dependent`))'">
-      <PubType>-publishType "x64x86"</PubType>
-    </PropertyGroup>
-    <!-- This is the x64 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x64`))'">
-      <PubType>-publishType SC_x64</PubType>
-    </PropertyGroup>
-    <!-- This is the x86 self contained version-->
-    <PropertyGroup Condition="'$(PublishDir.Contains(`Self_Contained_x86`))'">
-      <PubType>-publishType SC_x86</PubType>
-    </PropertyGroup>
-    <!-- Execute the PowerShell script -->
-    <Exec Command="pwsh -NoProfile $(PowerShellScript) $(ScriptName) $(PublishDir) $(PubType) " />
-  </Target>
-
+  
   <!-- Remove obj folder after Clean -->
   <Target Name="SpicNSpan" AfterTargets="AfterClean">
     <Message Importance="high" Text="obj folder deleted." />

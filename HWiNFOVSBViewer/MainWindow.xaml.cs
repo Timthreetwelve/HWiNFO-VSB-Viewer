@@ -37,7 +37,7 @@ public partial class MainWindow : Window
         Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
 
         // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppFileVersion} {GetStringResource("MsgText_ApplicationStarting")}");
+        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
         _log.Info($"Copyright {AppInfo.AppCopyright}");
         _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
         _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
