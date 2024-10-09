@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -268,6 +268,10 @@ public partial class MainWindow : Window
     {
         string dir = AppInfo.AppDirectory;
         TextFileViewer.ViewTextFile(Path.Combine(dir, "ReadMe.txt"));
+    }
+    private async void BtnUpdate_Click(object sender, RoutedEventArgs e)
+    {
+        await GitHubHelpers.CheckRelease();
     }
     #endregion PopupBox button events
 

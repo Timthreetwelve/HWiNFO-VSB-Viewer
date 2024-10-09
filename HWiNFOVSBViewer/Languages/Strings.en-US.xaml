@@ -44,6 +44,7 @@
     <sys:String x:Key="About_Version">Version</sys:String>
     <!--  Button Text  -->
     <sys:String x:Key="Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Close this menu</sys:String>
     <sys:String x:Key="Button_NavigateToolTip">Click to navigate</sys:String>
@@ -204,6 +205,10 @@
     
     <!--  Begin changes on 2024/04/12 @ 12:40 UTC  -->
     <!--  U | SettingsSubHead_Language  -->
-    <!--  End of changes on 2024/04/1209 @ 12:40 UTC  -->
-    
+    <!--  End of changes on 2024/04/12 @ 12:40 UTC  -->
+
+    <!--  Begin changes on 2024/10/09 @ 21:00 UTC  -->
+    <!--  A | Button_CheckUpdate  -->
+    <!--  End of changes on 2024/10/09 @ 21:00 UTC  -->
+
 </ResourceDictionary>

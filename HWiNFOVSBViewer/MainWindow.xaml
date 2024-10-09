@@ -147,6 +147,13 @@
                                                    Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
                                         <Button Height="35"
                                                 Padding="15,1,15,22"
+                                                Click="BtnUpdate_Click"
+                                                Content="{DynamicResource Button_CheckUpdate}"
+                                                ToolTip="{DynamicResource About_UpdateToolTip}"/>
+                                        <Separator Margin="0" Padding="1"
+                                                   Background="{DynamicResource MaterialDesign.Brush.TextBox.HoverBackground}" />
+                                        <Button Height="35"
+                                                Padding="15,1,15,22"
                                                 HorizontalContentAlignment="Left"
                                                 Content="{DynamicResource Button_Close}"
                                                 ToolTip="{DynamicResource Button_CloseToolTip}" />
