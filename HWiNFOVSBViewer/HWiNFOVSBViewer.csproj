@@ -15,18 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Inverted-H-in-blue-cloud.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="Octokit" Version="13.0.1" />
-    <PackageReference Include="Nerdbank.GitVersioning">
-      <PrivateAssets>all</PrivateAssets>
-      <Version>3.6.143</Version>
-    </PackageReference>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.143" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +41,7 @@
 
   <!-- Generate BuildInfo.cs-->
   <Target Name="BuildInfo" AfterTargets="BeforeBuild">
-    <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName). Version is $(AssemblyVersion)" />
+    <Message Importance="high" Text="Beginning GenBuildInfo for $(AssemblyName)." />
     <PropertyGroup>
       <PowerShellScript>-File "$(ProjectDir)PowerShell\GenBuildInfo.ps1"</PowerShellScript>
       <Name>-assemblyName $(AssemblyName)</Name>
