@@ -5,19 +5,9 @@
 
 version: 2
 updates:
-<<<<<<< HEAD
   - package-ecosystem: "nuget"      # See documentation for possible values
     directory: "/HWiNFOVSBViewer"   # Location of package manifests
     schedule:
       interval: "weekly"            # Check weekly
       day: thursday                 # on Thursday
     open-pull-requests-limit: 5     # Max number of pull requests
-=======
-  - package-ecosystem: "nuget"    # See documentation for possible values
-    directory: "/HWiNFO-VSB-Viewer"         # Location of package manifests
-    schedule:
-      interval: "daily"           # Check daily
-    open-pull-requests-limit: 5   # Max number of pull requests
-    ignore:
-      - dependency-name: "GitVersion.MsBuild"
->>>>>>> origin/main
