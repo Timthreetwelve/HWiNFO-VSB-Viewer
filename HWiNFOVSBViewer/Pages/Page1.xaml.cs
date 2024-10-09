@@ -12,8 +12,8 @@ public partial class Page1 : UserControl
     private static partial Regex NumOnly();
     [GeneratedRegex(@"\d")]
     private static partial Regex NoNums();
-    private static readonly Regex numOnly = NumOnly();
-    private static readonly Regex noNums = NoNums();
+    private static readonly Regex _numOnly = NumOnly();
+    private static readonly Regex _noNums = NoNums();
     #endregion Regex instances
 
     #region Static property for Page1
@@ -172,8 +172,8 @@ public partial class Page1 : UserControl
                 // assign it to the "Index" and the other part to the corresponding value in the HWiNFO class.
                 // When a match is made with "valueraw" all of the values are added to HWList and the process
                 // repeats until all of the registry values have been read.
-                string regText = noNums.Replace(valname, "");
-                info.Index = int.Parse(numOnly.Replace(valname, ""));
+                string regText = _noNums.Replace(valname, "");
+                info.Index = int.Parse(_numOnly.Replace(valname, ""));
                 switch (regText.ToLowerInvariant())
                 {
                     case "color":

@@ -5,7 +5,7 @@ namespace HWiNFOVSBViewer;
 public partial class MainWindow : Window
 {
     #region Stopwatch
-    private readonly Stopwatch stopwatch = new();
+    private readonly Stopwatch _stopwatch = new();
     #endregion Stopwatch
 
     public MainWindow()
@@ -22,7 +22,7 @@ public partial class MainWindow : Window
     #region Settings
     private void InitializeSettings()
     {
-        stopwatch.Start();
+        _stopwatch.Start();
     }
 
     public void ReadSettings()
@@ -125,9 +125,9 @@ public partial class MainWindow : Window
     #region Window Events
     private void Window_Closing(object sender, CancelEventArgs e)
     {
-        stopwatch.Stop();
+        _stopwatch.Stop();
         _log.Info($"{AppInfo.AppName} {GetStringResource("MsgText_ApplicationShutdown")}.  " +
-                        $"{GetStringResource("MsgText_ElapsedTime")}: {stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
+                        $"{GetStringResource("MsgText_ElapsedTime")}: {_stopwatch.Elapsed:h\\:mm\\:ss\\.ff}");
 
         // Shut down NLog
         LogManager.Shutdown();
