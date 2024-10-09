@@ -73,7 +73,7 @@ HWiNFO VSB Viewer uses the following icons and applications:
 
     * NLog https://nlog-project.org/
 
-    * GitVersion https://github.com/GitTools/GitVersion
+    * NerdBank.GitVersioning https://github.com/dotnet/Nerdbank.GitVersioning
 
     * Octokit https://github.com/octokit/octokit.net
 
