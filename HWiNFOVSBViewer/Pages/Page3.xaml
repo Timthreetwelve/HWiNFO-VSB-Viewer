@@ -57,8 +57,18 @@
                            Grid.Column="2"
                            Width="50"
                            HorizontalAlignment="Right"
-                           VerticalAlignment="Top"
-                           Source="/Images/H-in-blue-cloud.png" />
+                           VerticalAlignment="Top" Panel.ZIndex="1">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="\Images\H-in-blue-cloud.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="\Images\Inverted-H-in-Blue-Cloud.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
                     <!--#endregion-->
 
                     <!--#region TextBlocks-->
@@ -99,7 +109,9 @@
                                Text="{DynamicResource About_License}" />
                     <TextBlock Grid.Row="4" Grid.Column="2">
                         <Hyperlink Command="{Binding ViewLicenseCommand}"
-                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                               ToolTip="{DynamicResource About_LicenseToolTip}"
+                               ToolTipService.Placement="Top">
                             <TextBlock Text="{DynamicResource About_LicenseText}"
                                        TextWrapping="Wrap" />
                         </Hyperlink>
@@ -115,7 +127,8 @@
                                Text="{DynamicResource About_CommitID}" />
                     <TextBlock Grid.Row="6" Grid.Column="2"
                                Text="{x:Static local:BuildInfo.CommitIDString}"
-                               TextWrapping="Wrap">
+                               TextWrapping="Wrap"
+                               ToolTipService.Placement="Top">
                         <TextBlock.ToolTip>
                             <ToolTip>
                                 <TextBlock>
@@ -195,47 +208,26 @@
                         </TextBlock>
                     </Grid>
 
-                    <Border Grid.Row="11" Grid.Column="2"
-                            Width="auto"
-                            HorizontalAlignment="Left"
-                            BorderBrush="{DynamicResource MaterialDesign.Brush.ForegroundLight}"
-                            BorderThickness="1">
-                        <ListView Width="auto" MinWidth="250"
-                                  MaxHeight="141"
-                                  Margin="0,-1"
-                                  materialDesign:ListViewAssist.ListViewItemPadding="10,5,30,8"
-                                  ItemsSource="{x:Static models:UILanguage.DefinedLanguages}"
-                                  PreviewMouseDown="ListView_PreviewMouseDown"
-                                  ScrollViewer.HorizontalScrollBarVisibility="auto"
-                                  ScrollViewer.VerticalScrollBarVisibility="auto">
-                            <ListView.Resources>
-                                <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="Template" Value="{x:Null}" />
-                                </Style>
-                            </ListView.Resources>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock MinWidth="80"
-                                                           Text="{Binding LanguageNative}" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock MinWidth="70"
-                                                           Text="{Binding LanguageCode}" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Contributor}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </Border>
+
+                    <DataGrid Grid.Row="11" Grid.Column="2"
+                          HorizontalAlignment="Left"
+                          materialDesign:DataGridAssist.CellPadding="3,3,5,3"
+                          AutoGenerateColumns="False"
+                          Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+                          BorderThickness="1"
+                          CellStyle="{StaticResource DGCellStyle}"
+                          HeadersVisibility="None"
+                          IsReadOnly="True"
+                          ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding LanguageNative}"
+                                            MinWidth="110" />
+                            <DataGridTextColumn Binding="{Binding LanguageCode}"
+                                            MinWidth="90" />
+                            <DataGridTextColumn Binding="{Binding Contributor}"
+                                            MinWidth="185" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <!--#endregion-->
 
                 </Grid>
