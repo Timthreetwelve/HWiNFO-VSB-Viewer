@@ -12,9 +12,6 @@
     <Copyright>© 2021-$([System.DateTime]::UtcNow.Year) Tim Kennedy</Copyright>
     <ApplicationIcon>Images\H-in-blue-cloud.ico</ApplicationIcon>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>False</GenerateAssemblyInformationalVersionAttribute>
-    <GenerateAssemblyVersionAttribute>False</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +19,10 @@
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="Octokit" Version="13.0.1" />
+    <PackageReference Include="Nerdbank.GitVersioning">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>3.6.143</Version>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
