@@ -228,12 +228,6 @@ public partial class MainWindow : Window
     #endregion Keyboard Events
 
     #region PopupBox button events
-    private void BtnData_Click(object sender, RoutedEventArgs e)
-    {
-        string dir = AppInfo.AppDirectory;
-        TextFileViewer.ViewTextFile(Path.Combine(dir, "DailyDocuments.json"));
-    }
-
     private void BtnLog_Click(object sender, RoutedEventArgs e)
     {
         TextFileViewer.ViewTextFile(GetLogfileName());
