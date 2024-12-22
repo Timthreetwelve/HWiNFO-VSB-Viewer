@@ -26,7 +26,6 @@
         <config:UserSettings x:Key="config" />
         <config:TempSettings x:Key="tempconfig" />
         <convert:BooleanInverter x:Key="boolInverter" />
-        <convert:LanguageConverter x:Key="langConverter" />
         <convert:EnumBindingSource x:Key="EnumBindingSource" />
     </UserControl.Resources>
     <!--#endregion-->
@@ -306,19 +305,17 @@
                                     <Label Grid.Row="0" Grid.Column="0"
                                            VerticalAlignment="Center"
                                            Content="{DynamicResource SettingsItem_Language}" />
-                                    <ComboBox x:Name="cbxLanguage"
-                                              Grid.Row="1" Grid.Column="2"
+                                    <ComboBox Grid.Column="2"
                                               Width="Auto" MinWidth="200"
                                               Margin="0,3,0,0" Padding="2,0,0,3"
                                               HorizontalAlignment="Left"
-                                              IsEnabled="{Binding Path=Setting.UseOSLanguage,
-                                                                  Source={StaticResource config},
+                                              IsEnabled="{Binding Path=UseOSLanguage,
+                                                                  Source={x:Static config:UserSettings.Setting},
                                                                   Converter={StaticResource boolInverter}}"
                                               ItemsSource="{Binding DefinedLanguages}"
-                                              Loaded="CbxLanguage_Loaded"
-                                              SelectedItem="{Binding Path=Setting.UILanguage,
-                                                                     Source={StaticResource config},
-                                                                     Converter={StaticResource langConverter}}"
+                                              SelectedValue="{Binding Path=UILanguage,
+                                                                      Source={x:Static config:UserSettings.Setting}}"
+                                              SelectedValuePath="LanguageCode"
                                               Style="{StaticResource MaterialDesignComboBox}">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
