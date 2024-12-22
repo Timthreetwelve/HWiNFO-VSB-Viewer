@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="HWiNFOVSBViewer.Pages.Page2"
+<UserControl x:Class="HWiNFOVSBViewer.Pages.Page2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:config="clr-namespace:HWiNFOVSBViewer.Configuration"
@@ -23,7 +23,7 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <config:UserSettings x:Key="config" />
+        <convert:BooleanInverter x:Key="BoolInverter" />
         <config:TempSettings x:Key="tempconfig" />
         <convert:BooleanInverter x:Key="boolInverter" />
         <convert:EnumBindingSource x:Key="EnumBindingSource" />
@@ -310,7 +310,7 @@
                                               HorizontalAlignment="Left"
                                               IsEnabled="{Binding Path=UseOSLanguage,
                                                                   Source={x:Static config:UserSettings.Setting},
-                                                                  Converter={StaticResource boolInverter}}"
+                                                                  Converter={StaticResource BoolInverter}}"
                                               ItemsSource="{Binding DefinedLanguages}"
                                               SelectedValue="{Binding Path=UILanguage,
                                                                       Source={x:Static config:UserSettings.Setting}}"
