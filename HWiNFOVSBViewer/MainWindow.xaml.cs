@@ -30,9 +30,6 @@ public partial class MainWindow : Window
         // Set NLog configuration
         NLogConfig(false);
 
-        // Unhandled exception handler
-        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
         // Put the version number in the title bar
         Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
 
@@ -275,26 +272,6 @@ public partial class MainWindow : Window
         await GitHubHelpers.CheckRelease();
     }
     #endregion PopupBox button events
-
-    #region Unhandled Exception Handler
-    private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
-    {
-        _log.Error("Unhandled Exception");
-        Exception e = (Exception)args.ExceptionObject;
-        _log.Error(e.Message);
-        if (e.InnerException != null)
-        {
-            _log.Error(e.InnerException.ToString());
-        }
-        _log.Error(e.StackTrace);
-
-        string msg = string.Format($"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
-        _ = MessageBox.Show(msg,
-            GetStringResource("MsgText_ErrorCaption"),
-            MessageBoxButton.OK,
-            MessageBoxImage.Error);
-    }
-    #endregion Unhandled Exception Handler
 
     #region Double click ColorZone
     /// <summary>

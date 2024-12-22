@@ -49,6 +49,9 @@ namespace HWiNFOVSBViewer
         {
             base.OnStartup(e);
 
+            // Unhandled exception handler
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             // Only allows a single instance of the application to run.
             SingleInstance.Create(AppInfo.AppName);
 
@@ -147,5 +150,26 @@ namespace HWiNFOVSBViewer
             }
         }
         #endregion On Startup
+
+        #region Unhandled Exception Handler
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            _log.Error("Unhandled Exception");
+            Exception e = (Exception)args.ExceptionObject;
+            _log.Error(e.Message);
+            if (e.InnerException != null)
+            {
+                _log.Error(e.InnerException.ToString());
+            }
+            _log.Error(e.StackTrace);
+
+            string msg = string.Format(CultureInfo.CurrentCulture,
+                                      $"{GetStringResource("MsgText_ErrorGeneral")}\n{e.Message}\n{GetStringResource("MsgText_SeeLogFile")}");
+            _ = MessageBox.Show(msg,
+                GetStringResource("MsgText_ErrorCaption"),
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+        #endregion Unhandled Exception Handler
     }
 }
