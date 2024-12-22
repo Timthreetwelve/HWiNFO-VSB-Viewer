@@ -29,16 +29,8 @@ public static class SingleInstance
         }
         _alreadyProcessedOnThisInstance = true;
 
-        string eventName;
         const string uniqueID = "{832BF320-E3DC-4304-BF6F-11DA15E1CE59}";
-        if (uniquePerUser)
-        {
-            eventName = $"{appName}-{uniqueID}-{Environment.UserName}";
-        }
-        else
-        {
-            eventName = $"{appName}-{uniqueID}";
-        }
+        string eventName = uniquePerUser ? $"{appName}-{uniqueID}-{Environment.UserName}" : $"{appName}-{uniqueID}";
 
         if (EventWaitHandle.TryOpenExisting(eventName, out EventWaitHandle? eventWaitHandle))
         {
@@ -47,7 +39,7 @@ public static class SingleInstance
             Environment.Exit(0);
         }
 
-        var app = Application.Current;
+        Application? app = Application.Current;
         RegisterFirstInstanceWindowActivation(app, eventName);
     }
     #endregion Create the application or exit if application exists
@@ -86,7 +78,7 @@ public static class SingleInstance
     private static void WaitOrTimerCallback(object? state, bool timedOut)
     {
         Application? app = (Application?)state;
-        _ = app!.Dispatcher.BeginInvoke(new Action(() => MainWindowUIHelpers.ShowMainWindow()));
+        _ = app!.Dispatcher.BeginInvoke(new Action(MainWindowUIHelpers.ShowMainWindow));
         if (_log.IsDebugEnabled)
         {
             _log.Debug($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");
