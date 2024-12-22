@@ -99,7 +99,7 @@ internal static class GitHubHelpers
     /// <param name="repoOwner">The repository owner.</param>
     /// <param name="repoName">Name of the repository.</param>
     /// <returns>Release object</returns>
-    internal static async Task<Release> GetLatestReleaseAsync(string repoOwner, string repoName)
+    private static async Task<Release> GetLatestReleaseAsync(string repoOwner, string repoName)
     {
         try
         {
@@ -120,7 +120,7 @@ internal static class GitHubHelpers
     /// <summary>
     /// Display a message box stating that the release check failed.
     /// </summary>
-    internal static void CheckFailed()
+    private static void CheckFailed()
     {
         _ = new MDCustMsgBox(GetStringResource("MsgText_AppUpdateCheckFailed"),
             "HWiNFO VSB Viewer",

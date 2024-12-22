@@ -25,7 +25,7 @@ public partial class MainWindow : Window
         _stopwatch.Start();
     }
 
-    public void ReadSettings()
+    private void ReadSettings()
     {
         // Set NLog configuration
         NLogConfig(false);
@@ -90,7 +90,8 @@ public partial class MainWindow : Window
     #endregion Settings
 
     #region Navigation
-    internal void NavigateToPage(NavPage page)
+
+    private void NavigateToPage(NavPage page)
     {
         switch (page)
         {

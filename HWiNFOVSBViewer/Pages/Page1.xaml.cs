@@ -17,7 +17,7 @@ public partial class Page1 : UserControl
     #endregion Regex instances
 
     #region Static property for Page1
-    internal static Page1? P1 { get; set; }
+    internal static Page1? P1 { get; private set; }
     #endregion Static property for Page1
 
     public Page1()
