@@ -27,9 +27,6 @@ public partial class MainWindow : Window
 
     private void ReadSettings()
     {
-        // Set NLog configuration
-        NLogConfig(false);
-
         // Put the version number in the title bar
         Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
 
@@ -47,26 +44,6 @@ public partial class MainWindow : Window
         // Log the .NET version and OS platform
         _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
         _log.Debug($".Net version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
-
-        // Log the startup & current culture
-        _log.Debug($"Startup culture: {App.StartupCulture!.Name}  UI: {App.StartupUICulture!.Name}");
-        _log.Debug($"Current culture: {LocalizationHelpers.GetCurrentCulture()}  UI: {LocalizationHelpers.GetCurrentUICulture()}");
-
-        // Log the language file and number of strings loaded
-        if (!App.LanguageFile!.Equals("defaulted", StringComparison.OrdinalIgnoreCase))
-        {
-            _log.Debug($"{App.LanguageStrings} strings loaded from {App.LanguageFile}");
-        }
-        else
-        {
-            _log.Warn($"Language has defaulted to en-US. {App.LanguageStrings} string loaded.");
-        }
-
-        if (UserSettings.Setting!.LanguageTesting)
-        {
-            _log.Info("Language testing enabled");
-            _log.Debug($"{App.TestLanguageStrings} strings loaded from {App.TestLanguageFile}");
-        }
         MainWindowUIHelpers.SetWindowPosition();
 
         // Light or dark
@@ -275,7 +252,7 @@ public partial class MainWindow : Window
 
     #region Double click ColorZone
     /// <summary>
-    /// Double click the ColorZone to set optimal width
+    /// Double-click the ColorZone to set optimal width
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
