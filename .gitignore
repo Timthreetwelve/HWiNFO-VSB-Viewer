@@ -365,3 +365,7 @@ FodyWeavers.xsd
 HWiNFOVSBViewer/BuildInfo.cs
 
 *.~is
+
+# JetBrains Rider
+.idea/
+*.sln.iml
