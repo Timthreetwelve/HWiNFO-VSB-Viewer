@@ -152,7 +152,7 @@ public partial class MainWindow : Window
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = EnumDescConverter.GetEnumDescription(UserSettings.Setting.PrimaryColor);
+                string color = EnumHelpers.GetEnumDescription(UserSettings.Setting.PrimaryColor);
                 string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
                 SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
@@ -173,7 +173,7 @@ public partial class MainWindow : Window
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = EnumDescConverter.GetEnumDescription(UserSettings.Setting.UITheme);
+                string theme = EnumHelpers.GetEnumDescription(UserSettings.Setting.UITheme);
                 string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
                 SnackbarMsg.ClearAndQueueMessage(message, 2000);
             }
