@@ -273,8 +273,7 @@
 
                                 <StackPanel Grid.Row="0" Grid.Column="1"
                                             Orientation="Horizontal">
-                                    <CheckBox Grid.Row="0" Grid.Column="1"
-                                              Padding="10,0"
+                                    <CheckBox Padding="10,0"
                                               VerticalContentAlignment="Center"
                                               Content="{DynamicResource SettingsItem_UseOSLanguageCheckBox}"
                                               IsChecked="{Binding UseOSLanguage,
@@ -334,7 +333,7 @@
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
-                                    <TextBlock Grid.Row="1" Grid.Column="4"
+                                    <TextBlock Grid.Column="4"
                                                VerticalAlignment="Center"
                                                FontSize="13" Opacity=".8">
                                         <Run Text="{Binding CurrentLanguageStringCount}" />
@@ -361,8 +360,7 @@
                                     <StackPanel.DataContext>
                                         <viewmodels:SettingsViewModel />
                                     </StackPanel.DataContext>
-                                    <CheckBox Grid.Row="0" Grid.Column="1"
-                                              Padding="10,0"
+                                    <CheckBox Padding="10,0"
                                               VerticalContentAlignment="Center"
                                               Content="{DynamicResource SettingsItem_EnableLanguageTesting}"
                                               IsChecked="{Binding LanguageTesting,
