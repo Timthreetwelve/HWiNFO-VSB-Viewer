@@ -11,7 +11,7 @@
 
     <!--#region Style to align datagrid columns right-->
     <Style TargetType="TextBlock"
-           x:Key="alignRight"
+           x:Key="AlignRight"
            BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="5,0,10,0" />
@@ -20,7 +20,7 @@
 
     <!--#region Style to alight datagrid column headers right-->
     <Style TargetType="DataGridColumnHeader"
-           x:Key="alignHeaderRight"
+           x:Key="AlignHeaderRight"
            BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="Margin" Value="0,0,10,0" />
@@ -28,7 +28,7 @@
     <!--#endregion-->
 
     <!--#region Style for DataGrid cells-->
-    <Style x:Key="DGCellStyle"
+    <Style x:Key="DgCellStyle"
            BasedOn="{StaticResource {x:Type DataGridCell}}"
            TargetType="DataGridCell">
         <Setter Property="Focusable" Value="False" />

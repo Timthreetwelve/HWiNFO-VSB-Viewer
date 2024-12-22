@@ -46,13 +46,13 @@ public partial class Page1 : UserControl
         switch (spacing)
         {
             case Spacing.Compact:
-                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 2, 15, 2));
+                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 2, 15, 2));
                 break;
             case Spacing.Comfortable:
-                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 5, 15, 5));
+                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 5, 15, 5));
                 break;
             case Spacing.Wide:
-                DataGridAssist.SetCellPadding(HWGrid, new Thickness(15, 8, 15, 8));
+                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 8, 15, 8));
                 break;
         }
     }
@@ -68,16 +68,16 @@ public partial class Page1 : UserControl
         switch (weight)
         {
             case Weight.Thin:
-                HWGrid.FontWeight = FontWeights.Thin;
+                HwGrid.FontWeight = FontWeights.Thin;
                 break;
             case Weight.Regular:
-                HWGrid.FontWeight = FontWeights.Regular;
+                HwGrid.FontWeight = FontWeights.Regular;
                 break;
             case Weight.SemiBold:
-                HWGrid.FontWeight = FontWeights.SemiBold;
+                HwGrid.FontWeight = FontWeights.SemiBold;
                 break;
             case Weight.Bold:
-                HWGrid.FontWeight = FontWeights.Bold;
+                HwGrid.FontWeight = FontWeights.Bold;
                 break;
         }
     }
@@ -208,7 +208,7 @@ public partial class Page1 : UserControl
     /// </summary>
     private void LoadGrid()
     {
-        HWGrid.ItemsSource = HWiNFO.HWList.OrderBy(x => x.Index).ToList();
+        HwGrid.ItemsSource = HWiNFO.HWList.OrderBy(x => x.Index).ToList();
     }
     #endregion Load the datagrid
 
@@ -221,18 +221,18 @@ public partial class Page1 : UserControl
         HWiNFO.HWList.Clear();
         CheckRegistry();
         ResetCols();
-        HWGrid.Items.Refresh();
-        if (tbxSearch.Text.Length > 0)
+        HwGrid.Items.Refresh();
+        if (TbxSearch.Text.Length > 0)
         {
             FilterTheGrid();
         }
-        if (HWGrid.Items.Count == 1)
+        if (HwGrid.Items.Count == 1)
         {
             SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RefreshedItems1"), 1000);
         }
         else
         {
-            SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} {GetStringResource("MsgText_RefreshedItemsMany")}", 1000);
+            SnackbarMsg.ClearAndQueueMessage($"{HwGrid.Items.Count} {GetStringResource("MsgText_RefreshedItemsMany")}", 1000);
         }
     }
     #endregion Reread the registry and refresh the datagrid
@@ -243,11 +243,11 @@ public partial class Page1 : UserControl
     /// </summary>
     public void ResetCols()
     {
-        foreach (DataGridColumn column in HWGrid.Columns)
+        foreach (DataGridColumn column in HwGrid.Columns)
         {
             column.SortDirection = null;
         }
-        HWGrid.Items.SortDescriptions.Clear();
+        HwGrid.Items.SortDescriptions.Clear();
 
         SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_ColumnSortCleared"), 1000);
     }
@@ -264,22 +264,22 @@ public partial class Page1 : UserControl
         Clipboard.Clear();
 
         // Include the header row
-        HWGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+        HwGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
 
         // Temporarily set selection mode to all rows
-        HWGrid.SelectionMode = DataGridSelectionMode.Extended;
+        HwGrid.SelectionMode = DataGridSelectionMode.Extended;
 
         // Select all the cells
-        HWGrid.SelectAllCells();
+        HwGrid.SelectAllCells();
 
         // Execute the copy
-        ApplicationCommands.Copy.Execute(null, HWGrid);
+        ApplicationCommands.Copy.Execute(null, HwGrid);
 
         // Unselect the cells
-        HWGrid.UnselectAllCells();
+        HwGrid.UnselectAllCells();
 
         // Set selection mode back to one row
-        HWGrid.SelectionMode = DataGridSelectionMode.Single;
+        HwGrid.SelectionMode = DataGridSelectionMode.Single;
     }
     #endregion Copy to clipboard
 
@@ -352,7 +352,7 @@ public partial class Page1 : UserControl
             .Append("<th style='width: 10%;'>").Append(GetStringResource("GridColumn_Value")).Append("</th>")
             .Append("<th style='width: 10%;'>").Append(GetStringResource("GridColumn_ValueRaw")).Append("</th>")
             .AppendLine("</tr>");
-        foreach (HWiNFO row in HWGrid.Items)
+        foreach (HWiNFO row in HwGrid.Items)
         {
             sb.Append("<tr>")
                 .Append("<td style='text-align: center'>").Append(row.Index).Append("</td>")
@@ -418,7 +418,7 @@ public partial class Page1 : UserControl
     private void MnuCopy_Click(object sender, RoutedEventArgs e)
     {
         Copy2Clipboard();
-        SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} rows copied to the clipboard");
+        SnackbarMsg.ClearAndQueueMessage($"{HwGrid.Items.Count} rows copied to the clipboard");
     }
 
     private async void MnuSaveToCsv_Click(object sender, RoutedEventArgs e)
@@ -465,14 +465,14 @@ public partial class Page1 : UserControl
 
     private void FilterTheGrid()
     {
-        string filter = tbxSearch.Text;
+        string filter = TbxSearch.Text;
 
         if (string.Equals(filter, "~"))
         {
             filter = "\u00b0";
         }
 
-        ICollectionView? cv = CollectionViewSource.GetDefaultView(HWGrid.ItemsSource);
+        ICollectionView? cv = CollectionViewSource.GetDefaultView(HwGrid.ItemsSource);
         if (filter?.Length == 0)
         {
             cv.Filter = null;
@@ -488,13 +488,13 @@ public partial class Page1 : UserControl
                        hw.Value!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
                        hw.Index.ToString().Contains(filter!, StringComparison.OrdinalIgnoreCase);
             };
-            if (HWGrid.Items.Count == 1)
+            if (HwGrid.Items.Count == 1)
             {
                 SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RowsShown1"), 1000);
             }
             else
             {
-                SnackbarMsg.ClearAndQueueMessage($"{HWGrid.Items.Count} {GetStringResource("MsgText_RowsShownMany")}", 1000);
+                SnackbarMsg.ClearAndQueueMessage($"{HwGrid.Items.Count} {GetStringResource("MsgText_RowsShownMany")}", 1000);
             }
         }
     }
