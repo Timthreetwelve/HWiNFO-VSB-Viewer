@@ -38,13 +38,4 @@ internal static class LocalizationHelpers
         _log.Debug("Restarting for language change.");
         Application.Current.Shutdown();
     }
-
-    /// <summary>
-    /// Gets the index of the selected language.
-    /// </summary>
-    /// <returns>The index as int.</returns>
-    public static int GetLanguageIndex()
-    {
-        return UILanguage.DefinedLanguages.FindIndex(x => x.LanguageCode == UserSettings.Setting!.UILanguage);
-    }
 }
