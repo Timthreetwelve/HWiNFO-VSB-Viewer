@@ -90,7 +90,8 @@
         </materialDesign:Card>
         <!--#endregion-->
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2"
+        <Grid Grid.Row="1" Grid.Column="0"
+              Grid.ColumnSpan="2"
               MinWidth="250"
               Margin="15">
             <!--#region Row Definitions-->
@@ -109,7 +110,6 @@
                            BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
                 </ScrollViewer.Resources>
                 <TextBlock x:Name="TxtMessage"
-                           Grid.Row="0"
                            Margin="5" HorizontalAlignment="Center"
                            FontSize="16"
                            Style="{StaticResource MaterialDesignTextBlock}"
