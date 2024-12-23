@@ -14,7 +14,7 @@ namespace HWiNFOVSBViewer.Models
 
         public string? ValueRaw { get; set; }
 
-        public static List<HWiNFO> HWList { get; set; } = [];
+        public static List<HWiNFO> HwList { get; } = [];
 
         public static string? RegistryKey { get; set; }
     }

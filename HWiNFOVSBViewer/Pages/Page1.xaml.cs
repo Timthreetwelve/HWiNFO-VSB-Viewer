@@ -29,7 +29,7 @@ public partial class Page1 : UserControl
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
         P1 = this;
-        HWiNFO.HWList.Clear();
+        HWiNFO.HwList.Clear();
         CheckRegistry();
         SetFontWeight(UserSettings.Setting!.GridFontWeight);
         SetRowSpacing(UserSettings.Setting!.RowSpacing);
@@ -120,7 +120,7 @@ public partial class Page1 : UserControl
                 Sensor = GetStringResource("MsgText_NoRegistryValues")
             };
             _log.Error("No registry values found.");
-            HWiNFO.HWList.Add(info);
+            HWiNFO.HwList.Add(info);
             LoadGrid();
             _ = IsHWiNFORunningAsync();
         }
@@ -190,13 +190,13 @@ public partial class Page1 : UserControl
                         break;
                     case "valueraw":
                         info.ValueRaw = value;
-                        HWiNFO.HWList.Add(info);
+                        HWiNFO.HwList.Add(info);
                         info = new HWiNFO();
                         break;
                 }
             }
-            _log.Debug($"{HWiNFO.HWList.Count} records parsed from {key.ValueCount} registry values");
-            SnackbarMsg.QueueMessage($"{HWiNFO.HWList.Count} {GetStringResource("MsgText_RecordsParsed1")}" +
+            _log.Debug($"{HWiNFO.HwList.Count} records parsed from {key.ValueCount} registry values");
+            SnackbarMsg.QueueMessage($"{HWiNFO.HwList.Count} {GetStringResource("MsgText_RecordsParsed1")}" +
                                             $" {key.ValueCount} {GetStringResource("MsgText_RecordsParsed2")}", 2000);
         }
     }
@@ -208,7 +208,7 @@ public partial class Page1 : UserControl
     /// </summary>
     private void LoadGrid()
     {
-        HwGrid.ItemsSource = HWiNFO.HWList.OrderBy(x => x.Index).ToList();
+        HwGrid.ItemsSource = HWiNFO.HwList.OrderBy(x => x.Index).ToList();
     }
     #endregion Load the datagrid
 
@@ -218,7 +218,7 @@ public partial class Page1 : UserControl
     /// </summary>
     public void RefreshData()
     {
-        HWiNFO.HWList.Clear();
+        HWiNFO.HwList.Clear();
         CheckRegistry();
         ResetCols();
         HwGrid.Items.Refresh();
