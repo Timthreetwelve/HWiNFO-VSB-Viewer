@@ -11,6 +11,7 @@ public partial class ErrorDialog : UserControl
     /// <summary>
     /// Message to be displayed
     /// </summary>
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public string? Message { get; set; }
 
     public ErrorDialog()
