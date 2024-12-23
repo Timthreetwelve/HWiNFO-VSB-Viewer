@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Pages;
 
@@ -226,14 +226,11 @@ public partial class Page1 : UserControl
         {
             FilterTheGrid();
         }
-        if (HwGrid.Items.Count == 1)
-        {
-            SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RefreshedItems1"), 1000);
-        }
-        else
-        {
-            SnackbarMsg.ClearAndQueueMessage($"{HwGrid.Items.Count} {GetStringResource("MsgText_RefreshedItemsMany")}", 1000);
-        }
+
+        SnackbarMsg.ClearAndQueueMessage(
+            HwGrid.Items.Count == 1
+                ? GetStringResource("MsgText_RefreshedItems1")
+                : $"{HwGrid.Items.Count} {GetStringResource("MsgText_RefreshedItemsMany")}", 1000);
     }
     #endregion Reread the registry and refresh the datagrid
 
@@ -486,16 +483,12 @@ public partial class Page1 : UserControl
                 return hw!.Label!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
                        hw.Sensor!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
                        hw.Value!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Index.ToString().Contains(filter!, StringComparison.OrdinalIgnoreCase);
+                       hw.Index.ToString(CultureInfo.InvariantCulture).Contains(filter!, StringComparison.OrdinalIgnoreCase);
             };
-            if (HwGrid.Items.Count == 1)
-            {
-                SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RowsShown1"), 1000);
-            }
-            else
-            {
-                SnackbarMsg.ClearAndQueueMessage($"{HwGrid.Items.Count} {GetStringResource("MsgText_RowsShownMany")}", 1000);
-            }
+            SnackbarMsg.ClearAndQueueMessage(
+                HwGrid.Items.Count == 1
+                    ? GetStringResource("MsgText_RowsShown1")
+                    : $"{HwGrid.Items.Count} {GetStringResource("MsgText_RowsShownMany")}", 1000);
         }
     }
     #endregion Filter textbox changed event
