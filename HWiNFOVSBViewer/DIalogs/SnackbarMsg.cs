@@ -4,13 +4,6 @@ namespace HWiNFOVSBViewer.Dialogs
 {
     public static class SnackbarMsg
     {
-        #region Queue a message (default duration)
-        public static void QueueMessage(string message)
-        {
-            (Application.Current.MainWindow as MainWindow)?.SnackBar1.MessageQueue!.Enqueue(message);
-        }
-        #endregion Queue a message (default duration)
-
         #region Queue a message and set duration
         public static void QueueMessage(string message, int duration)
         {
