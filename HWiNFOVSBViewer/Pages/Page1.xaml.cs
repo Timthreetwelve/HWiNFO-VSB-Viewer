@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Pages;
 
@@ -420,12 +420,26 @@ public partial class Page1 : UserControl
 
     private async void MnuSaveToCsv_Click(object sender, RoutedEventArgs e)
     {
-        await SaveToCSVAsync();
+        try
+        {
+            await SaveToCSVAsync();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error saving to CSV.");
+        }
     }
 
     private async void MnuSaveToHtml_Click(object sender, RoutedEventArgs e)
     {
-        await SaveToHtmlAsync();
+        try
+        {
+            await SaveToHtmlAsync();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Error saving to HTML.");
+        }
     }
 
     private void MnuRefresh_Click(object sender, RoutedEventArgs e)

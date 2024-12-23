@@ -239,7 +239,14 @@ public partial class MainWindow : Window
     }
     private async void BtnUpdate_Click(object sender, RoutedEventArgs e)
     {
-        await GitHubHelpers.CheckRelease();
+        try
+        {
+            await GitHubHelpers.CheckRelease();
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, "Check for new release failed");
+        }
     }
     #endregion PopupBox button events
 
