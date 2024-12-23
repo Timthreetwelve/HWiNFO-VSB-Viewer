@@ -18,8 +18,7 @@
     <materialDesign:DialogHost CloseOnClickAway="True"
                                DialogTheme="Inherit"
                                Identifier="MainDialogHost">
-        <Grid x:Name="MainGrid"
-              LayoutTransform="{StaticResource DialogScale}">
+        <Grid LayoutTransform="{StaticResource DialogScale}">
             <!--#region Row definitions-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

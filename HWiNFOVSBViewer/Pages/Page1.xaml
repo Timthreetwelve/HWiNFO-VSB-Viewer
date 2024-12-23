@@ -13,8 +13,7 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto">
 
-    <Grid x:Name="P1Grid">
-
+    <Grid>
         <!--#region Columns and rows-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
