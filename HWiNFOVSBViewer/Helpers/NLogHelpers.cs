@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
-#nullable enable
 namespace HWiNFOVSBViewer.Helpers;
 
 /// <summary>
@@ -81,16 +80,8 @@ internal static class NLogHelpers
     {
         // create filename string
         string appName = AppInfo.AppName;
-        string today = DateTime.Now.ToString("yyyyMMdd");
-        string filename;
-        if (Debugger.IsAttached)
-        {
-            filename = $"{appName}.{today}.debug.log";
-        }
-        else
-        {
-            filename = $"{appName}.{today}.log";
-        }
+        string today = DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
+        string filename = Debugger.IsAttached ? $"{appName}.{today}.debug.log" : $"{appName}.{today}.log";
 
         // combine temp folder with filename
         string tempDir = Path.GetTempPath();
@@ -108,18 +99,12 @@ internal static class NLogHelpers
         LoggingConfiguration config = LogManager.Configuration;
 
         LoggingRule rule = config.FindRuleByName("LogToFile");
-        if (rule != null)
+        if (rule == null)
         {
-            if (debug)
-            {
-                rule.SetLoggingLevels(LogLevel.Debug, LogLevel.Fatal);
-            }
-            else
-            {
-                rule.SetLoggingLevels(LogLevel.Info, LogLevel.Fatal);
-            }
-            LogManager.ReconfigExistingLoggers();
+            return;
         }
+        rule.SetLoggingLevels(debug ? LogLevel.Debug : LogLevel.Info, LogLevel.Fatal);
+        LogManager.ReconfigExistingLoggers();
     }
     #endregion Set NLog logging level
 
