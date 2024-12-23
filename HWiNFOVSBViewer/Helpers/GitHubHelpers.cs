@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 using Octokit;
 
@@ -63,8 +63,8 @@ internal static class GitHubHelpers
             }
             else
             {
-                string msg = string.Format(GetStringResource("MsgText_AppUpdateNewerFound"), latestVersion);
-                _log.Debug(msg);
+                _log.Debug($"A newer release ({latestVersion}) has been found.");
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextAppUpdateNewerFound, latestVersion);
                 _ = new MDCustMsgBox($"{msg}\n\n{GetStringResource("MsgText_AppUpdateGoToRelease")}\n",
                     "HWiNFO VSB Viewer",
                     ButtonType.YesNo,

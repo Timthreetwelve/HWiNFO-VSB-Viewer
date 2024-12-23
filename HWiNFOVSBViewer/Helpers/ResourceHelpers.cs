@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -64,6 +64,29 @@ internal static class ResourceHelpers
         return description.ToString()!;
     }
     #endregion Get string resource
+    #region Get composite format for a resource string
+    private static CompositeFormat GetCompositeResource(string key)
+    {
+        try
+        {
+            return CompositeFormat.Parse(GetStringResource(key));
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error creating composite format for key: {key}");
+            return CompositeFormat.Parse($"Error creating composite format for key: {key}");
+        }
+    }
+    #endregion Get composite format for a resource string
+
+    #region Composite format properties
+    internal static CompositeFormat MsgTextAppUpdateNewerFound { get; } = GetCompositeResource("MsgText_AppUpdateNewerFound");
+    internal static CompositeFormat MsgTextErrorOpeningFile { get; } = GetCompositeResource("MsgText_ErrorOpeningFile");
+    internal static CompositeFormat MsgTextErrorReadingFile { get; } = GetCompositeResource("MsgText_ErrorReadingFile");
+    internal static CompositeFormat MsgTextUIColorSet { get; } = GetCompositeResource("MsgText_UIColorSet");
+    internal static CompositeFormat MsgTextUISizeSet { get; } = GetCompositeResource("MsgText_UISizeSet");
+    internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
+    #endregion Composite format properties
 
     #region Compares language resource dictionaries
     /// <summary>
