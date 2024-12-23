@@ -134,12 +134,13 @@ internal static class MainWindowUIHelpers
     public static void EverythingSmaller()
     {
         MySize size = UserSettings.Setting!.UISize;
-        if (size > 0)
+        if (size <= 0)
         {
-            size--;
-            UserSettings.Setting.UISize = size;
-            UIScale(UserSettings.Setting.UISize);
+            return;
         }
+        size--;
+        UserSettings.Setting.UISize = size;
+        UIScale(UserSettings.Setting.UISize);
     }
 
     /// <summary>
@@ -148,12 +149,13 @@ internal static class MainWindowUIHelpers
     public static void EverythingLarger()
     {
         MySize size = UserSettings.Setting!.UISize;
-        if (size < MySize.Largest)
+        if (size >= MySize.Largest)
         {
-            size++;
-            UserSettings.Setting.UISize = size;
-            UIScale(UserSettings.Setting.UISize);
+            return;
         }
+        size++;
+        UserSettings.Setting.UISize = size;
+        UIScale(UserSettings.Setting.UISize);
     }
     #endregion UI scale
 
