@@ -464,7 +464,7 @@ public partial class Page1 : UserControl
     {
         string filter = TbxSearch.Text;
 
-        if (string.Equals(filter, "~"))
+        if (string.Equals(filter, "~", StringComparison.Ordinal))
         {
             filter = "\u00b0";
         }
