@@ -32,7 +32,7 @@ public partial class Page1 : UserControl
         HWiNFO.HwList.Clear();
         CheckRegistry();
         SetFontWeight(UserSettings.Setting!.GridFontWeight);
-        SetRowSpacing(UserSettings.Setting!.RowSpacing);
+        SetRowSpacing(UserSettings.Setting.RowSpacing);
     }
     #endregion Page Loaded event
 
@@ -114,7 +114,7 @@ public partial class Page1 : UserControl
         }
         else
         {
-            HWiNFO? info = new()
+            HWiNFO info = new()
             {
                 Index = 0,
                 Sensor = GetStringResource("MsgText_NoRegistryValues")
@@ -140,7 +140,7 @@ public partial class Page1 : UserControl
         if (pname64.Length == 0 && pname32.Length == 0)
         {
             _log.Error("HWiNFO is not running");
-            ErrorDialog? error = new()
+            ErrorDialog error = new()
             {
                 Message = $"{GetStringResource("MsgText_HWiNFONotRunning")}\n\n{GetStringResource("MsgText_HWiNFONotFound")}"
             };
@@ -156,7 +156,7 @@ public partial class Page1 : UserControl
     private static void ReadVSB()
     {
         using RegistryKey? key = Registry.CurrentUser.OpenSubKey(HWiNFO.RegistryKey!);
-        HWiNFO? info = new();
+        HWiNFO info = new();
         if (key != null)
         {
             foreach (string valname in key.GetValueNames())
@@ -170,8 +170,8 @@ public partial class Page1 : UserControl
                 //    ValueRaw#
                 // The following regex & switch will separate the numeric part (#) from the registry value
                 // assign it to the "Index" and the other part to the corresponding value in the HWiNFO class.
-                // When a match is made with "valueraw" all of the values are added to HWList and the process
-                // repeats until all of the registry values have been read.
+                // When a match is made with "valueraw" all the values are added to HWList and the process
+                // repeats until all the registry values have been read.
                 string regText = _noNums.Replace(valname, "");
                 info.Index = int.Parse(_numOnly.Replace(valname, ""), CultureInfo.InvariantCulture);
                 switch (regText.ToLowerInvariant())
@@ -288,7 +288,7 @@ public partial class Page1 : UserControl
     private async Task SaveToCSVAsync()
     {
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + ".csv";
-        SaveFileDialog? dialog = new()
+        SaveFileDialog dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveCSV"),
             Filter = "CSV File|*.csv",
@@ -307,7 +307,7 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 _log.Error(ex, "Error saving file.");
-                ErrorDialog? error = new()
+                ErrorDialog error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
@@ -323,7 +323,7 @@ public partial class Page1 : UserControl
     /// </summary>
     private async Task SaveToHtmlAsync()
     {
-        StringBuilder? sb = new();
+        StringBuilder sb = new();
         sb.AppendLine("<!DOCTYPE HTML>")
             .AppendLine("<html>")
             .AppendLine("<head>")
@@ -365,7 +365,7 @@ public partial class Page1 : UserControl
         string html = sb.ToString();
 
         string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + ".html";
-        SaveFileDialog? dialog = new()
+        SaveFileDialog dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveHTML"),
             Filter = "HTML File|*.html",
@@ -382,7 +382,7 @@ public partial class Page1 : UserControl
             catch (Exception ex)
             {
                 _log.Error(ex, "Error saving file.");
-                ErrorDialog? error = new()
+                ErrorDialog error = new()
                 {
                     Message = $"{GetStringResource("MsgText_ErrorSavingFile")}\n\n{ex.Message}"
                 };
@@ -484,7 +484,7 @@ public partial class Page1 : UserControl
         }
 
         ICollectionView? cv = CollectionViewSource.GetDefaultView(HwGrid.ItemsSource);
-        if (filter?.Length == 0)
+        if (filter.Length == 0)
         {
             cv.Filter = null;
             SnackbarMsg.ClearAndQueueMessage(GetStringResource("MsgText_RowsShownAll"), 2000);
@@ -494,10 +494,10 @@ public partial class Page1 : UserControl
             cv.Filter = o =>
             {
                 HWiNFO? hw = o as HWiNFO;
-                return hw!.Label!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Sensor!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Value!.Contains(filter!, StringComparison.OrdinalIgnoreCase) ||
-                       hw.Index.ToString(CultureInfo.InvariantCulture).Contains(filter!, StringComparison.OrdinalIgnoreCase);
+                return hw!.Label!.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Sensor!.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Value!.Contains(filter, StringComparison.OrdinalIgnoreCase) ||
+                       hw.Index.ToString(CultureInfo.InvariantCulture).Contains(filter, StringComparison.OrdinalIgnoreCase);
             };
             SnackbarMsg.ClearAndQueueMessage(
                 HwGrid.Items.Count == 1

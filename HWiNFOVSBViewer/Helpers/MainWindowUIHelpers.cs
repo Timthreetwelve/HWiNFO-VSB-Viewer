@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -183,10 +183,10 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void SetWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
+        Window? mainWindow = Application.Current.MainWindow;
         if (UserSettings.Setting!.StartCentered)
         {
-            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            mainWindow!.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
     }
     #endregion Startup location
@@ -197,11 +197,11 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void SaveWindowPosition()
     {
-        Window mainWindow = Application.Current.MainWindow;
-        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow.Height);
-        UserSettings.Setting!.WindowLeft = Math.Floor(mainWindow.Left);
-        UserSettings.Setting!.WindowTop = Math.Floor(mainWindow.Top);
-        UserSettings.Setting!.WindowWidth = Math.Floor(mainWindow.Width);
+        Window? mainWindow = Application.Current.MainWindow;
+        UserSettings.Setting!.WindowHeight = Math.Floor(mainWindow!.Height);
+        UserSettings.Setting.WindowLeft = Math.Floor(mainWindow.Left);
+        UserSettings.Setting.WindowTop = Math.Floor(mainWindow.Top);
+        UserSettings.Setting.WindowWidth = Math.Floor(mainWindow.Width);
     }
     #endregion Save window position
 
@@ -224,7 +224,7 @@ internal static class MainWindowUIHelpers
     /// </summary>
     public static void ShowMainWindow()
     {
-        Application.Current.MainWindow.Show();
+        Application.Current.MainWindow!.Show();
         Application.Current.MainWindow.Visibility = Visibility.Visible;
         Application.Current.MainWindow.WindowState = WindowState.Normal;
         Application.Current.MainWindow.ShowInTaskbar = true;

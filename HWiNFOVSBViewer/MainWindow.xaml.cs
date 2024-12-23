@@ -50,13 +50,13 @@ public partial class MainWindow : Window
         MainWindowUIHelpers.SetBaseTheme(UserSettings.Setting!.UITheme);
 
         // Primary color
-        MainWindowUIHelpers.SetPrimaryColor(UserSettings.Setting!.PrimaryColor);
+        MainWindowUIHelpers.SetPrimaryColor(UserSettings.Setting.PrimaryColor);
 
         // UI size
-        MainWindowUIHelpers.UIScale(UserSettings.Setting!.UISize);
+        MainWindowUIHelpers.UIScale(UserSettings.Setting.UISize);
 
         // Settings change event
-        UserSettings.Setting!.PropertyChanged += SettingChange.UserSettingChanged!;
+        UserSettings.Setting.PropertyChanged += SettingChange.UserSettingChanged!;
         TempSettings.Setting!.PropertyChanged += SettingChange.TempSettingChanged!;
 
         NavigateToPage(NavPage.Viewer);
