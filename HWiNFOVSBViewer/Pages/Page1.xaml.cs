@@ -1,4 +1,4 @@
-// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Pages;
 
@@ -302,7 +302,7 @@ public partial class Page1 : UserControl
             {
                 Copy2Clipboard();
                 string gridData = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-                File.WriteAllText(dialog.FileName, gridData, Encoding.UTF8);
+                await File.WriteAllTextAsync(dialog.FileName, gridData, Encoding.UTF8);
             }
             catch (Exception ex)
             {
@@ -377,7 +377,7 @@ public partial class Page1 : UserControl
         {
             try
             {
-                File.WriteAllText(dialog.FileName, html, Encoding.UTF8);
+                await File.WriteAllTextAsync(dialog.FileName, html, Encoding.UTF8);
             }
             catch (Exception ex)
             {
