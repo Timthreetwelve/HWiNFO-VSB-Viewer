@@ -1,4 +1,4 @@
-﻿// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright(c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Pages;
 
@@ -173,7 +173,7 @@ public partial class Page1 : UserControl
                 // When a match is made with "valueraw" all of the values are added to HWList and the process
                 // repeats until all of the registry values have been read.
                 string regText = _noNums.Replace(valname, "");
-                info.Index = int.Parse(_numOnly.Replace(valname, ""));
+                info.Index = int.Parse(_numOnly.Replace(valname, ""), CultureInfo.InvariantCulture);
                 switch (regText.ToLowerInvariant())
                 {
                     case "color":
@@ -290,7 +290,7 @@ public partial class Page1 : UserControl
     /// </summary>
     private async Task SaveToCSVAsync()
     {
-        string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".csv";
+        string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + ".csv";
         SaveFileDialog? dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveCSV"),
@@ -367,7 +367,7 @@ public partial class Page1 : UserControl
             .AppendLine("</html>");
         string html = sb.ToString();
 
-        string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".html";
+        string fname = "HWiNFO_VSB_" + DateTime.Now.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + ".html";
         SaveFileDialog? dialog = new()
         {
             Title = GetStringResource("MenuItem_SaveHTML"),
