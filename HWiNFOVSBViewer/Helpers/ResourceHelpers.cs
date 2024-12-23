@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -41,11 +41,8 @@ internal static class ResourceHelpers
             {
                 throw new ArgumentException($"Resource not found: {key}");
             }
-            else
-            {
-                _log.Error(ex, $"Resource not found: {key}");
-                return $"Resource not found: {key}";
-            }
+            _log.Error(ex, $"Resource not found: {key}");
+            return $"Resource not found: {key}";
         }
 
         if (description is null)
@@ -54,16 +51,14 @@ internal static class ResourceHelpers
             {
                 throw new ArgumentNullException($"Resource not found: {key}");
             }
-            else
-            {
-                _log.Error($"Resource not found: {key}");
-                return $"Resource not found: {key}";
-            }
+            _log.Error($"Resource not found: {key}");
+            return $"Resource not found: {key}";
         }
 
         return description.ToString()!;
     }
     #endregion Get string resource
+
     #region Get composite format for a resource string
     private static CompositeFormat GetCompositeResource(string key)
     {
