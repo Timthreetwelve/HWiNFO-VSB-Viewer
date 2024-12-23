@@ -126,9 +126,7 @@ public partial class MainWindow : Window
                 {
                     UserSettings.Setting.PrimaryColor++;
                 }
-                string color = EnumHelpers.GetEnumDescription(UserSettings.Setting.PrimaryColor);
-                string message = string.Format(GetStringResource("MsgText_UIColorSet"), color);
-                SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUiChangeMessage("color");
             }
             if (e.Key == Key.M)
             {
@@ -147,9 +145,7 @@ public partial class MainWindow : Window
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
-                string theme = EnumHelpers.GetEnumDescription(UserSettings.Setting.UITheme);
-                string message = string.Format(GetStringResource("MsgText_UIThemeSet"), theme);
-                SnackbarMsg.ClearAndQueueMessage(message, 2000);
+                ShowUiChangeMessage("theme");
             }
             if (e.Key == Key.R)
             {
@@ -180,14 +176,17 @@ public partial class MainWindow : Window
             if (e.Key is Key.Add or Key.OemPlus)
             {
                 MainWindowUIHelpers.EverythingLarger();
+                ShowUiChangeMessage("size");
             }
             if (e.Key is Key.Subtract or Key.OemMinus)
             {
                 MainWindowUIHelpers.EverythingSmaller();
+                ShowUiChangeMessage("size");
             }
             if (e.Key == Key.NumPad0)
             {
                 UserSettings.Setting!.UISize = MySize.Default;
+                ShowUiChangeMessage("size");
             }
             if (e.Key == Key.OemComma)
             {
@@ -259,4 +258,31 @@ public partial class MainWindow : Window
         Width = width + 1;
     }
     #endregion Double click ColorZone
+
+    #region Show snack bar message for UI changes
+    private static void ShowUiChangeMessage(string messageType)
+    {
+        CompositeFormat? composite = null;
+        string messageVar = string.Empty;
+
+        switch (messageType)
+        {
+            case "size":
+                composite = MsgTextUISizeSet;
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UISize);
+                break;
+            case "theme":
+                composite = MsgTextUIThemeSet;
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.UITheme);
+                break;
+            case "color":
+                composite = MsgTextUIColorSet;
+                messageVar = EnumHelpers.GetEnumDescription(UserSettings.Setting!.PrimaryColor);
+                break;
+        }
+
+        string message = string.Format(CultureInfo.InvariantCulture, composite!, messageVar);
+        SnackbarMsg.ClearAndQueueMessage(message, 2000);
+    }
+    #endregion Show snack bar message for UI changes
 }
