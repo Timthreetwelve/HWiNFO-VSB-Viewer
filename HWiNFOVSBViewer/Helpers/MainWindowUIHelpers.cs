@@ -1,4 +1,4 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer.Helpers;
 
@@ -158,26 +158,6 @@ internal static class MainWindowUIHelpers
         UIScale(UserSettings.Setting.UISize);
     }
     #endregion UI scale
-
-    #region Apply UI settings
-    /// <summary>
-    /// Single method called during startup to apply UI settings.
-    /// </summary>
-    public static void ApplyUISettings()
-    {
-        // Startup location
-        SetWindowPosition();
-
-        // Light or dark theme
-        SetBaseTheme(UserSettings.Setting!.UITheme);
-
-        // Primary accent color
-        SetPrimaryColor(UserSettings.Setting.PrimaryColor);
-
-        // UI size
-        UIScale(UserSettings.Setting.UISize);
-    }
-    #endregion Apply UI settings
 
     #region Startup location
     /// <summary>
