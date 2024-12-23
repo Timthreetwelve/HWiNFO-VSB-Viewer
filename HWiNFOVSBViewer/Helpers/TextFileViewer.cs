@@ -42,13 +42,13 @@ public static class TextFileViewer
             else
             {
 #if messagebox
-                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorOpeningFile, textFile);
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorReadingFile, textFile);
                 _ = MessageBox.Show($"{msg}\n{ex.Message}",
                                     GetStringResource("MsgText_ErrorCaption"),
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 #endif
-                _log.Error(ex, $"Unable to open {textFile}");
+                _log.Error(ex, $"Unable to read {textFile}");
             }
         }
         catch (Exception ex)
