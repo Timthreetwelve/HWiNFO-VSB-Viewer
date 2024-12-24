@@ -167,11 +167,11 @@ namespace HWiNFOVSBViewer
             }
             catch (Exception ex)
             {
-                _log.Error(ex, $"Error loading test language file {TestLanguageFile}");
-                string msg = string.Format(CultureInfo.CurrentCulture,
-                    $"{GetStringResource("MsgText_ErrorTestLanguage")}\n\n{ex.Message}\n\n{ex.InnerException}");
+                _log.Error(ex, $"Error loading test language file {testLanguageFile}");
+                string msg = string.Format(CultureInfo.InvariantCulture, MsgTextErrorReadingFile, testLanguageFile);
+                msg += $"\n\n{ex.Message}";
                 _ = MessageBox.Show(msg,
-                    GetStringResource("MsgText_ErrorCaption"),
+                    $"{AppInfo.AppName} - {GetStringResource("MsgText_ErrorCaption")}",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
