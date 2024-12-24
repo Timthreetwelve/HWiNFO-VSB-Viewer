@@ -47,12 +47,22 @@
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Close this menu</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Import Settings</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Import settings from a file.</sys:String>
+    <sys:String x:Key="Button_ListSettings">List Settings</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">List (write) settings to the log file.</sys:String>
     <sys:String x:Key="Button_NavigateToolTip">Click to navigate</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open App Folder</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Open the App Folder</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Open the HWiNFOVSBViewer folder in file explorer</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Open the log file</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open the log file in the default application.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Open Settings</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open the Settings file.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Additional Actions</sys:String>
     <sys:String x:Key="Button_Yes">Yes</sys:String>
     <!--  Filter Box Hint Text  -->
@@ -74,22 +84,26 @@
     <sys:String x:Key="MenuItem_Smaller">Smaller View</sys:String>
     <sys:String x:Key="MenuItem_ViewMenuTooltip">View Menu</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
-    <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
-    <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
     <sys:String x:Key="MsgText_AppUpdateCheckFailed">Check for update failed. See the log for more information.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateChecking">Checking for update.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateGoToRelease">Do you want to go to the release page?</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNewerFound">A newer release ({0}) has been found.</sys:String>
     <sys:String x:Key="MsgText_AppUpdateNoneFound">No newer releases were found.</sys:String>
+    <sys:String x:Key="MsgText_ApplicationShutdown">is shutting down</sys:String>
+    <sys:String x:Key="MsgText_ApplicationStarting">is starting up</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">Column sort cleared</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Elapsed time</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERROR</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Error exporting settings file.</sys:String>
     <sys:String x:Key="MsgText_ErrorGeneral">An error has occurred.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Error importing settings file.</sys:String>
     <sys:String x:Key="MsgText_ErrorOpeningFile">Error opening {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorReadingFile">Error reading {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Error saving file.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Could not find a process named HWiNFO64 or HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is not running.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart TimVer to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_NoRegistryValues">No registry values found.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">records parsed from</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">registry values</sys:String>
@@ -113,11 +127,14 @@
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Application Settings</sys:String>
     <sys:String x:Key="SettingsSection_Language">Language Settings</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Settings File</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Theme, Accent Color, UI Size, Row Height, Start Position, Log options and more</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Language Settings and Testing</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Import, Export, Open, and List application settings</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent Color</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Changing Language will cause application to restart!</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Any changes made to the settings file while the app is running will be overwritten!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Enable language testing</sys:String>
     <sys:String x:Key="SettingsItem_FontWeight">Font Weight</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
@@ -210,5 +227,25 @@
     <!--  Begin changes on 2024/10/09 @ 21:00 UTC  -->
     <!--  A | Button_CheckUpdate  -->
     <!--  End of changes on 2024/10/09 @ 21:00 UTC  -->
+
+    <!-- Begin changes on 2024/12/24 @ 01:00 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenFolder -->
+    <!-- A | Button_OpenFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/12/24 @ 01:00 UTC -->
 
 </ResourceDictionary>

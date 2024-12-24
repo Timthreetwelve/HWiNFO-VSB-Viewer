@@ -4,6 +4,7 @@ namespace HWiNFOVSBViewer.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
+    #region Open app folder
     [RelayCommand]
     private static async Task OpenAppFolder()
     {
@@ -34,4 +35,39 @@ public partial class SettingsViewModel : ObservableObject
             _ = await DialogHost.Show(error, "MainDialogHost");
         }
     }
+    #endregion Open app folder
+
+    #region Open settings
+    [RelayCommand]
+    private static void OpenSettings()
+    {
+        ConfigHelpers.SaveSettings();
+        TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+    }
+    #endregion Open settings
+
+    #region Export settings
+    [RelayCommand]
+    private static void ExportSettings()
+    {
+        ConfigHelpers.ExportSettings();
+    }
+    #endregion Export settings
+
+    #region Import settings
+    [RelayCommand]
+    private static void ImportSettings()
+    {
+        ConfigHelpers.ImportSettings();
+    }
+    #endregion Import settings
+
+    #region List (dump) settings to log file
+    [RelayCommand]
+    private static void DumpSettings()
+    {
+        ConfigHelpers.DumpSettings();
+        TextFileViewer.ViewTextFile(GetLogfileName());
+    }
+    #endregion List (dump) settings to log file
 }
