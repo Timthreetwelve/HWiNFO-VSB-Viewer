@@ -42,7 +42,7 @@ public partial class SettingsViewModel : ObservableObject
     private static void OpenSettings()
     {
         ConfigHelpers.SaveSettings();
-        TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName!);
+        TextFileViewer.ViewTextFile(ConfigHelpers.SettingsFileName);
     }
     #endregion Open settings
 
