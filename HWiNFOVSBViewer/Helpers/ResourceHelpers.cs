@@ -100,12 +100,12 @@ internal static class ResourceHelpers
             if (totalCount == 0)
             {
                 _log.Error("GetLanguagePercent totalCount is 0 for default dictionary");
-                return GetStringResource("MsgText_Error_Caption");
+                return GetStringResource("MsgText_ErrorCaption");
             }
             if (dictionary.Count == 0)
             {
                 _log.Error($"GetLanguagePercent Count is 0 for {dictionary.Source}");
-                return GetStringResource("MsgText_Error_Caption");
+                return GetStringResource("MsgText_ErrorCaption");
             }
             double percent = (double)dictionary.Count / totalCount;
             percent = Math.Round(percent, 2, MidpointRounding.ToZero);
@@ -114,12 +114,12 @@ internal static class ResourceHelpers
         catch (IOException ex)
         {
             _log.Error(ex, $"IO exception in GetLanguagePercent for {dictionary.Source}");
-            return GetStringResource("MsgText_Error_Caption");
+            return GetStringResource("MsgText_ErrorCaption");
         }
         catch (Exception ex)
         {
             _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
-            return GetStringResource("MsgText_Error_Caption");
+            return GetStringResource("MsgText_ErrorCaption");
         }
     }
     #endregion Compute percentage of language strings
