@@ -210,6 +210,7 @@ public partial class MainWindow : Window
             {
                 CompareLanguageDictionaries();
                 TextFileViewer.ViewTextFile(GetLogfileName());
+                e.Handled = true;
             }
             if (e.Key == Key.S)
             {
