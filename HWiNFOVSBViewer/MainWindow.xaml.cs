@@ -142,6 +142,9 @@ public partial class MainWindow : Window
                         UserSettings.Setting.UITheme = ThemeType.System;
                         break;
                     case ThemeType.System:
+                        UserSettings.Setting.UITheme = ThemeType.DarkBlue;
+                        break;
+                    case ThemeType.DarkBlue:
                         UserSettings.Setting.UITheme = ThemeType.Light;
                         break;
                 }
