@@ -83,7 +83,48 @@ internal static class ResourceHelpers
     internal static CompositeFormat MsgTextUIThemeSet { get; } = GetCompositeResource("MsgText_UIThemeSet");
     #endregion Composite format properties
 
-    #region Compares language resource dictionaries
+    #region Compute percentage of language strings
+    /// <summary>
+    /// Compute percentage of strings by dividing the number of strings
+    /// for the supplied language by the total of en-US strings.
+    /// </summary>
+    /// <param name="language">Language code</param>
+    /// <returns>The percentage with no decimal places as a string. Includes the "%".</returns>
+    public static string GetLanguagePercent(string language)
+    {
+        ResourceDictionary dictionary = [];
+        try
+        {
+            dictionary.Source = new Uri($"Languages/Strings.{language}.xaml", UriKind.RelativeOrAbsolute);
+            int totalCount = GetTotalDefaultLanguageCount();
+            if (totalCount == 0)
+            {
+                _log.Error("GetLanguagePercent totalCount is 0 for default dictionary");
+                return GetStringResource("MsgText_Error_Caption");
+            }
+            if (dictionary.Count == 0)
+            {
+                _log.Error($"GetLanguagePercent Count is 0 for {dictionary.Source}");
+                return GetStringResource("MsgText_Error_Caption");
+            }
+            double percent = (double)dictionary.Count / totalCount;
+            percent = Math.Round(percent, 2, MidpointRounding.ToZero);
+            return percent.ToString("P0", CultureInfo.InvariantCulture);
+        }
+        catch (IOException ex)
+        {
+            _log.Error(ex, $"IO exception in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
+        }
+        catch (Exception ex)
+        {
+            _log.Error(ex, $"Error in GetLanguagePercent for {dictionary.Source}");
+            return GetStringResource("MsgText_Error_Caption");
+        }
+    }
+    #endregion Compute percentage of language strings
+
+    #region Compare language resource dictionaries
     /// <summary>
     /// Compares language resource dictionaries to find missing keys
     /// </summary>
@@ -140,5 +181,5 @@ internal static class ResourceHelpers
             }
         }
     }
-    #endregion Compares language resource dictionaries
+    #endregion Compare language resource dictionaries
 }

@@ -225,7 +225,10 @@
                             <DataGridTextColumn Binding="{Binding LanguageCode}"
                                             MinWidth="90" />
                             <DataGridTextColumn Binding="{Binding Contributor}"
-                                            MinWidth="185" />
+                                            MinWidth="100" />
+                            <DataGridTextColumn Binding="{Binding Note}"
+                                            MinWidth="90"
+                                            CellStyle="{StaticResource AlignCellRight}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <!--#endregion-->

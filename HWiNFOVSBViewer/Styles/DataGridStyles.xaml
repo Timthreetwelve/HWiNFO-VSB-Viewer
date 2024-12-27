@@ -18,6 +18,15 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region Right align cell text-->
+    <Style TargetType="DataGridCell"
+           x:Key="AlignCellRight"
+           BasedOn="{StaticResource {x:Type DataGridCell}}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <!--#endregion-->
+
     <!--#region Style to alight datagrid column headers right-->
     <Style TargetType="DataGridColumnHeader"
            x:Key="AlignHeaderRight"
