@@ -9,7 +9,7 @@
              xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
              xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="600"
+             d:DesignHeight="450" d:DesignWidth="700"
              FontSize="14" TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
