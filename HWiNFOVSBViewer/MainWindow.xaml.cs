@@ -1,31 +1,24 @@
-// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
 public partial class MainWindow : Window
 {
     #region Stopwatch
-    private readonly Stopwatch _stopwatch = new();
+    private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
     #endregion Stopwatch
 
     public MainWindow()
     {
         SingleInstance.Create(AppInfo.AppName);
 
-        InitializeSettings();
-
         InitializeComponent();
 
-        ReadSettings();
+        ApplyUserSettings();
     }
 
     #region Settings
-    private void InitializeSettings()
-    {
-        _stopwatch.Start();
-    }
-
-    private void ReadSettings()
+    private void ApplyUserSettings()
     {
         // Put the version number in the title bar
         Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
