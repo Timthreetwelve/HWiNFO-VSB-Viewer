@@ -80,12 +80,12 @@
 
 
                     <TextBlock Grid.Row="1" Grid.Column="0"
-                           Text="{DynamicResource About_Version}" />
+                               Text="{DynamicResource About_Version}" />
                     <TextBlock Grid.Row="1" Grid.Column="2"
-                           Text="{x:Static helpers:AppInfo.AppVersion}"
-                           TextWrapping="Wrap"
-                           ToolTip="{x:Static helpers:AppInfo.AppProductVersion}"
-                           ToolTipService.Placement="Top" />
+                               Text="{x:Static helpers:AppInfo.AppVersion}"
+                               TextWrapping="Wrap"
+                               ToolTip="{x:Static helpers:AppInfo.AppProductVersion}"
+                               ToolTipService.Placement="Top" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0"
                                Text="{DynamicResource About_CreatedBy}" />
@@ -109,9 +109,9 @@
                                Text="{DynamicResource About_License}" />
                     <TextBlock Grid.Row="4" Grid.Column="2">
                         <Hyperlink Command="{Binding ViewLicenseCommand}"
-                               Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
-                               ToolTip="{DynamicResource About_LicenseToolTip}"
-                               ToolTipService.Placement="Top">
+                                   Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+                                   ToolTip="{DynamicResource About_LicenseToolTip}"
+                                   ToolTipService.Placement="Top">
                             <TextBlock Text="{DynamicResource About_LicenseText}"
                                        TextWrapping="Wrap" />
                         </Hyperlink>
@@ -210,25 +210,26 @@
 
 
                     <DataGrid Grid.Row="11" Grid.Column="2"
-                          HorizontalAlignment="Left"
-                          materialDesign:DataGridAssist.CellPadding="3,3,5,3"
-                          AutoGenerateColumns="False"
-                          Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
-                          BorderThickness="1"
-                          CellStyle="{StaticResource DgCellStyle}"
-                          HeadersVisibility="None"
-                          IsReadOnly="True"
-                          ItemsSource="{x:Static models:UILanguage.DefinedLanguages}">
+                              HorizontalAlignment="Left"
+                              materialDesign:DataGridAssist.CellPadding="3,3,5,3"
+                              AutoGenerateColumns="False"
+                              Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
+                              BorderThickness="1"
+                              CellStyle="{StaticResource DgCellStyle}"
+                              HeadersVisibility="None"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding AnnotatedLanguageList,
+                                                    Mode=OneWay}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding LanguageNative}"
-                                            MinWidth="110" />
+                                                MinWidth="110" />
                             <DataGridTextColumn Binding="{Binding LanguageCode}"
-                                            MinWidth="90" />
+                                                MinWidth="90" />
                             <DataGridTextColumn Binding="{Binding Contributor}"
-                                            MinWidth="100" />
+                                                MinWidth="100" />
                             <DataGridTextColumn Binding="{Binding Note}"
-                                            MinWidth="90"
-                                            CellStyle="{StaticResource AlignCellRight}" />
+                                                MinWidth="90"
+                                                CellStyle="{StaticResource AlignCellRight}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <!--#endregion-->
