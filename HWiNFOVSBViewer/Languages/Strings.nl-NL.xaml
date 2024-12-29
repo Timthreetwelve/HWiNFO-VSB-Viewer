@@ -14,7 +14,7 @@
         
         Translation contributed by: TiM
         
-        Date last updated:		    2024-10-09
+        Date last updated:		    2024-12-29
         
         =======================================================================
     -->
@@ -47,12 +47,22 @@
     <sys:String x:Key="Button_CheckUpdate">Controleer op updates</sys:String>
     <sys:String x:Key="Button_Close">Sluiten</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Sluit dit menu</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Instellingen exporteren</sys:String>
+    <sys:String x:Key="Button_ExportSettingsToolTip">Exporteer huidige instellingen naar een bestand.</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Instellingen importeren</sys:String>
+    <sys:String x:Key="Button_ImportSettingsToolTip">Importeer instellingen uit een bestand.</sys:String>
+    <sys:String x:Key="Button_ListSettings">Instellingen weergeven</sys:String>
+    <sys:String x:Key="Button_ListSettingsTooltip">Lijst (schrijf) instellingen naar het logbestand.</sys:String>
     <sys:String x:Key="Button_NavigateToolTip">Klik om te bladeren</sys:String>
     <sys:String x:Key="Button_No">Nee</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Open programmalocatie</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Open de App-map</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Open de My Scheduled Tasks-map in de verkenner</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Open het logbestand</sys:String>
     <sys:String x:Key="Button_OpenLogFileToolTip">Open het logbestand in standaard applicatie.</sys:String>
+    <sys:String x:Key="Button_OpenSettings">Instellingen openen</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Open het instellingenbestand.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Aanvullende acties</sys:String>
     <sys:String x:Key="Button_Yes">Ja</sys:String>
     <!--  Filter Box Hint Text  -->
@@ -84,9 +94,16 @@
     <sys:String x:Key="MsgText_ColumnSortCleared">Kolom sortering verwijderd</sys:String>
     <sys:String x:Key="MsgText_ElapsedTime">Verstreken tijd</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">FOUT</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Fout bij het exporteren van instellingenbestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorGeneral">Er is een fout opgetreden.</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Fout bij het importeren van instellingenbestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Fout bij het openen van {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Fout bij het lezen van {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Fout bij bewaren bestand.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Fout bij het opslaan van instellingenbestand.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Kon geen proces vinden met de naam HWiNFO64 of HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is niet gestart.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Start Mijn Geplande Taken opnieuw op om de geïmporteerde instellingen te gebruiken.</sys:String>
     <sys:String x:Key="MsgText_NoRegistryValues">Geen registerwaardes gevonden.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">Regels verwerkt van</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">Register waarden</sys:String>
@@ -110,18 +127,24 @@
     <!--  Settings Page Expander Headings  -->
     <sys:String x:Key="SettingsSection_AppSettings">Programma instellingen</sys:String>
     <sys:String x:Key="SettingsSection_Language">Taal instellingen</sys:String>
+    <sys:String x:Key="SettingsSection_SettingsFile">Instellingenbestand</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Thema, Accent kleur, UI afmetingen, Rij hoogte, Start positie, Log opties en meer</sys:String>
     <sys:String x:Key="SettingsSubHead_Language">Taal instellingen en testen</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Applicatie-instellingen importeren, exporteren, openen en weergeven</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Accent kleur</sys:String>
-    <sys:String x:Key="SettingsItem_FontWeight">Font dikte</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">Bij het veranderen van de weergave taal dient het programma opnieuw te worden opgestart!</sys:String>
+    <sys:String x:Key="SettingsItem_DisplayFont">Weergave Lettertype</sys:String>
+    <sys:String x:Key="SettingsItem_EditSettingsWarning">Alle wijzigingen aan het instellingenbestand terwijl de app draait, worden overschreven!</sys:String>
     <sys:String x:Key="SettingsItem_EnableLanguageTesting">Inschakelen taal test</sys:String>
+    <sys:String x:Key="SettingsItem_FontWeight">Font dikte</sys:String>
     <sys:String x:Key="SettingsItem_IncludeDebug">Uitgebreid logbestand</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Venster altijd boven</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Rij hoogte</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Venster altijd in het midden van het scherm openen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Thema</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Geeft het aantal strings in de huidige taal weer in vergelijking met de standaard (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Druk op Ctrl+Shift+K om taalbestanden te vergelijken. Resultaten worden naar het logbestand geschreven.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Venster grootte</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Gebruik standaard Windows taal instelling</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Als deze optie is geselecteerd, dan zal de taal instelling van Windows (i.p.v. Engels)</sys:String>
@@ -163,6 +186,7 @@
     <sys:String x:Key="SettingsEnum_Spacing_Compact">Compact</sys:String>
     <sys:String x:Key="SettingsEnum_Spacing_Wide">Groot</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Dark">Materiaal donker</sys:String>
+    <sys:String x:Key="SettingsEnum_Theme_DarkBlue">Middernacht Blauw</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Darker">Donkerder</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_Light">Licht</sys:String>
     <sys:String x:Key="SettingsEnum_Theme_System">Systeem</sys:String>
@@ -197,5 +221,35 @@
     <!--  A | MsgText_ErrorCaption  -->
     <!--  U | SettingsSubHead_Language  -->
     <!--  End of changes on 2024/04/1209 @ 12:40 UTC  -->
-    
+
+    <!-- Begin changes on 2024/12/24 @ 01:00 UTC -->
+    <!-- A | Button_ExportSettings -->
+    <!-- A | Button_ExportSettingsToolTip -->
+    <!-- A | Button_ImportSettings -->
+    <!-- A | Button_ImportSettingsToolTip -->
+    <!-- A | Button_ListSettings -->
+    <!-- A | Button_ListSettingsTooltip -->
+    <!-- A | Button_OpenFolder -->
+    <!-- A | Button_OpenFolderToolTip -->
+    <!-- A | Button_OpenSettings -->
+    <!-- A | Button_OpenSettingsToolTip -->
+    <!-- A | MsgText_Error_ExportingSettings -->
+    <!-- A | MsgText_Error_ImportingSettings -->
+    <!-- A | MsgText_Error_SavingSettings -->
+    <!-- A | MsgText_ImportSettingsRestart -->
+    <!-- A | SettingsSection_SettingsFile -->
+    <!-- A | SettingsSubHead_SettingsFile -->
+    <!-- A | SettingsItem_EditSettingsWarning -->
+    <!-- End changes on 2024/12/24 @ 01:00 UTC -->
+
+    <!-- Begin changes on 2024/12/27 @ 02:30 UTC -->
+    <!-- A | SettingsEnum_Theme_DarkBlue -->
+    <!-- End changes on 2024/12/27 @ 02:30 UTC -->
+
+    <!-- Begin changes on 2024/12/29 @ 14:30 UTC -->
+    <!-- A | SettingsItem_DisplayFont -->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
+    <!-- End changes on 2024/12/29 @ 14:30 UTC -->
+
 </ResourceDictionary>
