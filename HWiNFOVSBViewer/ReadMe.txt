@@ -23,16 +23,16 @@ are three icons that have menu selections for copying the grid to the clipboard,
 an HTML file. There are also options to change the size of the display and for refreshing the data.
 By clicking on the grid column headers you can sort the columns in the grid.
 
-The second screen is the Settings screen. You can select between Light, Dark and System themes. You
-can select the accent color and you can choose between five sizes for the app. You can choose the
-font weight and row spacing in the grid on the first page. There are also options to have the app
-stay on top of other windows and you can control the detail of the log file.
+The second screen is the Settings screen. You can select from five themes. You can select the accent
+color and you can choose between seven UI sizes for the app. You can choose the font and font weight
+and row spacing in the grid on the first page. There are also options to have the app stay on top of
+other windows and you can control the detail of the log file.
 
 You can choose the language used for the user interface, provided that a translation has been
 contributed for that language. Checking the ""Use Windows display language"" check box will tell
 the app to use the language specified in the Windows settings, which will be used if a translation
 is available; otherwise, English (en-US) will be used. The drop-down allows you to choose a
-specific language from the list of defined languages. Changing the language will cause the
+specific language from the list of defined languages. Changing language options will cause the
 application to restart.
 
 The last screen is the About screen. This screen shows information about the app such as the version
@@ -51,9 +51,12 @@ These keyboard shortcuts are available:
 	Ctrl + S = Change grid row spacing
 	Ctrl + W = Change font weight in grid
 	Ctrl + comma = Go to the Settings screen
-	Ctrl + Numpad Plus = Increase size
-	Ctrl + Numpad Minus = Decrease size
+	Ctrl + Numpad Plus or Ctrl + Plus = Increase size
+	Ctrl + Numpad Minus or Ctrl + Minus = Decrease size
 	Ctrl + Numpad 0 = set size to default
+    Ctrl + Shift + F = Open File explorer in the application folder
+    Ctrl + Shift + K = Compare current language to default (en-US)
+    Ctrl + Shift + S = Open the Settings file
 
 
 Uninstalling HWiNFO VSB Viewer
@@ -65,7 +68,7 @@ Notices and License
 ===================
 HWiNFO VSB Viewer was written in C# by Tim Kennedy.
 
-HWiNFO VSB Viewer uses the following icons and applications:
+HWiNFO VSB Viewer uses the following packages:
 
     * Material Design in XAML Toolkit https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit
 
@@ -77,6 +80,8 @@ HWiNFO VSB Viewer uses the following icons and applications:
 
     * Octokit https://github.com/octokit/octokit.net
 
+    The following tools were used during the development of HWiNFO VSB Viewer:
+
     * GitKraken was used for everything Git related. https://www.gitkraken.com/
 
     * Inno Setup was used to create the installer. https://jrsoftware.org/isinfo.php
@@ -84,6 +89,8 @@ HWiNFO VSB Viewer uses the following icons and applications:
     * Visual Studio Community was used throughout the development of this project. https://visualstudio.microsoft.com/vs/community/
 
     * XAML Styler is indispensable when working with XAML. https://github.com/Xavalon/XamlStyler
+
+    * JetBrains ReSharper Command Line Tools were used for code analysis. https://www.jetbrains.com/resharper/features/command-line.html
 
     * And of course, the essential PowerToys https://github.com/microsoft/PowerToys
 
