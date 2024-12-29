@@ -112,7 +112,8 @@ public partial class App : Application
             return;
         }
 
-        // If no language is defined in settings, or the language is not defined, use en-US.
+        // If language is not found in settings, or the language is not defined in UILanguage.DefinedLanguages, use en-US.
+        // Strings.en-US.xaml is loaded in App.xaml therefore there is no need to explicitly load it here.
         LanguageDictionary.Source = new Uri("Languages/Strings.en-US.xaml", UriKind.RelativeOrAbsolute);
         UserSettings.Setting.UILanguage = "en-US";
         ConfigHelpers.SaveSettings();
