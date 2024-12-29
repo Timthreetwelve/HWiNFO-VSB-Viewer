@@ -143,6 +143,8 @@
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Press Ctrl+Shift+K to compare language files. Results are written to the log file.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">UI Size</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Use Windows display language</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">When this option is selected, the language specified in the Windows settings will</sys:String>
@@ -256,5 +258,7 @@
     
     <!-- Begin changes on 2024/12/29 @ 14:30 UTC -->
     <!-- A | SettingsItem_DisplayFont -->
+    <!-- A | SettingsItem_TranslationToolTipLine1 -->
+    <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/12/29 @ 14:30 UTC -->
 </ResourceDictionary>
