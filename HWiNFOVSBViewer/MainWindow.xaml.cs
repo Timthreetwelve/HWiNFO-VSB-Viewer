@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
+// Copyright (c) Tim Kennedy. All Rights Reserved. Licensed under the MIT License.
 
 namespace HWiNFOVSBViewer;
 
@@ -30,20 +30,7 @@ public partial class MainWindow : Window
         // Put the version number in the title bar
         Title = MainWindowUIHelpers.WindowTitleVersionAdmin();
 
-        // Log the version, build date and commit id
-        _log.Info($"{AppInfo.AppName} ({AppInfo.AppProduct}) {AppInfo.AppVersion} {GetStringResource("MsgText_ApplicationStarting")}");
-        _log.Info($"Copyright {AppInfo.AppCopyright}");
-        _log.Debug($"{AppInfo.AppName} Build date: {BuildInfo.BuildDateString} UTC");
-        _log.Debug($"{AppInfo.AppName} Commit ID: {BuildInfo.CommitIDString}");
-        _log.Debug($"{AppInfo.AppName} was started from {AppInfo.AppPath}");
-        if (AppInfo.IsAdmin)
-        {
-            _log.Debug($"{AppInfo.AppName} is running as Administrator");
-        }
-
-        // Log the .NET version and OS platform
-        _log.Debug($"Operating System version: {AppInfo.OsPlatform}");
-        _log.Debug($".Net version: {AppInfo.RuntimeVersion.Replace(".NET", "")}");
+        // Set window position
         MainWindowUIHelpers.SetWindowPosition();
 
         // Light or dark
