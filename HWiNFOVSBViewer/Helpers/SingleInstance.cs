@@ -81,7 +81,7 @@ public static class SingleInstance
         _ = app!.Dispatcher.BeginInvoke(new Action(MainWindowUIHelpers.ShowMainWindow));
         if (_log.IsDebugEnabled)
         {
-            _log.Debug($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");
+            _log.Info($"This instance of {AppInfo.AppName} was activated because another instance attempted to start. ");
         }
     }
     #endregion Show the main window
