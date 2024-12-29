@@ -4,6 +4,17 @@ namespace HWiNFOVSBViewer.ViewModels;
 
 public partial class SettingsViewModel : ObservableObject
 {
+    #region Properties
+    public static List<FontFamily>? FontList { get; private set; }
+    #endregion Properties
+
+    #region Constructor
+    public SettingsViewModel()
+    {
+        FontList ??= [.. Fonts.SystemFontFamilies.OrderBy(f => f.Source)];
+    }
+    #endregion Constructor
+
     #region Open app folder
     [RelayCommand]
     private static async Task OpenAppFolder()
