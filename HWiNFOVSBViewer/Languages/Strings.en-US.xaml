@@ -141,6 +141,7 @@
     <sys:String x:Key="SettingsItem_IncludeDebug">Include debug level messages in log file</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Keep on top of other windows</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Row Height</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">Use accent color for message background</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Start with window centered on screen</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Theme</sys:String>
     <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Represents the number of strings in the current language compared to the default (en-US).</sys:String>
@@ -261,4 +262,8 @@
     <!-- A | SettingsItem_TranslationToolTipLine1 -->
     <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/12/29 @ 14:30 UTC -->
+    
+    <!-- Begin changes on 2024/12/30 @ 21:30 UTC -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- End changes on 2024/12/30 @ 21:30 UTC -->
 </ResourceDictionary>

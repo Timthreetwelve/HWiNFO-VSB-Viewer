@@ -9,7 +9,7 @@
              xmlns:models="clr-namespace:HWiNFOVSBViewer.Models"
              xmlns:viewmodels="clr-namespace:HWiNFOVSBViewer.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="600"
+             d:DesignHeight="600" d:DesignWidth="600"
              TextElement.FontSize="14"
              TextElement.FontWeight="Regular"
              TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
@@ -191,6 +191,7 @@
                                         <RowDefinition Height="auto" MinHeight="38" />
                                         <RowDefinition Height="auto" MinHeight="38" />
                                         <RowDefinition Height="auto" MinHeight="38" />
+                                        <RowDefinition Height="auto" MinHeight="38" />
                                     </Grid.RowDefinitions>
                                     <CheckBox Grid.Row="0"
                                               Padding="10,0"
@@ -211,6 +212,15 @@
                                         </TextBlock>
                                     </CheckBox>
                                     <CheckBox Grid.Row="2"
+                                              Padding="10,0"
+                                              IsChecked="{Binding UseAccentColorOnSnackbar,
+                                                                  Source={x:Static config:UserSettings.Setting}}">
+                                        <TextBlock>
+                                            <AccessText Text="{DynamicResource SettingsItem_SnackbarAccentColor}"
+                                                        TextWrapping="Wrap" />
+                                        </TextBlock>
+                                    </CheckBox>
+                                    <CheckBox Grid.Row="3"
                                               Padding="10,0"
                                               IsChecked="{Binding IncludeDebug,
                                                                   Source={x:Static config:UserSettings.Setting}}">
