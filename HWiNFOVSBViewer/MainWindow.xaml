@@ -111,7 +111,7 @@
                                                               ElementName=NavDrawer}"
                                           Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                                           ToolTip="{DynamicResource Button_NavigateToolTip}"
-                                          ToolTipService.Placement="Right"/>
+                                          ToolTipService.Placement="Right" />
 
                             <TextBlock x:Name="PageTitle"
                                        Margin="6,6,0,0"
@@ -168,10 +168,10 @@
             <!--#region SnackBar-->
             <materialDesign:Snackbar x:Name="SnackBar1"
                                      Grid.Row="1"
-                                     HorizontalAlignment="Stretch"
-                                     HorizontalContentAlignment="Center"
-                                     Background="#FF202020"
-                                     FontWeight="DemiBold" Foreground="White"
+                                     Height="auto"
+                                     Margin="0,0,10,0"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Top"
                                      MessageQueue="{materialDesign:MessageQueue}" />
             <!--#endregion-->
         </Grid>
