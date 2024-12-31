@@ -31,57 +31,8 @@ public partial class Page1 : UserControl
         P1 = this;
         HWiNFO.HwList.Clear();
         CheckRegistry();
-        SetFontWeight(UserSettings.Setting!.GridFontWeight);
-        SetRowSpacing(UserSettings.Setting.RowSpacing);
     }
     #endregion Page Loaded event
-
-    #region Set the row spacing
-    /// <summary>
-    /// Sets the padding around the rows in the datagrid
-    /// </summary>
-    /// <param name="spacing"></param>
-    public void SetRowSpacing(Spacing spacing)
-    {
-        switch (spacing)
-        {
-            case Spacing.Compact:
-                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 2, 15, 2));
-                break;
-            case Spacing.Comfortable:
-                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 5, 15, 5));
-                break;
-            case Spacing.Wide:
-                DataGridAssist.SetCellPadding(HwGrid, new Thickness(15, 8, 15, 8));
-                break;
-        }
-    }
-    #endregion Set the row spacing
-
-    #region Set the font weight
-    /// <summary>
-    /// Sets the weight of the font in the datagrid
-    /// </summary>
-    /// <param name="weight"></param>
-    public void SetFontWeight(Weight weight)
-    {
-        switch (weight)
-        {
-            case Weight.Thin:
-                HwGrid.FontWeight = FontWeights.Thin;
-                break;
-            case Weight.Regular:
-                HwGrid.FontWeight = FontWeights.Regular;
-                break;
-            case Weight.SemiBold:
-                HwGrid.FontWeight = FontWeights.SemiBold;
-                break;
-            case Weight.Bold:
-                HwGrid.FontWeight = FontWeights.Bold;
-                break;
-        }
-    }
-    #endregion Set the font weight
 
     #region Check registry for HWiNFO64 and HWiNFO32
     /// <summary>

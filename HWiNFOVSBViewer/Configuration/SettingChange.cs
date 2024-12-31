@@ -30,14 +30,6 @@ public static class SettingChange
                 MainWindowUIHelpers.SetPrimaryColor((AccentColor)newValue!);
                 break;
 
-            case nameof(UserSettings.Setting.GridFontWeight):
-                Page1.P1!.SetFontWeight((Weight)newValue!);
-                break;
-
-            case nameof(UserSettings.Setting.RowSpacing):
-                Page1.P1!.SetRowSpacing((Spacing)newValue!);
-                break;
-
             case nameof(UserSettings.Setting.UISize):
                 int size = (int)newValue!;
                 MainWindowUIHelpers.UIScale((MySize)size);
