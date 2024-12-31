@@ -97,8 +97,8 @@
         <!--#region DataGrid inside card-->
         <materialDesign:Card Grid.Row="2" Grid.Column="1"
                              MinWidth="100"
-                             Margin="5,0"
-                             materialDesign:ElevationAssist.Elevation="Dp16"
+                             Margin="0,0,0,5"
+                             materialDesign:ElevationAssist.Elevation="Dp2"
                              Background="{DynamicResource MaterialDesign.Brush.Card.Background}"
                              MouseEnter="Card_MouseEnter"
                              MouseLeave="Card_MouseLeave"

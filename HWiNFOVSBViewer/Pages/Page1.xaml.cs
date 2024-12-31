@@ -352,7 +352,7 @@ public partial class Page1 : UserControl
     private void Card_MouseEnter(object sender, MouseEventArgs e)
     {
         Card? card = sender as Card;
-        ElevationAssist.SetElevation(card!, Elevation.Dp4);
+        ElevationAssist.SetElevation(card!, Elevation.Dp8);
     }
 
     private void Card_MouseLeave(object sender, MouseEventArgs e)
