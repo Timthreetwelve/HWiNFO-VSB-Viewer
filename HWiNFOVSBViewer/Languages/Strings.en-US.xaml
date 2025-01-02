@@ -47,6 +47,7 @@
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Close this menu</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Click to compare. Results are written to the log file.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Import Settings</sys:String>
@@ -265,5 +266,6 @@
     
     <!-- Begin changes on 2024/12/30 @ 21:30 UTC -->
     <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- A | Button_CompareLanguageToolTip -->
     <!-- End changes on 2024/12/30 @ 21:30 UTC -->
 </ResourceDictionary>

@@ -81,4 +81,13 @@ public partial class SettingsViewModel : ObservableObject
         TextFileViewer.ViewTextFile(GetLogfileName());
     }
     #endregion List (dump) settings to log file
+
+    #region Compare languages
+    [RelayCommand]
+    private static void CompareLanguageKeys()
+    {
+        CompareLanguageDictionaries();
+        TextFileViewer.ViewTextFile(GetLogfileName());
+    }
+    #endregion Compare languages
 }

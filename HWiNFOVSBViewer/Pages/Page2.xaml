@@ -316,6 +316,7 @@
                                         <ColumnDefinition Width="10" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.Column="0"
@@ -351,32 +352,43 @@
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
                                     <StackPanel Grid.Column="4"
-                                        Orientation="Horizontal"
-                                        ToolTipService.HorizontalOffset="-200"
-                                        ToolTipService.InitialShowDelay="300"
-                                        ToolTipService.Placement="Top">
+                                                Orientation="Horizontal"
+                                                ToolTipService.HorizontalOffset="-200"
+                                                ToolTipService.InitialShowDelay="300"
+                                                ToolTipService.Placement="Top">
                                         <TextBlock VerticalAlignment="Center"
-                                           FontSize="13" Opacity=".8">
-                                    <Run Text="{Binding CurrentLanguageStringCount}" />
-                                    <Run Text="/" />
-                                    <Run Text="{Binding DefaultStringCount}" />
+                                                   FontSize="13" Opacity=".8">
+                                            <Run Text="{Binding CurrentLanguageStringCount}" />
+                                            <Run Text="/" />
+                                            <Run Text="{Binding DefaultStringCount}" />
                                         </TextBlock>
                                         <TextBlock Width="24"
-                                           Margin="10,8,0,0"
-                                           HorizontalAlignment="Left"
-                                           FontWeight="SemiBold">
-                                    <materialDesign:PackIcon Width="20" Height="20"
-                                                             Kind="InfoOutline" />
+                                                   Margin="10,8,0,0"
+                                                   HorizontalAlignment="Left"
+                                                   FontWeight="SemiBold">
+                                            <materialDesign:PackIcon Width="20" Height="20"
+                                                                     Kind="InfoOutline" />
                                         </TextBlock>
                                         <StackPanel.ToolTip>
                                             <TextBlock LineHeight="18">
-                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
-                                        <LineBreak />
-                                        <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
+                                                <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine1}" />
+                                                <LineBreak />
+                                                <Run Text="{DynamicResource SettingsItem_TranslationToolTipLine2}" />
                                             </TextBlock>
                                         </StackPanel.ToolTip>
                                     </StackPanel>
-
+                                    <Grid Grid.Column="5">
+                                        <Grid.DataContext>
+                                            <viewmodels:SettingsViewModel />
+                                        </Grid.DataContext>
+                                        <Button Width="auto"
+                                                Margin="10,0" HorizontalAlignment="Left"
+                                                Command="{Binding CompareLanguageKeysCommand}"
+                                                Style="{StaticResource CheckButton}"
+                                                ToolTip="{DynamicResource Button_CompareLanguageToolTip}"
+                                                ToolTipService.InitialShowDelay="200"
+                                                ToolTipService.Placement="Top" />
+                                    </Grid>
                                 </Grid>
 
                                 <TextBlock Grid.Row="2" Grid.Column="1"
@@ -402,7 +414,7 @@
                                               IsChecked="{Binding LanguageTesting,
                                                                   Source={x:Static config:UserSettings.Setting}}" />
                                     <Button Width="auto"
-                                            Margin="20,0" Padding="20,0"
+                                            Margin="10,0" Padding="20,0"
                                             Command="{Binding OpenAppFolderCommand}"
                                             Content="{DynamicResource Button_OpenAppFolder}"
                                             Style="{StaticResource PlainOutlinedButton}"
