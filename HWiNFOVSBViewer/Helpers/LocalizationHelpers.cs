@@ -56,7 +56,7 @@ internal static class LocalizationHelpers
     /// Check if the option to use the OS language is set and if the language is defined.
     /// </summary>
     /// <param name="language">The language code to check.</param>
-    /// <returns>True if the language is defined and the option is set. Otherwise return false.</returns>
+    /// <returns>True if the language is defined and the language exists. Otherwise return false.</returns>
     public static bool CheckUseOsLanguage(string language)
     {
         if (UserSettings.Setting!.UseOSLanguage)
