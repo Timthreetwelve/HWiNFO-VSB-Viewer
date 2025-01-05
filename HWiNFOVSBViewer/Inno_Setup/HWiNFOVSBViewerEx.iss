@@ -1,4 +1,4 @@
-﻿; ---------------------------------------------------------------------
+; ---------------------------------------------------------------------
 ;  Inno Setup Script for HWiNFO VSB Viewer (HWiNFOVSBViewer)
 ;----------------------------------------------------------------------
 ; The following #include file is created by the PubSetupEx.ps1 script.
@@ -103,7 +103,7 @@ SourceDir={#MySourceDir}
 Source: "{#MySourceDir}\HWiNFOVSBViewer.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\*.dll"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "{#MySourceDir}\*.json"; Excludes: "usersettings.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#MySourceDir}\ReadMe.txt"; DestDir: "{app}"; Flags: ignoreversion isreadme
+Source: "{#MySourceDir}\ReadMe.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\License.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MySourceDir}\Strings.test.xaml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -131,6 +131,7 @@ Root: HKCU; Subkey: "Software\{#MyCompanyName}\{#MyAppName}"; ValueType: none; V
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadme}"; Flags: nowait postinstall skipifsilent unchecked shellexec
 
 ; -----------------------------------------------------------------------------
 ; Code section follows
