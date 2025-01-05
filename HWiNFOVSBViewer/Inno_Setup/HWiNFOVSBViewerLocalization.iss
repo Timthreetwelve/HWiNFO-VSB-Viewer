@@ -35,6 +35,7 @@ en.NotSelfContained=This will install the standard version of %1 version %2.%n%n
 en.SelfContainedx64=This will install the self-contained x64 (64-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
 en.SelfContainedx86=This will install the self-contained x86 (32-bit) version of %1 version %2.%n%nIt Is recommended that you close all other applications before continuing.%n%nClick 'Next' to continue, or 'Cancel' to exit Setup.
 en.ViewReadme=View the ReadMe file
+en.IncompatibleFile=Possible file incompatibility found in the installation folder.%n%nPlease uninstall the current version and then retry.
 
 ko.AppIsRunning=가 실행 중입니다. 설치를 계속하려면 닫으세요.
 ko.DeleteConfigFiles=설정 파일을 제거하시겠습니까?%n%n재설치할 계획인 경우 '아니오'를 선택하세요.

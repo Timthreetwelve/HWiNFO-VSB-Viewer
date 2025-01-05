@@ -1,4 +1,4 @@
-; ---------------------------------------------------------------------
+﻿; ---------------------------------------------------------------------
 ;  Inno Setup Script for HWiNFO VSB Viewer (HWiNFOVSBViewer)
 ;----------------------------------------------------------------------
 ; The following #include file is created by the PubSetupEx.ps1 script.
@@ -137,11 +137,12 @@ Filename: "{app}\ReadMe.txt"; Description: "{cm:ViewReadme}"; Flags: nowait post
 ; Code section follows
 ; -----------------------------------------------------------------------------
 [Code]
-// Change text on welcome page based on installation type
+
 procedure InitializeWizard;
 var
   Text: String;
 begin
+  // Change text on welcome page based on installation type
   case ExpandConstant('{#InstallType}') of
     'x64x86': Text := FmtMessage( CustomMessage('NotSelfContained'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]); 
     'SC_x86': Text := FmtMessage( CustomMessage('SelfContainedx86'), [ExpandConstant('{#MyAppName}'), ExpandConstant('{#MyAppVersion}')]); 
@@ -152,7 +153,8 @@ begin
   WizardForm.WelcomeLabel2.Caption := Text;
 end;
 
-// function used to check if app is currently running
+// function used to check if app is currently running.
+// Returns True if running, otherwise False.
 function IsAppRunning(const FileName : string): Boolean;
 var
     FSWbemLocator: Variant;
@@ -171,7 +173,20 @@ begin
     FSWbemLocator := Unassigned;
 end;
 
-// Checks if app is running, if so, displays msgbox asking to close running app
+// function to check for self-contained vs not-self-contained conflict.
+// If mscorlib.dll is present the previous installation was .NET self-contained.
+// A non-self-contained version should not be installed over a self-contained version. 
+// Returns True mscorlib.dll is present and install type is x64x86, otherwise False.
+function CompatibilityCheck(): Boolean;
+begin
+    Result := False;
+    if (FileExists(ExpandConstant('{autopf}\{#MyCompanyName}\{#MyAppName}\mscorlib.dll')) and (ExpandConstant('{#InstallType}') = 'x64x86')) then
+      begin
+        Result := True;
+        Exit;
+      end;
+end;
+
 function InitializeSetup(): Boolean;
 var
   Answer: Integer;
@@ -179,18 +194,31 @@ var
 begin
   Result := true;
   ThisApp := ExpandConstant('{#MyAppExeName}');
+  
+  // Checks if app is running, if so, displays msgbox asking to close running app
   while IsAppRunning(ThisApp) do
   begin
-        Answer := MsgBox(ThisApp + ' ' + CustomMessage('AppIsRunning'), mbError, MB_OKCANCEL);
+    Answer := MsgBox(ThisApp + ' ' + CustomMessage('AppIsRunning'), mbError, MB_OKCANCEL);
     If Answer = IDCANCEL then
     begin
+      Log('Exiting setup. Application is currently running.');
       Result := false;
       Exit;
     end;
   end;
+  
+  // Checks for possible self-contained vs not-self-contained conflict.
+  If CompatibilityCheck() then
+    begin
+      MsgBox(CustomMessage('IncompatibleFile'), mbError, MB_OK);
+      Log('Exiting setup. Compatibility check failed.');
+      Result := false;
+      Exit;
+    end;
 end;
 
 // Copies setup log to app folder
+// Overwrites the previous setup log.
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   logfilepathname, newfilepathname: string;
@@ -204,7 +232,7 @@ begin
    end;
 end;
 
-// Uninstall
+// Uninstall - Delete settings file if user clicks 'Yes' on message box.
 procedure CurUninstallStepChanged (CurUninstallStep: TUninstallStep);
 var
   mres : integer;
