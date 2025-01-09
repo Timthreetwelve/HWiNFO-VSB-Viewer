@@ -78,6 +78,7 @@ it.NotSelfContained=Verrà installata la versione standard di %1 versione %2.%n%
 it.SelfContainedx64=Verrà installata la versione standalone di %1 versione %2 64 bit.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nSeleziona 'Avanti' per continuare o 'Annulla' per uscire dall'installazione.
 it.SelfContainedx86=Verrà installata la versione standalone di %1 versione %2 32 bit.%n%nPrima di continuare l'installazione ti consigliamo di chiudere tutte le altre applicazioni.%n%nSeleziona 'Avanti' per continuare o 'Annulla' per uscire dall'installazione.
 it.ViewReadme=Visualizza file ReadMe
+it.IncompatibleFile=Rilevata possibile incompatibilità dei file nella cartella di installazione.%n%nDisinstalla la versione attuale e riprova.
 
 nl.AppIsRunning=wordt uitgevoerd, sluit deze dan af om door te gaan met de installatie.
 nl.DeleteConfigFiles=Wil je de instellingen en uitsluitingsbestanden verwijderen?%n%nSelecteer 'Nee' als je van plan bent om opnieuw te installeren.
