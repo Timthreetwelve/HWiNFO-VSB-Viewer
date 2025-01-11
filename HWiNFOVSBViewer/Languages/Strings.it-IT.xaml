@@ -2,20 +2,20 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--
-        BEFORE UPDATING, refer to the "Contribute a Translation" topic in the Wiki:
-        
+        Refer to the "Contribute a Translation" topic in the Wiki:
+
         https://github.com/Timthreetwelve/HWiNFO-VSB-Viewer/wiki/Contribute-a-Translation
-        
+
         =======================================================================
-        
+
         Application name:            HWiNFO VSB Viewer
-        
+
         Language name:               Italian
-        
+
         Translation contributed by:  RB
-        
-        Date last updated:           29.12.2024
-        
+
+        Date last updated:           10.11.2023
+
         =======================================================================
     -->
 
@@ -23,7 +23,7 @@
     <sys:String x:Key="About_BuildDate">Data build</sys:String>
     <sys:String x:Key="About_CommitID">ID commit</sys:String>
     <sys:String x:Key="About_CommitIDToolTip">ID commit completo:</sys:String>
-    <sys:String x:Key="About_Contribute">Contribusci alla traduzione</sys:String>
+    <sys:String x:Key="About_Contribute">Contribuisci alla traduzione</sys:String>
     <sys:String x:Key="About_ContributeToolTip">Come contribuire con una traduzione</sys:String>
     <sys:String x:Key="About_Copyright">Copyright</sys:String>
     <sys:String x:Key="About_CreatedBy">Creato da</sys:String>
@@ -32,7 +32,7 @@
     <sys:String x:Key="About_Documentation">Documentazione</sys:String>
     <sys:String x:Key="About_DocumentationText">Apri il file 'ReadMe'</sys:String>
     <sys:String x:Key="About_DocumentationToolTip">Apri il file 'ReadMe' con l'applicazione predefinita.</sys:String>
-    <sys:String x:Key="About_GitHub">Sito GitHub</sys:String>
+    <sys:String x:Key="About_GitHub">GitHub</sys:String>
     <sys:String x:Key="About_GitHubToolTip">Visita la pagina HWiNFO VSB Viewer su GitHub</sys:String>
     <sys:String x:Key="About_License">Licenza</sys:String>
     <sys:String x:Key="About_LicenseText">Questo progetto è concesso in licenza secondo i termini della licenza MIT.</sys:String>
@@ -47,22 +47,23 @@
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Chiudi questo menu</sys:String>
-    <sys:String x:Key="Button_ExportSettings">Esporta impostazioni</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Fai clic per confrontare. I risultati verranno scritti nel file registro.</sys:String>
+    <sys:String x:Key="Button_ExportSettings">Impostazioni esportazione</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni attuali in un file.</sys:String>
-    <sys:String x:Key="Button_ImportSettings">Importa impostazioni</sys:String>
+    <sys:String x:Key="Button_ImportSettings">Impostazioni importazione</sys:String>
     <sys:String x:Key="Button_ImportSettingsToolTip">Importa impostazioni da un file.</sys:String>
     <sys:String x:Key="Button_ListSettings">Impostazioni elenco</sys:String>
     <sys:String x:Key="Button_ListSettingsTooltip">Elenca (scrivi) le impostazioni nel file registro.</sys:String>
-    <sys:String x:Key="Button_NavigateToolTip">Clic per navigare</sys:String>
+    <sys:String x:Key="Button_NavigateToolTip">Fai clic per navigare</sys:String>
     <sys:String x:Key="Button_No">No</sys:String>
     <sys:String x:Key="Button_OK">OK</sys:String>
     <sys:String x:Key="Button_OpenAppFolder">Apri cartella App</sys:String>
-    <sys:String x:Key="Button_OpenFolder">Apri cartella App</sys:String>
-    <sys:String x:Key="Button_OpenFolderToolTip">Apri la cartella Le mie attività pianificate in Esplora file</sys:String>
+    <sys:String x:Key="Button_OpenFolder">Apri la cartella App</sys:String>
+    <sys:String x:Key="Button_OpenFolderToolTip">Apri la cartella HWiNFOVSBViewer in Esplora file</sys:String>
     <sys:String x:Key="Button_OpenLogFile">Apri file registro eventi</sys:String>
-    <sys:String x:Key="Button_OpenLogFileToolTip">Apri il file registro evento con l'applicazione predefinita.</sys:String>
+    <sys:String x:Key="Button_OpenLogFileToolTip">Apri file registro evento con l'applicazione predefinita.</sys:String>
     <sys:String x:Key="Button_OpenSettings">Apri impostazioni</sys:String>
-    <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file Impostazioni.</sys:String>
+    <sys:String x:Key="Button_OpenSettingsToolTip">Apri il file impostazioni.</sys:String>
     <sys:String x:Key="Button_ThreeDotToolTip">Azioni aggiuntive</sys:String>
     <sys:String x:Key="Button_Yes">Sì</sys:String>
     <!--  Filter Box Hint Text  -->
@@ -82,29 +83,29 @@
     <sys:String x:Key="MenuItem_SaveCSV">Salva griglia in file CSV</sys:String>
     <sys:String x:Key="MenuItem_SaveHTML">Salva griglia in file HTML</sys:String>
     <sys:String x:Key="MenuItem_Smaller">Vista piccola</sys:String>
-    <sys:String x:Key="MenuItem_ViewMenuTooltip">Menu visualizza</sys:String>
+    <sys:String x:Key="MenuItem_ViewMenuTooltip">Menu Visualizza</sys:String>
     <!--  Text found in messages (log, message box, status bar, details area, etc.)  -->
+    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Verifica aggiornamento non riuscita. Per ulteriori informazioni consulta il registro .</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateChecking">Verifica aggiornamenti.</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina della versione?</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNewerFound">È stata trovata una versione più recente ({0}).</sys:String>
+    <sys:String x:Key="MsgText_AppUpdateNoneFound">Questa versione è aggiornata.</sys:String>    
     <sys:String x:Key="MsgText_ApplicationShutdown">è in fase di chiusura</sys:String>
     <sys:String x:Key="MsgText_ApplicationStarting">è in fase di avvio</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateCheckFailed">Verifica aggiornamenti non riuscita. Per maggiori informazioni consulta il registro .</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateChecking">Controllo aggiornamenti.</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateGoToRelease">Vuoi andare alla pagina delle versioni rilascio?</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateNewerFound">È disponibile una versione aggiornata ({0}).</sys:String>
-    <sys:String x:Key="MsgText_AppUpdateNoneFound">Il programma è aggiornato.</sys:String>
     <sys:String x:Key="MsgText_ColumnSortCleared">L'ordinamento delle colonne è stato rimosso</sys:String>
-    <sys:String x:Key="MsgText_ElapsedTime">Tempo tracsorso</sys:String>
+    <sys:String x:Key="MsgText_ElapsedTime">Tempo trascorso</sys:String>
     <sys:String x:Key="MsgText_ErrorCaption">ERRORE</sys:String>
-    <sys:String x:Key="MsgText_ErrorExportingSettings">Errore durante l'esportazione del file delle impostazioni.</sys:String>
+    <sys:String x:Key="MsgText_ErrorExportingSettings">Errore durante l'esportazione del file impostazioni.</sys:String>
     <sys:String x:Key="MsgText_ErrorGeneral">Si è verificato un errore.</sys:String>
-    <sys:String x:Key="MsgText_ErrorImportingSettings">Errore durante l'importazione del file delle impostazioni.</sys:String>
-    <sys:String x:Key="MsgText_ErrorOpeningFile">Error in apertura di {0}</sys:String>
-    <sys:String x:Key="MsgText_ErrorReadingFile">Error in lettura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorImportingSettings">Errore durante l'importazione del file impostazioni.</sys:String>
+    <sys:String x:Key="MsgText_ErrorOpeningFile">Errore durante l'apertura di {0}</sys:String>
+    <sys:String x:Key="MsgText_ErrorReadingFile">Errore durante la lettura di {0}</sys:String>
     <sys:String x:Key="MsgText_ErrorSavingFile">Errore durante il salvataggio del file.</sys:String>
-    <sys:String x:Key="MsgText_ErrorSavingSettings">Errore durante il salvataggio del file impostazioni.</sys:String>
+    <sys:String x:Key="MsgText_ErrorSavingSettings">Errore durante il salvataggio del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Impossibile trovare un processo denominato HWiNFO64 o HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO non è in esecuzione.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le nuove impostazioni importate riavvia My Scheduled Tasks.</sys:String>
-    <sys:String x:Key="MsgText_NoRegistryValues">Nessun valore registro trovato.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia TimVer.</sys:String>
+    <sys:String x:Key="MsgText_NoRegistryValues">Nessun valore di registro trovato.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">record analizzati da</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">valori registro</sys:String>
     <sys:String x:Key="MsgText_RefreshedItems1">1 elemento aggiornato</sys:String>
@@ -112,10 +113,10 @@
     <sys:String x:Key="MsgText_RowsShown1">1 riga visualizzata</sys:String>
     <sys:String x:Key="MsgText_RowsShownAll">Tutte le righe visualizzate</sys:String>
     <sys:String x:Key="MsgText_RowsShownMany">righe visualizzate</sys:String>
-    <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori info, consulta il file registro eventi.</sys:String>
-    <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione = {0}</sys:String>
-    <sys:String x:Key="MsgText_UISizeSet">Dimensione = {0}</sys:String>
-    <sys:String x:Key="MsgText_UIThemeSet">Tema = {0}</sys:String>
+    <sys:String x:Key="MsgText_SeeLogFile">Per ulteriori info consulta il file registro .</sys:String>
+    <sys:String x:Key="MsgText_UIColorSet">Colore evidenziazione impostato a {0}</sys:String>
+    <sys:String x:Key="MsgText_UISizeSet">Dimensione impostata a {0}</sys:String>
+    <sys:String x:Key="MsgText_UIThemeSet">Tema impostato a {0}</sys:String>
     <!--  Navigation Items  -->
     <sys:String x:Key="NavItem_About">Info</sys:String>
     <sys:String x:Key="NavItem_Exit">Esci</sys:String>
@@ -129,8 +130,8 @@
     <sys:String x:Key="SettingsSection_Language">Impostazioni lingua GUI</sys:String>
     <sys:String x:Key="SettingsSection_SettingsFile">File impostazioni</sys:String>
     <sys:String x:Key="SettingsSubHead_AppSettings">Tema, colore evidenziazione, dimensione GUI, altezza righe, posizione iniziale, opzioni registro e altro ancora</sys:String>
-    <sys:String x:Key="SettingsSubHead_Language">Impostazioni test lingua GUI</sys:String>
-    <sys:String x:Key="SettingsSubHead_SettingsFile">Impostazioni applicazione importazione, esportazione, apertura, ed elenco</sys:String>
+    <sys:String x:Key="SettingsSubHead_Language">Impostazioni test lingua GUI (lavori in corso)</sys:String>
+    <sys:String x:Key="SettingsSubHead_SettingsFile">Importa, esporta, apri/elenca impostazioni applicazione</sys:String>
     <!--  Settings Page Items  -->
     <sys:String x:Key="SettingsItem_AccentColor">Colore evidenziazione</sys:String>
     <sys:String x:Key="SettingsItem_ChangingLanguageWarning">La modifica della lingua GUI causerà il riavvio dell'applicazione!</sys:String>
@@ -141,10 +142,11 @@
     <sys:String x:Key="SettingsItem_IncludeDebug">Include messaggi livello debug nel file registro eventi</sys:String>
     <sys:String x:Key="SettingsItem_KeepOnTop">Mantieni finestra programma in primo piano</sys:String>
     <sys:String x:Key="SettingsItem_RowHeight">Altezza riga</sys:String>
+    <sys:String x:Key="SettingsItem_SnackbarAccentColor">Utilizza colore in risalto per lo sfondo del messaggio</sys:String>
     <sys:String x:Key="SettingsItem_StartCentered">Avvia con la finestra centrata sullo schermo</sys:String>
     <sys:String x:Key="SettingsItem_Theme">Tema</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Rappresenta il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
-    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Premi Ctrl+Maiusc+K per confrontare i file lingua. I risultati vengono scritti nel file registro.</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine1">Indica il numero di stringhe nella lingua attuale rispetto a quella predefinita (en-US).</sys:String>
+    <sys:String x:Key="SettingsItem_TranslationToolTipLine2">Per confrontare i file lingua premi Ctrl+Maiusc+K . I risultati verranno scritti nel file registro.</sys:String>
     <sys:String x:Key="SettingsItem_UISize">Dimensione UI</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageCheckBox">Usa la lingua di visualizzazione di Windows</sys:String>
     <sys:String x:Key="SettingsItem_UseOSLanguageToolTipLine1">Quando questa opzione è selezionata, se è disponibile la traduzione, verrà usata la lingua</sys:String>
@@ -214,16 +216,19 @@
     <!--  Begin changes on 2023/11/11 @ 22:30 UTC  -->
     <!--  * | Updated comments in this file  -->
     <!--  * | Moved all items to appropriate sections above  -->
-    <!--  Begin changes on 2023/11/11  -->
+    <!--  End of changes on 2023/11/11  -->
 
-    <!--  Begin changes on 2024/04/12 @ 12:40 UTC  -->
+    <!--  Begin changes on 2024/04/09 @ 00:45 UTC  -->
     <!--  A | MsgText_ErrorCaption  -->
     <!--  A | MsgText_ErrorGeneral  -->
     <!--  A | MsgText_ErrorOpeningFile  -->
     <!--  A | MsgText_ErrorReadingFile  -->
     <!--  A | MsgText_SeeLogFile  -->
+    <!--  End of changes on 2024/04/09 @ 00:45 UTC  -->
+    
+    <!--  Begin changes on 2024/04/12 @ 12:40 UTC  -->
     <!--  U | SettingsSubHead_Language  -->
-    <!--  End of changes on 2024/04/1209 @ 12:40 UTC  -->
+    <!--  End of changes on 2024/04/12 @ 12:40 UTC  -->
 
     <!--  Begin changes on 2024/10/09 @ 21:00 UTC  -->
     <!--  A | Button_CheckUpdate  -->
@@ -252,10 +257,15 @@
     <!-- Begin changes on 2024/12/27 @ 02:30 UTC -->
     <!-- A | SettingsEnum_Theme_DarkBlue -->
     <!-- End changes on 2024/12/27 @ 02:30 UTC -->
-
+    
     <!-- Begin changes on 2024/12/29 @ 14:30 UTC -->
     <!-- A | SettingsItem_DisplayFont -->
     <!-- A | SettingsItem_TranslationToolTipLine1 -->
     <!-- A | SettingsItem_TranslationToolTipLine2 -->
     <!-- End changes on 2024/12/29 @ 14:30 UTC -->
+    
+    <!-- Begin changes on 2024/12/30 @ 21:30 UTC -->
+    <!-- A | SettingsItem_SnackbarAccentColor -->
+    <!-- A | Button_CompareLanguageToolTip -->
+    <!-- End changes on 2024/12/30 @ 21:30 UTC -->
 </ResourceDictionary>
