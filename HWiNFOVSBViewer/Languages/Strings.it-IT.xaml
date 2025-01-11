@@ -14,7 +14,7 @@
 
         Translation contributed by:  RB
 
-        Date last updated:           10.11.2023
+        Date last updated:           11.11.2023
 
         =======================================================================
     -->
@@ -47,7 +47,7 @@
     <sys:String x:Key="Button_CheckUpdate">Controlla aggiornamenti</sys:String>
     <sys:String x:Key="Button_Close">Chiudi</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Chiudi questo menu</sys:String>
-    <sys:String x:Key="Button_CompareLanguageToolTip">Fai clic per confrontare. I risultati verranno scritti nel file registro.</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Fai clic per confrontare la lingua attuale con quella en-US. I risultati verranno scritti nel file registro.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Impostazioni esportazione</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Esporta impostazioni attuali in un file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Impostazioni importazione</sys:String>
@@ -104,7 +104,7 @@
     <sys:String x:Key="MsgText_ErrorSavingSettings">Errore durante il salvataggio del file delle impostazioni.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Impossibile trovare un processo denominato HWiNFO64 o HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO non è in esecuzione.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia TimVer.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Per usare le impostazioni importate riavvia HWiNFO VSB Viewer.</sys:String>
     <sys:String x:Key="MsgText_NoRegistryValues">Nessun valore di registro trovato.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">record analizzati da</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">valori registro</sys:String>
