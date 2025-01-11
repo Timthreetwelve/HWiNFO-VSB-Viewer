@@ -47,7 +47,7 @@
     <sys:String x:Key="Button_CheckUpdate">Check for Update</sys:String>
     <sys:String x:Key="Button_Close">Close</sys:String>
     <sys:String x:Key="Button_CloseToolTip">Close this menu</sys:String>
-    <sys:String x:Key="Button_CompareLanguageToolTip">Click to compare. Results are written to the log file.</sys:String>
+    <sys:String x:Key="Button_CompareLanguageToolTip">Click to compare current language to en-US. Results are written to the log file.</sys:String>
     <sys:String x:Key="Button_ExportSettings">Export Settings</sys:String>
     <sys:String x:Key="Button_ExportSettingsToolTip">Export current settings to a file.</sys:String>
     <sys:String x:Key="Button_ImportSettings">Import Settings</sys:String>
@@ -104,7 +104,7 @@
     <sys:String x:Key="MsgText_ErrorSavingSettings">Error saving settings file.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotFound">Could not find a process named HWiNFO64 or HWiNFO32.</sys:String>
     <sys:String x:Key="MsgText_HWiNFONotRunning">HWiNFO is not running.</sys:String>
-    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart TimVer to use the imported settings.</sys:String>
+    <sys:String x:Key="MsgText_ImportSettingsRestart">Please restart HWiNFO VSB Viewer to use the imported settings.</sys:String>
     <sys:String x:Key="MsgText_NoRegistryValues">No registry values found.</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed1">records parsed from</sys:String>
     <sys:String x:Key="MsgText_RecordsParsed2">registry values</sys:String>
