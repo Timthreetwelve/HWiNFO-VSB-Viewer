@@ -23,6 +23,11 @@
 
 </div>
 
+## Notice:
+
+#### I believe that HWiNFO-VSB-Viewer is functionally complete. I am changing the repository to public archive status. My sincere thanks to everyone that expressed an interest in the project and to those that downloaded and use it. I hope that made your Rainmeter/HWiNFO configuration tasks a little easier. My thanks also to everyone that contributed a translation. _You Rock!_ If anyone wants to fork the repository to maintain or improve it, please do. You have my blessing.
+---
+
 HWiNFO VSB Viewer is an application that will read the HWiNFO VSB registry values and display them in a grid. The Index values shown in the grid can then be used in Rainmeter skins.
 
 This app gets the same information from the registry as the `reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB` command and then puts it in an easy to use grid. 
